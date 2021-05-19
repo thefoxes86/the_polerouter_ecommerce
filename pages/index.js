@@ -4,7 +4,7 @@ import Link from "next/link";
 import client from "../src/components/ApolloClient";
 import { getMonthAndYear } from "../src/functions";
 import PRODUCTS_AND_CATEGORIES_QUERY from "../src/queries/product-and-categories";
-import GET_POSTS from "../src/queries/get-posts";
+import GET_HOME from "../src/queries/get-home";
 
 export default function Home(props) {
   const { products, productCategories, heroCarousel } = props || {};
@@ -27,14 +27,15 @@ export default function Home(props) {
       </div>
       <div className="container__prints">
         <h2 className="title">PRINTS</h2>
-        <div
-          className="print"
-          style={{ backgroundImage: `url(img/img_home.png)` }}
-        ></div>
-        <div
-          className="print2"
-          style={{ backgroundImage: `url(img/img_home.png)` }}
-        ></div>
+        {props.products &&
+          props.products.slice(0, 2).map((product, index) => {
+            return (
+              <div
+                className={`print print_${index}`}
+                style={{ backgroundImage: `url(${product.image.sourceUrl})` }}
+              ></div>
+            );
+          })}
       </div>
       <div className="container__journal">
         <h2 class="title">JOURNAL</h2>
@@ -50,7 +51,7 @@ export default function Home(props) {
                     />
                     <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
                     <span>{getMonthAndYear(data.date)}</span>
-                    <p dangerouslySetInnerHTML={{ __html: data.excerpt }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
                     <Link href={data.uri} replace>
                       <a className="link">Read More</a>
                     </Link>
@@ -71,7 +72,7 @@ export default function Home(props) {
                     />
                     <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
                     <span>{getMonthAndYear(data.date)}</span>
-                    <p dangerouslySetInnerHTML={{ __html: data.excerpt }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
                     <Link href={data.uri} replace>
                       <a className="link">Read More</a>
                     </Link>
@@ -92,7 +93,7 @@ export default function Home(props) {
                     />
                     <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
                     <span>{getMonthAndYear(data.date)}</span>
-                    <p dangerouslySetInnerHTML={{ __html: data.excerpt }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
                     <Link href={data.uri} replace>
                       <a className="link">Read More</a>
                     </Link>
@@ -111,7 +112,7 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   const { data } = await client.query({
-    query: GET_POSTS,
+    query: GET_HOME,
   });
 
   return {

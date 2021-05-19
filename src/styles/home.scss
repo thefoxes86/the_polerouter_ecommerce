@@ -69,16 +69,16 @@
     align-items: center;
   }
   .print {
-    grid-area: print;
     background-size: cover;
     width: 100%;
     height: 100%;
+    background-position: center center;
   }
-  .print2 {
+  .print_0 {
+    grid-area: print;
+  }
+  .print_1 {
     grid-area: print2;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
   }
 }
 

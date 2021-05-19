@@ -3,8 +3,8 @@ import { gql } from "@apollo/client";
 /**
  * GraphQL countries query.
  */
-const GET_POSTS = gql`
-  query GET_POSTS {
+const GET_HOME = gql`
+  query GET_HOME {
     posts {
       nodes {
         content(format: RENDERED)
@@ -32,7 +32,16 @@ const GET_POSTS = gql`
         uri
       }
     }
+    products {
+      nodes {
+        image {
+          link
+          sourceUrl(size: LARGE)
+          title(format: RENDERED)
+        }
+      }
+    }
   }
 `;
 
-export default GET_POSTS;
+export default GET_HOME;
