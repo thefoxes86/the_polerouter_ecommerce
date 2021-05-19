@@ -1,0 +1,174 @@
+.container__hero {
+  width: 100vw;
+  height: 100vh;
+  background-color: $lightGrey;
+  display: grid;
+  grid-template-columns: 45% auto 35%;
+  grid-template-rows: 35% auto;
+  grid-template-areas:
+    "logo . heroimage"
+    "description . heroimage";
+  .logo {
+    grid-area: logo;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 10%;
+  }
+  .hero__image {
+    grid-area: heroimage;
+    background-image: url("/img/img_home.png");
+    background-size: cover;
+  }
+  .description {
+    grid-area: description;
+    background-color: $heroGrey;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10%;
+    p {
+      text-transform: uppercase;
+    }
+    .scroll__down {
+      position: relative;
+      padding-left: 15px;
+      &::before {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 40px;
+        background-color: black;
+        position: absolute;
+        left: 0;
+        bottom: 3px;
+      }
+    }
+  }
+}
+
+.container__prints {
+  width: 100vw;
+  height: 100vh;
+  background-color: $darkGrey;
+  display: grid;
+  grid-template-columns: 10% auto 15% auto 10%;
+  grid-template-rows: 15% auto 10%;
+  grid-template-areas:
+    ". title title title ."
+    ". print . print2 ."
+    ". . . . .";
+
+  .title {
+    grid-area: title;
+    color: white;
+    text-transform: uppercase;
+    display: grid;
+    align-items: center;
+  }
+  .print {
+    grid-area: print;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .print2 {
+    grid-area: print2;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.container__journal {
+  padding-top: 5vh;
+  width: 100vw;
+  height: auto;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 10% 35% auto 15% auto 15% 10%;
+  grid-template-rows: 10% auto 10%;
+  grid-template-areas:
+    ". title title .  . . ."
+    ". heropost . column1 . column2 ."
+    ". button . . . . .";
+
+  .button__all_posts {
+    grid-area: button;
+  }
+
+  .title {
+    grid-area: title;
+    color: black;
+    text-transform: uppercase;
+    display: grid;
+    align-items: flex-start;
+  }
+  a.link {
+    padding: 2% 0;
+    text-transform: uppercase;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    display: block;
+    margin-bottom: 50px;
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      background-color: black;
+      left: 0;
+      top: 50%;
+    }
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 1px;
+      background-color: black;
+      right: 0;
+      top: 50%;
+    }
+  }
+
+  .hero__post {
+    grid-area: heropost;
+    a::after,
+    a::before {
+      width: 40%;
+    }
+  }
+  .column {
+    div:nth-child(2) {
+      margin-top: 30%;
+    }
+    a::after,
+    a::before {
+      width: 25%;
+    }
+  }
+  .column__1 {
+    grid-area: column1;
+  }
+  .column__2 {
+    grid-area: column2;
+  }
+
+  h3 {
+    padding: 4% 0;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  span {
+    padding: 4% 0;
+    text-transform: uppercase;
+    font-weight: 100;
+  }
+  p {
+    padding: 2% 0;
+    font-weight: 100;
+  }
+}

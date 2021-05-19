@@ -1,0 +1,38 @@
+footer {
+  height: 15vh;
+  margin-top: 10%;
+  bottom: 0;
+  width: 100%;
+  display: grid;
+  border-top: 1px solid $gold;
+  grid-template-columns: 10% auto auto 10%;
+  grid-template-rows: 0.5fr 1fr;
+  grid-template-areas: ". title title ." ". newsletter copyright .";
+
+  h3.title {
+    grid-area: title;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+  }
+
+  div.newsletter {
+    grid-area: newsletter;
+    display: flex;
+    align-items: center;
+  }
+
+  div.copyright {
+    grid-area: copyright;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    p.copy {
+      color: $gold;
+    }
+    a.terms {
+      color: black;
+      text-decoration: none;
+    }
+  }
+}

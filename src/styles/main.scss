@@ -3,4 +3,30 @@
 @import "~tailwindcss/utilities";
 
 // NProgress style.
-@import 'nprogress/nprogress.css';
+@import "nprogress/nprogress.css";
+@import "variables.scss";
+@import "home.scss";
+@import "footer.scss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
+
+body {
+  font-family: "Open sans", sans-serif;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.6rem;
+}
+
+.button {
+  font-size: 1.4rem;
+  padding: 20px 100px;
+  border: 1px solid $gold;
+  text-transform: uppercase;
+}
