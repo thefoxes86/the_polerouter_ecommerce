@@ -2,39 +2,13 @@ import Layout from "../src/components/Layout";
 import Link from "next/link";
 import client from "../src/components/ApolloClient";
 import { getMonthAndYear } from "../src/functions";
-import GET_HOME from "../src/queries/get-home";
+import GET_POSTS from "../src/queries/get-posts";
 
-export default function Home(props) {
+export default function Journal(props) {
   return (
     <Layout>
-      <div className="container__hero">
-        <div className="logo">
-          <img src="/img/logo.png" alt="" />
-        </div>
-        <div className="hero__image"></div>
-        <div className="description">
-          <p>
-            THE FIRST BOOK TO FOCUS SOLELY ON THE UNIVERSAL GENÈVE POLEROUTER. A
-            <br />
-            CELEBRATION OF ITS HISTORY, ITS DESIGN AND ITS DIVERSITY.
-          </p>
-          <div className="scroll__down">scroll down</div>
-        </div>
-      </div>
-      <div className="container__prints">
-        <h2 className="title">PRINTS</h2>
-        {props.products &&
-          props.products.slice(0, 2).map((product, index) => {
-            return (
-              <div
-                className={`print print_${index}`}
-                style={{ backgroundImage: `url(${product.image.sourceUrl})` }}
-              ></div>
-            );
-          })}
-      </div>
       <div className="container__journal">
-        <h2 class="title">JOURNAL</h2>
+        <h1 class="title">JOURNAL</h1>
         <div className="hero__post">
           {props.posts &&
             props.posts.map((data) => {
@@ -108,12 +82,11 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   const { data } = await client.query({
-    query: GET_HOME,
+    query: GET_POSTS,
   });
 
   return {
     props: {
-      products: data?.products?.nodes ? data.products.nodes : [],
       posts: data?.posts?.nodes ? data.posts.nodes : [],
     },
     revalidate: 1,

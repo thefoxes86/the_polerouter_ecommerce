@@ -1,0 +1,41 @@
+nav {
+  padding: 1rem;
+  background: white;
+  border-bottom: 1px solid $gold;
+
+  .menu__container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 10% 15% auto 15% 10%;
+    grid-template-areas: ". logo menuitems accountitems .";
+
+    .logo__menu {
+      grid-area: logo;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      img {
+        width: 40px;
+        height: auto;
+      }
+    }
+    .items__menu {
+      grid-area: menuitems;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & .item {
+        padding: 10px 40px;
+        text-transform: uppercase;
+      }
+    }
+    .account__menu {
+      grid-area: accountitems;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}

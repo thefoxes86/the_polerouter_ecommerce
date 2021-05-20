@@ -1,0 +1,16 @@
+.contact__container {
+  display: grid;
+  width: 100vw;
+  height: auto;
+  grid-template-columns: 10% auto 10%;
+  grid-template-areas: ". contact .";
+
+  .content {
+    grid-area: contact;
+
+    h1,
+    p {
+      padding: 20px 0;
+    }
+  }
+}
