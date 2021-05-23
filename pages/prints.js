@@ -1,6 +1,7 @@
 import Layout from "../src/components/Layout";
 import client from "../src/components/ApolloClient";
 import GET_PRODUCTS from "../src/queries/get-products";
+import Print from "../src/components/Print";
 
 export default function Prints(props) {
   return (
@@ -10,10 +11,11 @@ export default function Prints(props) {
         {props.products &&
           props.products.slice(0, 2).map((product, index) => {
             return (
-              <div
-                className={`print print_${index}`}
-                style={{ backgroundImage: `url(${product.image.sourceUrl})` }}
-              ></div>
+              <Print
+                index={index}
+                sourceUrl={product.image.sourceUrl}
+                slug={product.slug}
+              />
             );
           })}
       </div>

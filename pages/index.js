@@ -3,6 +3,7 @@ import Link from "next/link";
 import client from "../src/components/ApolloClient";
 import { getMonthAndYear } from "../src/functions";
 import GET_HOME from "../src/queries/get-home";
+import Print from "../src/components/Print";
 
 export default function Home(props) {
   return (
@@ -26,10 +27,11 @@ export default function Home(props) {
         {props.products &&
           props.products.slice(0, 2).map((product, index) => {
             return (
-              <div
-                className={`print print_${index}`}
-                style={{ backgroundImage: `url(${product.image.sourceUrl})` }}
-              ></div>
+              <Print
+                index={index}
+                sourceUrl={product.image.sourceUrl}
+                slug={product.slug}
+              />
             );
           })}
       </div>
@@ -45,10 +47,11 @@ export default function Home(props) {
                       src={data.featuredImage.node.link}
                       alt={data.featuredImage.node.altText}
                     />
+
                     <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
                     <span>{getMonthAndYear(data.date)}</span>
                     <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
-                    <Link href={data.uri} replace>
+                    <Link href={`/journal/${data.slug}`} replace>
                       <a className="link">Read More</a>
                     </Link>
                   </div>
@@ -69,7 +72,7 @@ export default function Home(props) {
                     <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
                     <span>{getMonthAndYear(data.date)}</span>
                     <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
-                    <Link href={data.uri} replace>
+                    <Link href={`/journal/${data.slug}`} replace>
                       <a className="link">Read More</a>
                     </Link>
                   </div>
@@ -90,7 +93,7 @@ export default function Home(props) {
                     <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
                     <span>{getMonthAndYear(data.date)}</span>
                     <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
-                    <Link href={data.uri} replace>
+                    <Link href={`/journal/${data.slug}`} replace>
                       <a className="link">Read More</a>
                     </Link>
                   </div>
@@ -99,7 +102,9 @@ export default function Home(props) {
             })}
         </div>
         <div className="button__all_posts">
-          <a className="button">ALL POSTS</a>
+          <Link href="/journal" replace>
+            <a className="button">ALL POSTS</a>
+          </Link>
         </div>
       </div>
     </Layout>

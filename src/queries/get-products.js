@@ -12,6 +12,10 @@ const GET_PRODUCTS = gql`
           sourceUrl(size: LARGE)
           title(format: RENDERED)
         }
+        link
+        slug
+        sku
+        name
       }
     }
   }

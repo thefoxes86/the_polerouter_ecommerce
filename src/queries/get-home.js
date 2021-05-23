@@ -50,6 +50,10 @@ const GET_HOME = gql`
           sourceUrl(size: LARGE)
           title(format: RENDERED)
         }
+        link
+        slug
+        sku
+        name
       }
     }
   }
