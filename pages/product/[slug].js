@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Layout from "../../src/components/Layout";
 import { useRouter } from "next/router";
 import client from "../../src/components/ApolloClient";
@@ -7,11 +8,14 @@ import {
   PRODUCT_SLUGS,
 } from "../../src/queries/product-by-slug";
 import { isEmpty } from "lodash";
-import GalleryCarousel from "../../src/components/single-product/gallery-carousel";
 import Price from "../../src/components/single-product/price";
+import Link from "next/link";
 
 export default function Product(props) {
   const { product } = props;
+  const [feauredImage, setFeauturedImage] = useState(
+    product && product?.image?.sourceUrl
+  );
 
   const router = useRouter();
 
@@ -21,36 +25,51 @@ export default function Product(props) {
     return <div>Loading...</div>;
   }
 
+  const changeImage = (e) => {
+    setFeauturedImage(e.target.src);
+  };
+
   return (
     <Layout>
       {product ? (
-        <div className="container__journal">
-          <h1 class="title">{product.name}</h1>
+        <div className="container__product">
+          <h1 class="title">{product.productCategories.nodes[0].name}</h1>
           <div className="gallery">
-            {!isEmpty(product?.galleryImages?.nodes) && (
-              <GalleryCarousel gallery={product?.galleryImages?.nodes} />
-            )}
+            {!isEmpty(product?.galleryImages?.nodes) &&
+              product?.galleryImages?.nodes.map((item, index) => (
+                <img
+                  src={item.mediaItemUrl}
+                  loading="lazy"
+                  alt={item.altText ? item.altText : item.title}
+                  onMouseOver={changeImage}
+                />
+              ))}
           </div>
           <div className="featuredImage">
             <img
-              src={product?.image?.sourceUrl}
+              src={feauredImage}
               alt="Product Image"
               width="100%"
               height="auto"
-              srcSet={product?.image?.srcSet}
+              srcSet={feauredImage}
             />
           </div>
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{
-              __html: product.description,
-            }}
-          >
-            <Price
-              salesPrice={product?.price}
-              regularPrice={product?.regularPrice}
-            />
-            <AddToCartButton product={product} />
+          <div className="content">
+            <Link href="/prints" replace>
+              <a className="back">back</a>
+            </Link>
+            <h2 dangerouslySetInnerHTML={{ __html: product.name }}></h2>
+            <div
+              className="description"
+              dangerouslySetInnerHTML={{ __html: product?.description }}
+            ></div>
+            <div className="details">
+              <Price
+                salesPrice={product?.price}
+                regularPrice={product?.regularPrice}
+              />
+              <AddToCartButton product={product} />
+            </div>
           </div>
         </div>
       ) : (

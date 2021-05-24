@@ -1,26 +1,33 @@
 .container__product {
-  padding-top: 5vh;
   width: 100vw;
   height: auto;
   background-color: white;
   display: grid;
-  grid-template-columns: 10% 15% 35% auto;
-  grid-template-rows: 10% auto 10%;
+  grid-template-columns: 10% 5% 40% auto 10%;
+  grid-template-rows: 20vh auto 10vh;
   grid-template-areas:
-    ". title title title"
-    ". gallery featuredimage contentText"
-    ". . . .";
+    ". title title title ."
+    ". gallery featuredimage contentText ."
+    ". . . . .";
+  column-gap: 2rem;
 
   .title {
     grid-area: title;
     color: black;
     text-transform: uppercase;
-    display: grid;
-    align-items: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
   }
 
   .gallery {
     grid-area: gallery;
+    position: relative;
+
+    img:not(:nth-child(1)) {
+      margin-top: 1rem;
+    }
   }
 
   .featuredImage {
@@ -29,5 +36,67 @@
 
   .content {
     grid-area: contentText;
+    .back {
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      padding: 0 25%;
+      font-size: 0.8rem;
+      &::after {
+        content: "";
+        width: 30%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        right: 0;
+        top: 50%;
+      }
+      &::before {
+        content: "";
+        width: 30%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        left: 0;
+        top: 50%;
+      }
+    }
+    h2 {
+      text-transform: uppercase;
+      padding-top: 20px;
+    }
+    .description,
+    .price,
+    .addToCart {
+      padding-top: 20px;
+    }
+    .addToCart {
+      text-transform: uppercase;
+      text-decoration: none;
+      position: relative;
+      padding: 60px 30%;
+      font-size: 1.1rem;
+      &::after {
+        content: "";
+        width: 25%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        right: 0;
+        top: 50%;
+      }
+      &::before {
+        content: "";
+        width: 25%;
+        height: 1px;
+        background: black;
+        position: absolute;
+        left: 0;
+        top: 50%;
+      }
+    }
+    .details {
+      grid-area: details;
+    }
   }
 }
