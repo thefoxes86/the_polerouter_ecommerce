@@ -1,0 +1,33 @@
+.container__product {
+  padding-top: 5vh;
+  width: 100vw;
+  height: auto;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 10% 15% 35% auto;
+  grid-template-rows: 10% auto 10%;
+  grid-template-areas:
+    ". title title title"
+    ". gallery featuredimage contentText"
+    ". . . .";
+
+  .title {
+    grid-area: title;
+    color: black;
+    text-transform: uppercase;
+    display: grid;
+    align-items: flex-start;
+  }
+
+  .gallery {
+    grid-area: gallery;
+  }
+
+  .featuredImage {
+    grid-area: featuredimage;
+  }
+
+  .content {
+    grid-area: contentText;
+  }
+}
