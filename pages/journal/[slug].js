@@ -1,13 +1,13 @@
 import Layout from "../../src/components/Layout";
 import { useRouter } from "next/router";
 import client from "../../src/components/ApolloClient";
+import Link from "next/link";
 
 import {
   POST_BY_SLUG_QUERY,
   POSTS_SLUGS,
 } from "../../src/queries/post-by-slug";
 import { isEmpty } from "lodash";
-import GalleryCarousel from "../../src/components/single-product/gallery-carousel";
 
 export default function Posts(props) {
   const { post } = props;
@@ -23,40 +23,46 @@ export default function Posts(props) {
   return (
     <Layout>
       {post ? (
-        <div className="single-product container mx-auto my-32 px-4 xl:px-0">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="product-images">
-              {!isEmpty(post?.galleryImages?.nodes) ? (
-                <GalleryCarousel gallery={post?.galleryImages?.nodes} />
-              ) : !isEmpty(post.image) ? (
-                <img
-                  src={post?.featuredImage?.node.link}
-                  alt="Product Image"
-                  width="100%"
-                  height="auto"
-                  srcSet={post?.featuredImage?.node.link}
-                />
-              ) : null}
+        <div className="container__post">
+          <h1
+            class="title"
+            dangerouslySetInnerHTML={{ __html: post?.title }}
+          ></h1>
+          <div className="gallery">
+            {!isEmpty(post?.galleryImages?.nodes) && (
               <img
-                src={post?.featuredImage?.node.link}
-                alt="Product Image"
-                width="100%"
-                height="auto"
-                srcSet={post?.featuredImage?.node.link}
+                src={post?.image?.sourceUrl}
+                loading="lazy"
+                onMouseOver={changeImage}
               />
-            </div>
-            <div className="product-info">
-              <h4
-                className="products-main-title text-2xl uppercase"
-                dangerouslySetInnerHTML={{ __html: post.title }}
-              ></h4>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: post.content,
-                }}
-                className="product-description mb-5"
-              />
-            </div>
+            )}
+            {!isEmpty(post?.galleryImages?.nodes) &&
+              post?.galleryImages?.nodes.map((item, index) => (
+                <img
+                  src={item.mediaItemUrl}
+                  loading="lazy"
+                  alt={item.altText ? item.altText : item.title}
+                  onMouseOver={changeImage}
+                />
+              ))}
+          </div>
+          <div className="featuredImage">
+            <img
+              src={post?.featuredImage?.node.link}
+              alt="Post Image"
+              width="100%"
+              height="auto"
+              srcSet={post?.featuredImage?.node.link}
+            />
+          </div>
+          <div className="content">
+            <Link href="/journal" replace>
+              <a className="back">back</a>
+            </Link>
+            <div
+              className="description"
+              dangerouslySetInnerHTML={{ __html: post?.content }}
+            ></div>
           </div>
         </div>
       ) : (

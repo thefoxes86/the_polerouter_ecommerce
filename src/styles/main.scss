@@ -11,6 +11,7 @@
 @import "footer.scss";
 @import "cart.scss";
 @import "product.scss";
+@import "post.scss";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
 
 body {
@@ -28,9 +29,22 @@ h3 {
   font-size: 1.6rem;
 }
 
+.n-block {
+  display: block;
+  width: 100%;
+}
+
 .button {
-  font-size: 1.4rem;
-  padding: 20px 100px;
+  font-size: 1.2rem;
+  padding: 20px 50px;
+  text-align: center;
   border: 1px solid $gold;
   text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.button__black {
+  @extend .button;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
 }

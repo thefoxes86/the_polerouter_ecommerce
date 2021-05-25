@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../../src/components/Layout";
 import { useRouter } from "next/router";
 import client from "../../src/components/ApolloClient";
@@ -35,9 +35,17 @@ export default function Product(props) {
         <div className="container__product">
           <h1 class="title">{product.productCategories.nodes[0].name}</h1>
           <div className="gallery">
+            {!isEmpty(product?.galleryImages?.nodes) && (
+              <img
+                src={product?.image?.sourceUrl}
+                loading="lazy"
+                onMouseOver={changeImage}
+              />
+            )}
             {!isEmpty(product?.galleryImages?.nodes) &&
               product?.galleryImages?.nodes.map((item, index) => (
                 <img
+                  key={index}
                   src={item.mediaItemUrl}
                   loading="lazy"
                   alt={item.altText ? item.altText : item.title}

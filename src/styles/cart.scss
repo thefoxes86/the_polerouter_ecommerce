@@ -16,3 +16,106 @@
     left: 15px;
   }
 }
+
+.product-cart-container {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 10% 20% auto 10%;
+  grid-template-rows: 20vh auto auto auto;
+  grid-template-areas: ". title title ." ". continueButton . ." ". tableCart tableCart ." ". subTotal . .";
+
+  .title {
+    grid-area: title;
+    color: black;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .continue__button {
+    grid-area: continueButton;
+  }
+  .table__cart {
+    grid-area: tableCart;
+    margin-bottom: 20px;
+
+    .cart-products {
+      width: 100%;
+
+      tr {
+        border: 1px solid black;
+      }
+      td {
+        padding: 0 15px;
+      }
+      th {
+        padding: 20px 15px;
+      }
+    }
+  }
+  .sub__total {
+    grid-area: subTotal;
+
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+      tr {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 20px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.container__checkout {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows: 20vh auto;
+  grid-template-areas: ". title title ." ". formCheckout formCheckout .";
+
+  .title {
+    grid-area: title;
+    color: black;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  .form__checkout {
+    grid-area: formCheckout;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "formAddress paymentDetails";
+
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+      tr {
+        border: 1px solid black;
+      }
+      td {
+        padding: 0 15px;
+      }
+      th {
+        padding: 20px 15px;
+      }
+    }
+    .form__address {
+      grid-area: formAddress;
+    }
+    .payment {
+      grid-area: paymentDetails;
+    }
+  }
+}
