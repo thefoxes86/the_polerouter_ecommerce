@@ -223,6 +223,11 @@ const CheckoutForm = ({ countriesData }) => {
     <>
       {cart ? (
         <form onSubmit={handleFormSubmit} className="form__checkout">
+          <div className="your-orders order__resume">
+            {/*	Order*/}
+            <h2 className="text-xl font-medium mb-4">Your Order</h2>
+            <YourOrder cart={cart} />
+          </div>
           <div className="form__address">
             {/*Shipping Details*/}
             <div className="billing-details">
@@ -265,10 +270,6 @@ const CheckoutForm = ({ countriesData }) => {
           </div>
           {/* Order & Payments*/}
           <div className="your-orders payment">
-            {/*	Order*/}
-            <h2 className="text-xl font-medium mb-4">Your Order</h2>
-            <YourOrder cart={cart} />
-
             {/*Payment*/}
             <PaymentModes input={input} handleOnChange={handleOnChange} />
             <div>

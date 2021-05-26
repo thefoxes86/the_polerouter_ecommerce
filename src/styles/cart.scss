@@ -94,9 +94,8 @@
   .form__checkout {
     grid-area: formCheckout;
     display: grid;
-    column-gap: 20px;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: "formAddress paymentDetails";
+    grid-template-columns: 100%;
+    grid-template-areas: "orderResume" "formAddress" "paymentDetails";
 
     table {
       width: 100%;
@@ -111,11 +110,34 @@
         padding: 20px 15px;
       }
     }
+    .order__resume {
+      grid-area: orderResume;
+    }
     .form__address {
       grid-area: formAddress;
+      input,
+      textarea,
+      select {
+        border: 1px solid black;
+        border-radius: 0;
+        background-color: white;
+      }
     }
     .payment {
       grid-area: paymentDetails;
+
+      input.img__sub {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      input.img__sub + img {
+        cursor: pointer;
+      }
+      input.img__sub:checked + img {
+        border: 2px solid black;
+      }
     }
   }
 }

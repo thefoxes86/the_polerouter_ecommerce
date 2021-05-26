@@ -168,17 +168,8 @@ const CartItemsContainer = () => {
             </table>
 
             <Link href="/checkout">
-              <a className="button__black n-block">Proceed to Checkout</a>
+              <a className="button__black n-block">Checkout</a>
             </Link>
-            <a
-              className="button n-block"
-              onClick={(event) => handleClearCart(event)}
-              disabled={clearCartProcessing}
-            >
-              Clear Cart
-            </a>
-            {clearCartProcessing ? <p>Clearing...</p> : ""}
-            {updateCartProcessing ? <p>Updating...</p> : null}
           </div>
 
           {/* Display Errors if any */}
