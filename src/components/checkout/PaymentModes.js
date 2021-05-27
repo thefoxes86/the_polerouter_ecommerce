@@ -4,7 +4,7 @@ const PaymentModes = ({ input, handleOnChange }) => {
   const { errors, paymentMethod } = input || {};
 
   return (
-    <div className="mb-3">
+    <div className="mb-3 order__payments">
       <Error errors={errors} fieldName={"paymentMethod"} />
       {/*Direct bank transfers*/}
       <div className="form-check woo-next-payment-input-container mt-2">

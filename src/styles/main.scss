@@ -48,3 +48,15 @@ h3 {
   border: 1px solid black;
   color: white;
 }
+
+// Tablet
+@media only screen and (max-width: 992px) {
+}
+
+// Smartphone
+@media only screen and (max-width: 568px) {
+  .button {
+    display: block;
+    width: 100%;
+  }
+}

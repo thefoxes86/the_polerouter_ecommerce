@@ -118,7 +118,7 @@ const CartItemsContainer = () => {
         <>
           <h1 className="title">Cart</h1>
           <Link href="/prints" replace>
-            <a className="button continue__button">Continue to shopping</a>
+            <a className="button continue__button">Continue to shop</a>
           </Link>
           <div className="table__cart">
             <table className="cart-products">
@@ -183,12 +183,12 @@ const CartItemsContainer = () => {
           )}
         </>
       ) : (
-        <div>
-          <h2 className="">No items in the cart</h2>
+        <>
+          <h2 className="title">No items in the cart</h2>
           <Link href="/">
-            <a className="button__black">Add New Products</a>
+            <a className="button__black continue__button">Add New Products</a>
           </Link>
-        </div>
+        </>
       )}
     </div>
   );

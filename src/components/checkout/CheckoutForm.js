@@ -225,13 +225,13 @@ const CheckoutForm = ({ countriesData }) => {
         <form onSubmit={handleFormSubmit} className="form__checkout">
           <div className="your-orders order__resume">
             {/*	Order*/}
-            <h2 className="text-xl font-medium mb-4">Your Order</h2>
+            <h2 className="text-xl font-medium mb-4">YOUR ORDER</h2>
             <YourOrder cart={cart} />
           </div>
           <div className="form__address">
             {/*Shipping Details*/}
             <div className="billing-details">
-              <h2 className="text-xl font-medium mb-4">Shipping Details</h2>
+              <h2 className="text-xl font-medium mb-4">SHIPPING DETAILS</h2>
               <Address
                 states={theShippingStates}
                 countries={shippingCountries}
@@ -255,7 +255,7 @@ const CheckoutForm = ({ countriesData }) => {
             {/*Billing Details*/}
             {input?.billingDifferentThanShipping ? (
               <div className="billing-details">
-                <h2 className="text-xl font-medium mb-4">Billing Details</h2>
+                <h2 className="text-xl font-medium mb-4">BILLING DETAILS</h2>
                 <Address
                   states={theBillingStates}
                   countries={billingCountries}

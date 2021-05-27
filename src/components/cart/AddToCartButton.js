@@ -88,13 +88,13 @@ const AddToCart = (props) => {
           {addToCartLoading ? "Adding to cart..." : "Add to cart"}
         </button>
       )}
-      {showViewCart ? (
+      {/* {showViewCart ? (
         <Link href="/cart">
           <button className="viewCart">View Cart</button>
         </Link>
       ) : (
         ""
-      )}
+      )} */}
     </div>
   );
 };

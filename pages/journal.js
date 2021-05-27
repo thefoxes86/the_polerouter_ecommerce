@@ -72,9 +72,6 @@ export default function Journal(props) {
               );
             })}
         </div>
-        <div className="button__all_posts">
-          <a className="button">ALL POSTS</a>
-        </div>
       </div>
     </Layout>
   );
