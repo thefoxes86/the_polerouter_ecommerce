@@ -15,13 +15,7 @@ const Nav = () => {
     const windowHeight = window.innerHeight;
     const body = document.querySelector("body");
     window.addEventListener("scroll", (e) => {
-      router.pathname === "/"
-        ? window.scrollY > windowHeight
-          ? setShowMenu(true)
-          : setShowMenu(false)
-        : window.scrollY > 50
-        ? setShowMenu(true)
-        : setShowMenu(false);
+      window.scrollY > 10 ? setShowMenu(true) : setShowMenu(false);
     });
   });
 

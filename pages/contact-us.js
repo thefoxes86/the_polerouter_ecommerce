@@ -8,14 +8,12 @@ export default function ContactUs(props) {
     <Layout>
       {/*Categories*/}
       <div className="contact__container">
-        <div className="content">
-          <h1 className="title">CONTACT US</h1>
-          <p>
-            IF YOU WOULD LIKE TO CONTACT US ABOUT THE PROJECT, PLEASE COMPLETE
-            THE FORM BELOW.
-          </p>
-          <Form />
-        </div>
+        <h1 className="title">CONTACT US</h1>
+        <p className="content">
+          IF YOU WOULD LIKE TO CONTACT US ABOUT THE PROJECT, PLEASE COMPLETE THE
+          FORM BELOW.
+        </p>
+        <Form />
       </div>
     </Layout>
   );

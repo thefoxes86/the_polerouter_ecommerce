@@ -3,14 +3,84 @@
   width: 100vw;
   height: auto;
   grid-template-columns: 10% auto 10%;
-  grid-template-areas: ". contact .";
+  grid-template-rows: 20vh auto auto;
+  row-gap: 2rem;
+  grid-template-areas:
+    ". title ."
+    ". content_par ."
+    ". form .";
 
+  .title {
+    grid-area: title;
+    color: black;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
   .content {
-    grid-area: contact;
+    grid-area: content_par;
+  }
+  .form__contact {
+    grid-area: form;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: "input1 input2 input3" "textarea textarea textarea" "submit_but . .";
+    column-gap: 2rem;
+    row-gap: 2rem;
 
-    h1,
-    p {
-      padding: 20px 0;
+    input:not([type="submit"]),
+    textarea {
+      border: 1px solid black;
+      border-radius: 0;
+      background-color: white;
+      line-height: 2rem;
+      padding: 0.25rem 1rem;
+      width: 100%;
+
+      &:focus-within,
+      &:focus {
+        outline: none;
+        border: 1px solid $gold;
+      }
     }
+
+    textarea {
+      min-height: 400px;
+    }
+
+    label span {
+      display: block;
+      font-size: 0.8rem;
+    }
+
+    .input__1 {
+      grid-area: input1;
+    }
+    .input__2 {
+      grid-area: input2;
+    }
+    .input__3 {
+      grid-area: input3;
+    }
+    .textarea {
+      grid-area: textarea;
+    }
+    .submit {
+      grid-area: submit_but;
+    }
+  }
+}
+
+// Tablet
+@media only screen and (max-width: 992px) {
+}
+
+// Smartphone
+@media only screen and (max-width: 568px) {
+  .contact__container .form__contact {
+    grid-template-areas: "input1" "input2" "input3" "textarea" "submit_but";
+    column-gap: 0;
   }
 }

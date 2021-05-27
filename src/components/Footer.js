@@ -1,13 +1,11 @@
 import { Facebook, Instagram, Twitter, Youtube } from "./icons";
 import Link from "next/link";
+import FormNewsletter from "./FormNewsletter";
 
 const Footer = () => (
   <footer>
     <h3 className="title">NEWSLETTER</h3>
-    <div className="newsletter">
-      <input type="text" />
-      <input type="submit" />
-    </div>
+    <FormNewsletter />
     <div className="copyright">
       <p className="copy">
         Copyright © 2020 Time Honoured Ltd, All rights reserved. |
