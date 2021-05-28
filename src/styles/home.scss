@@ -69,10 +69,17 @@
     align-items: center;
   }
   .print {
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .frame {
+      overflow: hidden;
+      max-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   .print_0 {
     grid-area: print;
@@ -141,6 +148,7 @@
       width: 40%;
     }
   }
+
   .column {
     div:nth-child(2) {
       margin-top: 30%;
@@ -155,6 +163,20 @@
   }
   .column__2 {
     grid-area: column2;
+  }
+
+  .thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .frame {
+      overflow: hidden;
+      max-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   h3 {

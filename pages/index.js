@@ -4,6 +4,7 @@ import client from "../src/components/ApolloClient";
 import { getMonthAndYear } from "../src/functions";
 import GET_HOME from "../src/queries/get-home";
 import Print from "../src/components/Print";
+import Post from "../src/components/Post";
 
 export default function Home(props) {
   return (
@@ -40,65 +41,19 @@ export default function Home(props) {
         <div className="hero__post">
           {props.posts &&
             props.posts.map((data) => {
-              return (
-                data.isSticky && (
-                  <div key={data.slug}>
-                    <img
-                      src={data.featuredImage.node.link}
-                      alt={data.featuredImage.node.altText}
-                    />
-
-                    <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
-                    <span>{getMonthAndYear(data.date)}</span>
-                    <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
-                    <Link href={`/journal/${data.slug}`} replace>
-                      <a className="link">Read More</a>
-                    </Link>
-                  </div>
-                )
-              );
+              return data.isSticky && <Post data={data} />;
             })}
         </div>
         <div className="column column__1">
           {props.posts &&
             props.posts.slice(1, 3).map((data) => {
-              return (
-                !data.isSticky && (
-                  <div key={data.slug}>
-                    <img
-                      src={data.featuredImage.node.link}
-                      alt={data.featuredImage.node.altText}
-                    />
-                    <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
-                    <span>{getMonthAndYear(data.date)}</span>
-                    <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
-                    <Link href={`/journal/${data.slug}`} replace>
-                      <a className="link">Read More</a>
-                    </Link>
-                  </div>
-                )
-              );
+              return !data.isSticky && <Post data={data} />;
             })}
         </div>
         <div className="column column__2">
           {props.posts &&
             props.posts.slice(3, 5).map((data) => {
-              return (
-                !data.isSticky && (
-                  <div key={data.slug}>
-                    <img
-                      src={data.featuredImage.node.link}
-                      alt={data.featuredImage.node.altText}
-                    />
-                    <h3 dangerouslySetInnerHTML={{ __html: data.title }}></h3>
-                    <span>{getMonthAndYear(data.date)}</span>
-                    <p dangerouslySetInnerHTML={{ __html: data.content }}></p>
-                    <Link href={`/journal/${data.slug}`} replace>
-                      <a className="link">Read More</a>
-                    </Link>
-                  </div>
-                )
-              );
+              return !data.isSticky && <Post data={data} />;
             })}
         </div>
         <div className="button__all_posts">
