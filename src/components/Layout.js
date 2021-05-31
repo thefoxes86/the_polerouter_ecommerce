@@ -7,6 +7,7 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import { ApolloProvider } from "@apollo/client";
 import { Helmet } from "react-helmet";
+import TransitionPages from "../components/TransitionPages";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());

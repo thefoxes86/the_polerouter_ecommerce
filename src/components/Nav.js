@@ -15,7 +15,7 @@ const Nav = () => {
     const windowHeight = window.innerHeight;
     const body = document.querySelector("body");
     window.addEventListener("scroll", (e) => {
-      window.scrollY > 10 ? setShowMenu(true) : setShowMenu(false);
+      window.scrollY > 0 ? setShowMenu(true) : setShowMenu(false);
     });
   });
 
