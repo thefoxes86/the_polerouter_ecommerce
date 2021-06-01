@@ -10,23 +10,21 @@ const spring = {
 export default function TransitionPages({ children }) {
   const router = useRouter();
   return (
-    <AnimatePresence exitBeforeEnter>
-      <motion.div
-        transition={spring}
-        key={router.pathname}
-        initial={{ x: 0, opacity: 0 }}
-        animate={{
-          x: 0,
-          opacity: 1,
-          transition: {
-            duration: 1.5,
-            when: "beforeChildren",
-          },
-        }}
-        exit={{ x: 0, opacity: 0, transition: { duration: 3.5 } }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      transition={spring}
+      key={router.pathname}
+      initial={{ x: 0, opacity: 0 }}
+      animate={{
+        x: 0,
+        opacity: 1,
+        transition: {
+          duration: 1.5,
+          when: "afterChildren",
+        },
+      }}
+      exit={{ x: 0, opacity: 0, transition: { duration: 3.5 } }}
+    >
+      {children}
+    </motion.div>
   );
 }

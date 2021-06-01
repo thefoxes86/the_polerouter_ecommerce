@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { getMonthAndYear } from "../functions";
 
 const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
@@ -40,18 +40,33 @@ export default function Post(props) {
           <Link href={`/journal/${props.data.slug}`} replace>
             <a>
               <motion.img
+                layoutId={props.data.featuredImage.node.link}
+                transition={transition}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, ...transition }}
                 src={props.data.featuredImage.node.link}
                 alt={props.data.featuredImage.node.altText}
-                variants={imageVariants}
-                transition={transition}
               />
             </a>
           </Link>
         </motion.div>
       </motion.div>
-      <h3 dangerouslySetInnerHTML={{ __html: props.data.title }}></h3>
+      <motion.h3
+        layoutId={props.data.title}
+        transition={transition}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, ...transition }}
+        dangerouslySetInnerHTML={{ __html: props.data.title }}
+      ></motion.h3>
       <span>{getMonthAndYear(props.data.date)}</span>
-      <p dangerouslySetInnerHTML={{ __html: props.data.content }}></p>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, ...transition }}
+        dangerouslySetInnerHTML={{ __html: props.data.content }}
+      ></motion.p>
       <Link href={`/journal/${props.data.slug}`} replace>
         <a className="link">Read More</a>
       </Link>

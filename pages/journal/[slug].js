@@ -2,12 +2,15 @@ import Layout from "../../src/components/Layout";
 import { useRouter } from "next/router";
 import client from "../../src/components/ApolloClient";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import {
   POST_BY_SLUG_QUERY,
   POSTS_SLUGS,
 } from "../../src/queries/post-by-slug";
 import { isEmpty } from "lodash";
+
+const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
 
 export default function Posts(props) {
   const { post } = props;
@@ -24,10 +27,12 @@ export default function Posts(props) {
     <Layout>
       {post ? (
         <div className="container__post">
-          <h1
+          <motion.h1
+            layoutId={post?.title}
+            transition={transition}
             class="title"
             dangerouslySetInnerHTML={{ __html: post?.title }}
-          ></h1>
+          ></motion.h1>
           <div className="gallery">
             {!isEmpty(post?.galleryImages?.nodes) && (
               <img
@@ -38,7 +43,7 @@ export default function Posts(props) {
             )}
             {!isEmpty(post?.galleryImages?.nodes) &&
               post?.galleryImages?.nodes.map((item, index) => (
-                <img
+                <motion.img
                   src={item.mediaItemUrl}
                   loading="lazy"
                   alt={item.altText ? item.altText : item.title}
@@ -47,7 +52,9 @@ export default function Posts(props) {
               ))}
           </div>
           <div className="featuredImage">
-            <img
+            <motion.img
+              layoutId={post?.featuredImage?.node.link}
+              transition={transition}
               src={post?.featuredImage?.node.link}
               alt="Post Image"
               width="100%"
@@ -59,10 +66,14 @@ export default function Posts(props) {
             <Link href="/journal" replace>
               <a className="back">back</a>
             </Link>
-            <div
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={transition}
               className="description"
               dangerouslySetInnerHTML={{ __html: post?.content }}
-            ></div>
+            ></motion.div>
           </div>
         </div>
       ) : (
