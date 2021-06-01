@@ -4,7 +4,7 @@
   background-color: white;
   display: grid;
   grid-template-columns: 10% 5% 30% auto 10%;
-  grid-template-rows: 20vh auto 10vh;
+  grid-template-rows: calc(20vh + 84px) auto 10vh;
   grid-template-areas:
     ". title title title ."
     ". gallery featuredimage contentText ."

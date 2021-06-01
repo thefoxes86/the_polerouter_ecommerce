@@ -4,7 +4,7 @@
   background-color: white;
   display: grid;
   grid-template-columns: 10% 30% auto 10%;
-  grid-template-rows: 20vh auto 10vh;
+  grid-template-rows: calc(20vh + 84px) auto 10vh;
   grid-template-areas:
     ". title title ."
     ". featuredimage contentText ."
@@ -42,6 +42,8 @@
       position: relative;
       padding: 0 25%;
       font-size: 0.8rem;
+      transition: all 0.5s $animationPrimary;
+      transition-delay: 0.1s;
       &::after {
         content: "";
         width: 30%;
@@ -50,6 +52,8 @@
         position: absolute;
         right: 0;
         top: 50%;
+        transition: all 0.5s $animationPrimary;
+        transition-delay: 0.1s;
       }
       &::before {
         content: "";
@@ -59,6 +63,14 @@
         position: absolute;
         left: 0;
         top: 50%;
+        transition: all 0.5s $animationPrimary;
+        transition-delay: 0.1s;
+      }
+      &:hover::after {
+        right: 5%;
+      }
+      &:hover::before {
+        left: 5%;
       }
     }
     h2 {
@@ -76,6 +88,8 @@
       position: relative;
       padding: 60px 30%;
       font-size: 1.1rem;
+      transition: all 0.25s $animationPrimary;
+      transition-delay: 0.1s;
       &::after {
         content: "";
         width: 25%;
@@ -84,6 +98,8 @@
         position: absolute;
         right: 0;
         top: 50%;
+        transition: all 0.5s $animationPrimary;
+        transition-delay: 0.1s;
       }
       &::before {
         content: "";
@@ -93,6 +109,14 @@
         position: absolute;
         left: 0;
         top: 50%;
+        transition: all 0.5s $animationPrimary;
+        transition-delay: 0.1s;
+      }
+      &:hover::after {
+        right: 5%;
+      }
+      &:hover::before {
+        left: 5%;
       }
     }
     .details {

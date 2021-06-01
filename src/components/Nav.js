@@ -5,22 +5,39 @@ import { useRouter } from "next/router";
 
 const Nav = () => {
   const [isMenuMobileOpen, setMenuMobileOpen] = useState(false);
+  const [navPosition, setNavPosition] = useState({
+    top: 0,
+  });
   const handleMenu = () => {
     isMenuMobileOpen ? setMenuMobileOpen(false) : setMenuMobileOpen(true);
   };
-  const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
+  const handleScroll = () => {
     const windowHeight = window.innerHeight;
-    const body = document.querySelector("body");
-    window.addEventListener("scroll", (e) => {
-      window.scrollY > 0 ? setShowMenu(true) : setShowMenu(false);
-    });
-  });
+    const currentScroll = window.scrollY;
+    if (router.pathname === "/") {
+      currentScroll > windowHeight
+        ? setNavPosition({ top: 0 })
+        : setNavPosition({ top: -120 });
+    }
+  };
+
+  useEffect(() => {
+    // Mount Component
+    router.pathname === "/" && setNavPosition({ top: -120 });
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Unmount component
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      router.pathname === "/" && setNavPosition({ top: -120 });
+    };
+  }, []);
 
   return (
-    <nav className={showMenu ? " appear__menu" : ""}>
+    <nav style={navPosition}>
       <div className="menu__container">
         <div className="logo__menu">
           <Link exact href="/" replace>

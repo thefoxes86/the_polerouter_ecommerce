@@ -3,7 +3,7 @@
   width: 100vw;
   height: auto;
   grid-template-columns: 10% auto 10%;
-  grid-template-rows: 20vh auto auto;
+  grid-template-rows: calc(20vh + 84px) auto auto;
   row-gap: 2rem;
   grid-template-areas:
     ". title ."
@@ -72,7 +72,6 @@
     }
   }
 }
-
 
 // Tablet
 @media only screen and (max-width: 992px) {

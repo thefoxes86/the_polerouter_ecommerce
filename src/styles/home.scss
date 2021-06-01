@@ -55,7 +55,7 @@
   background-color: $darkGrey;
   display: grid;
   grid-template-columns: 10% auto 15% auto 10%;
-  grid-template-rows: 20vh auto 10%;
+  grid-template-rows: calc(20vh + 84px) auto 10%;
   grid-template-areas:
     ". title title title ."
     ". print . print2 ."
@@ -96,7 +96,7 @@
   background-color: white;
   display: grid;
   grid-template-columns: 10% 35% auto 15% auto 15% 10%;
-  grid-template-rows: 20vh auto 10%;
+  grid-template-rows: calc(20vh + 84px) auto 10%;
   grid-template-areas:
     ". title title .  . . ."
     ". heropost . column1 . column2 ."
@@ -121,7 +121,7 @@
     text-align: center;
     display: block;
     margin-bottom: 50px;
-    transition: all 0.25s cubic-bezier(0.43, 0.13, 0.23, 0.96);
+    transition: all 0.25s $animationPrimary;
     transition-delay: 0.1s;
     &::after {
       content: "";
@@ -131,7 +131,7 @@
       background-color: black;
       left: 0;
       top: 50%;
-      transition: all 0.5s cubic-bezier(0.43, 0.13, 0.23, 0.96);
+      transition: all 0.5s $animationPrimary;
       transition-delay: 0.1s;
     }
     &::before {
@@ -142,7 +142,7 @@
       background-color: black;
       right: 0;
       top: 50%;
-      transition: all 0.5s cubic-bezier(0.43, 0.13, 0.23, 0.96);
+      transition: all 0.5s $animationPrimary;
       transition-delay: 0.1s;
     }
     &:hover::after {
@@ -157,7 +157,7 @@
     grid-area: heropost;
     a::after,
     a::before {
-      width: 40%;
+      width: 30%;
     }
   }
 

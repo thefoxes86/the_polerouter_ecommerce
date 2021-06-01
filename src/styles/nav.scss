@@ -3,7 +3,6 @@ nav {
   background: white;
   border-bottom: 1px solid $gold;
   position: fixed;
-  top: -120px;
   left: 0;
   width: 100vw;
   z-index: 10;
@@ -58,7 +57,7 @@ nav {
 }
 
 .appear__menu {
-  top: 0;
+  top: 0 !important;
 }
 
 // Tablet

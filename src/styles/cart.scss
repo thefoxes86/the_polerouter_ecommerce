@@ -21,7 +21,7 @@
   width: 100vw;
   display: grid;
   grid-template-columns: 10% 20% auto 10%;
-  grid-template-rows: 20vh auto auto auto;
+  grid-template-rows: calc(20vh + 84px) auto auto auto;
   grid-template-areas: ". title title ." ". continueButton . ." ". tableCart tableCart ." ". subTotal . .";
 
   .title {

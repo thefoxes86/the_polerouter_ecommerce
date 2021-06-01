@@ -28,7 +28,6 @@ export default function Posts(props) {
       {post ? (
         <div className="container__post">
           <motion.h1
-            layoutId={post?.title}
             transition={transition}
             class="title"
             dangerouslySetInnerHTML={{ __html: post?.title }}

@@ -37,58 +37,57 @@ footer {
   }
 
   // Newsletter
-.form__newsletter {
-  grid-area: newsletter;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-areas: "input submit";
-  column-gap: 0rem;
-  row-gap: 2rem;
+  .form__newsletter {
+    grid-area: newsletter;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: "input submit";
+    column-gap: 0rem;
+    row-gap: 2rem;
 
-  input:not([type="submit"]),
-  textarea {
-    border: 1px solid black;
-    border-radius: 0;
-    background-color: white;
-    line-height: 2rem;
-    padding: 0.25rem 1rem;
-    width: 100%;
-    margin-bottom: 5vh;
+    input:not([type="submit"]),
+    textarea {
+      border: 1px solid black;
+      border-radius: 0;
+      background-color: white;
+      line-height: 2rem;
+      padding: 0.25rem 1rem;
+      width: 100%;
+      margin-bottom: 5vh;
 
-    &:focus-within,
-    &:focus {
-      outline: none;
-      border: 1px solid $gold;
+      &:focus-within,
+      &:focus {
+        outline: none;
+        border: 1px solid $gold;
+      }
     }
-  }
 
-  textarea {
-    min-height: 400px;
-  }
-
-  label span {
-    display: block;
-    font-size: 0.8rem;
-  }
-
-  .input__1 {
-    grid-area: input;
-    input {
-      border: 1px solid $gold;
+    textarea {
+      min-height: 400px;
     }
-  }
 
-  .submit {
-    padding: 5px;
-    text-transform:lowercase;
-    font-size:0.6rem;
-    height: 42px;
-    background-color: $gold;
-    border: 1px solid $gold;
+    label span {
+      display: block;
+      font-size: 0.8rem;
+    }
+
+    .input__1 {
+      grid-area: input;
+      input {
+        border: 1px solid $gold;
+      }
+    }
+
+    .submit {
+      padding: 5px;
+      text-transform: lowercase;
+      font-size: 0.8rem;
+      height: 42px;
+      background-color: $gold;
+      border: 1px solid $gold;
     }
   }
 }
-
 
 // Tablet
 @media only screen and (max-width: 992px) {
@@ -97,9 +96,8 @@ footer {
 // Smartphone
 @media only screen and (max-width: 568px) {
   footer {
-  grid-template-columns: 10% auto 10%;
-  grid-template-rows: 0.5fr auto;
-  grid-template-areas: ". title ." ". newsletter ." ". copyright .";
-
+    grid-template-columns: 10% auto 10%;
+    grid-template-rows: 0.5fr auto;
+    grid-template-areas: ". title ." ". newsletter ." ". copyright .";
   }
 }
