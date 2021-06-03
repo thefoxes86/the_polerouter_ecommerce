@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { getMonthAndYear } from "../functions";
 
 const transition = { duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] };
@@ -18,7 +18,7 @@ const thumbnailVariants = {
   exit: {
     scale: 0.8,
     opacity: 0,
-    transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] },
+    transition: { duration: 2.5, ease: [0.43, 0.13, 0.23, 0.96] },
   },
 };
 
