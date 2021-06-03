@@ -95,23 +95,18 @@
   height: auto;
   background-color: white;
   display: grid;
-  grid-template-columns: 10% 35% auto 15% auto 15% 10%;
-  grid-template-rows: calc(20vh + 84px) auto 10%;
+  grid-template-columns: 10% auto 10%;
+  grid-template-rows: calc(20vh + 84px) auto;
   grid-template-areas:
-    ". title title .  . . ."
-    ". heropost . column1 . column2 ."
-    ". button . . . . .";
-
-  .button__all_posts {
-    grid-area: button;
-  }
+    ". title ."
+    ". containerPosts .";
 
   .title {
     grid-area: title;
     color: black;
     text-transform: uppercase;
     display: grid;
-    align-items: flex-start;
+    align-items: center;
   }
   a.link {
     padding: 2% 0;
@@ -153,40 +148,54 @@
     }
   }
 
-  .hero__post {
-    grid-area: heropost;
-    a::after,
-    a::before {
-      width: 30%;
-    }
-  }
+  .container__posts {
+    grid-area: containerPosts;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 45% auto 20% auto 20%;
+    grid-template-rows: auto 10%;
+    grid-template-areas:
+      "heropost . column1 . column2"
+      "button . . . . ";
 
-  .column {
-    div:nth-child(2) {
-      margin-top: 30%;
+    .hero__post {
+      grid-area: heropost;
+      a::after,
+      a::before {
+        width: 30%;
+      }
     }
-    a::after,
-    a::before {
-      width: 25%;
+
+    .column {
+      div:nth-child(2) {
+        margin-top: 30%;
+      }
+      a::after,
+      a::before {
+        width: 25%;
+      }
     }
-  }
-  .column__1 {
-    grid-area: column1;
-  }
-  .column__2 {
-    grid-area: column2;
-  }
+    .column__1 {
+      grid-area: column1;
+    }
+    .column__2 {
+      grid-area: column2;
+    }
 
-  .thumbnail {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .frame {
-      overflow: hidden;
-      width: 100%;
+    .thumbnail {
       display: flex;
       align-items: center;
+      justify-content: center;
+
+      .frame {
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
+    .button__all_posts {
+      grid-area: button;
     }
   }
 

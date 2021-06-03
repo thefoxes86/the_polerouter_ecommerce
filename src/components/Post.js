@@ -3,70 +3,70 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { getMonthAndYear } from "../functions";
 
-const transition = { duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] };
+const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
 
 const thumbnailVariants = {
   initial: {
     scale: 0.9,
     opacity: 0,
+    y: 100,
   },
   enter: {
     scale: 1,
     opacity: 1,
-    transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] },
+    y: 0,
+    transition: {
+      duration: 1.5,
+      ease: [0.43, 0.13, 0.23, 0.96],
+      delayChildren: 0.5,
+    },
   },
   exit: {
     scale: 0.8,
     opacity: 0,
-    transition: { duration: 2.5, ease: [0.43, 0.13, 0.23, 0.96] },
+    y: -100,
+    transition: {
+      duration: 0.5,
+      ease: [0.43, 0.13, 0.23, 0.96],
+    },
   },
 };
 
 const frameVariants = {
   hover: {
     scale: 0.95,
-    transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] },
-  },
-  initial: { opacity: 0, scale: 0.8 },
-  animate: {
-    opacity: 1,
-    scale: 1,
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.8,
-    transition: { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96], delay: 1 },
   },
 };
 
 const imageVariants = {
-  hover: { scale: 1.1 },
+  hover: {
+    scale: 1.1,
+  },
 };
 
 export default function Post(props) {
   return (
-    <>
-      <motion.div
-        key={props.data.slug}
-        className="thumbnail"
-        variants={thumbnailVariants}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-      >
+    <motion.div
+      key={props.data.slug}
+      variants={thumbnailVariants}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
+      <motion.div className="thumbnail">
         <motion.div
           className="frame"
           layoutId={props.data.featuredImage.node.link}
-          animate="animate"
-          exit="exit"
           whileHover="hover"
           variants={frameVariants}
+          transition={transition}
         >
           <Link href={`/journal/${props.data.slug}`} replace>
             <a>
               <motion.img
-                transition={transition}
+                whileHover="hover"
                 variants={imageVariants}
+                transition={transition}
                 src={props.data.featuredImage.node.link}
                 alt={props.data.featuredImage.node.altText}
               />
@@ -91,6 +91,6 @@ export default function Post(props) {
       <Link href={`/journal/${props.data.slug}`} replace>
         <a className="link">Read More</a>
       </Link>
-    </>
+    </motion.div>
   );
 }

@@ -3,7 +3,7 @@ import "../src/styles/main.scss";
 import Router from "next/router";
 import NProgress from "nprogress";
 import dynamic from "next/dynamic";
-import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 NProgress.configure({ showSpinner: false });
 Router.events.on("routeChangeStart", () => NProgress.start());
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
   // });
   return (
     <AnimateSharedLayout>
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <Component {...pageProps} />;
       </AnimatePresence>
     </AnimateSharedLayout>
