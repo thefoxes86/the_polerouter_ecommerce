@@ -3,14 +3,12 @@ import { useRouter } from "next/router";
 import client from "../../src/components/ApolloClient";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
 import {
   POST_BY_SLUG_QUERY,
   POSTS_SLUGS,
 } from "../../src/queries/post-by-slug";
 import { isEmpty } from "lodash";
-
-const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
+import { titlePost, transition } from "../../src/constants/variablesMation";
 
 export default function Posts(props) {
   const { post } = props;
@@ -28,8 +26,12 @@ export default function Posts(props) {
       {post ? (
         <div className="container__post">
           <motion.h1
-            transition={transition}
-            class="title"
+            key={post?.title}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={titlePost}
+            className="title"
             dangerouslySetInnerHTML={{ __html: post?.title }}
           ></motion.h1>
           <div className="gallery">
@@ -63,13 +65,21 @@ export default function Posts(props) {
           </div>
           <div className="content">
             <Link href="/journal" replace>
-              <a className="back">back</a>
+              <motion.a
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={titlePost}
+                className="back"
+              >
+                back
+              </motion.a>
             </Link>
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={transition}
+              variants={titlePost}
+              initial="initial"
+              animate="animate"
+              exit="exit"
               className="description"
               dangerouslySetInnerHTML={{ __html: post?.content }}
             ></motion.div>

@@ -30,6 +30,7 @@ export default function Print(props) {
     >
       <motion.div
         className="frame"
+        layoutId={props.sourceUrl}
         whileHover="hover"
         variants={frameVariants}
         transition={transition}

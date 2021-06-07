@@ -2,9 +2,15 @@ import Layout from "../src/components/Layout";
 import Link from "next/link";
 import client from "../src/components/ApolloClient";
 import { getMonthAndYear } from "../src/functions";
+import { motion } from "framer-motion";
 import GET_HOME from "../src/queries/get-home";
 import Print from "../src/components/Print";
 import Post from "../src/components/Post";
+import {
+  transition,
+  column,
+  containerJournal,
+} from "../src/constants/variablesMation";
 
 export default function Home(props) {
   return (
@@ -37,30 +43,50 @@ export default function Home(props) {
           })}
       </div>
       <div className="container__journal">
-        <h2 class="title">JOURNAL</h2>
-        <div className="hero__post">
-          {props.posts &&
-            props.posts.map((data) => {
-              return data.isSticky && <Post data={data} />;
-            })}
-        </div>
-        <div className="column column__1">
-          {props.posts &&
-            props.posts.slice(1, 3).map((data) => {
-              return !data.isSticky && <Post data={data} />;
-            })}
-        </div>
-        <div className="column column__2">
-          {props.posts &&
-            props.posts.slice(3, 5).map((data) => {
-              return !data.isSticky && <Post data={data} />;
-            })}
-        </div>
-        <div className="button__all_posts">
-          <Link href="/journal" replace>
-            <a className="button">ALL POSTS</a>
-          </Link>
-        </div>
+        <h1 class="title">JOURNAL</h1>
+        <motion.div className="container__posts" variants={containerJournal}>
+          <motion.div
+            key="column-1"
+            variants={column}
+            initial="initial"
+            animate="animate"
+            className="hero__post"
+          >
+            {props.posts &&
+              props.posts.map((data) => {
+                return data.isSticky && <Post data={data} />;
+              })}
+          </motion.div>
+          <motion.div
+            key="column-2"
+            variants={column}
+            initial="initial"
+            animate="animate"
+            className="column column__1"
+          >
+            {props.posts &&
+              props.posts.slice(1, 3).map((data) => {
+                return !data.isSticky && <Post data={data} />;
+              })}
+          </motion.div>
+          <motion.div
+            key="column-3"
+            variants={column}
+            initial="initial"
+            animate="animate"
+            className="column column__2"
+          >
+            {props.posts &&
+              props.posts.slice(3, 5).map((data) => {
+                return !data.isSticky && <Post data={data} />;
+              })}
+          </motion.div>
+          <div className="button__all_posts">
+            <Link href="/journal" replace>
+              <a className="button">ALL POSTS</a>
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </Layout>
   );

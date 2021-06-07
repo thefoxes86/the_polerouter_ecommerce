@@ -51,15 +51,18 @@
 
 .container__prints {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: $darkGrey;
   display: grid;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
   grid-template-columns: 10% auto 15% auto 10%;
   grid-template-rows: calc(20vh + 84px) auto 10%;
   grid-template-areas:
     ". title title title ."
     ". print . print2 ."
     ". . . . .";
+  column-gap: 2rem;
 
   .title {
     grid-area: title;
@@ -100,6 +103,7 @@
   grid-template-areas:
     ". title ."
     ". containerPosts .";
+  column-gap: 2rem;
 
   .title {
     grid-area: title;
@@ -152,11 +156,13 @@
     grid-area: containerPosts;
     width: 100%;
     display: grid;
+    padding-top: 5vh;
     grid-template-columns: 45% auto 20% auto 20%;
     grid-template-rows: auto 10%;
     grid-template-areas:
       "heropost . column1 . column2"
       "button . . . . ";
+    column-gap: 2rem;
 
     .hero__post {
       grid-area: heropost;

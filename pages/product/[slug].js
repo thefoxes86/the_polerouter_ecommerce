@@ -10,6 +10,8 @@ import {
 import { isEmpty } from "lodash";
 import Price from "../../src/components/single-product/price";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { titlePost } from "../../src/constants/variablesMation";
 
 export default function Product(props) {
   const { product } = props;
@@ -33,8 +35,22 @@ export default function Product(props) {
     <Layout>
       {product ? (
         <div className="container__product">
-          <h1 class="title">{product.productCategories.nodes[0].name}</h1>
-          <div className="gallery">
+          <motion.h1
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={titlePost}
+            className="title"
+          >
+            {product.productCategories.nodes[0].name}
+          </motion.h1>
+          <motion.div
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={titlePost}
+            className="gallery"
+          >
             {!isEmpty(product?.galleryImages?.nodes) && (
               <img
                 src={product?.image?.sourceUrl}
@@ -52,11 +68,12 @@ export default function Product(props) {
                   onMouseOver={changeImage}
                 />
               ))}
-          </div>
+          </motion.div>
           <div className="featuredImage">
-            <img
+            <motion.img
               src={feauredImage}
               alt="Product Image"
+              layoutId={feauredImage}
               width="100%"
               height="auto"
               srcSet={feauredImage}
@@ -64,20 +81,44 @@ export default function Product(props) {
           </div>
           <div className="content">
             <Link href="/prints" replace>
-              <a className="back">back</a>
+              <motion.a
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={titlePost}
+                className="back"
+              >
+                back
+              </motion.a>
             </Link>
-            <h2 dangerouslySetInnerHTML={{ __html: product.name }}></h2>
-            <div
+            <motion.h2
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={titlePost}
+              dangerouslySetInnerHTML={{ __html: product.name }}
+            ></motion.h2>
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={titlePost}
               className="description"
               dangerouslySetInnerHTML={{ __html: product?.description }}
-            ></div>
-            <div className="details">
+            ></motion.div>
+            <motion.div
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={titlePost}
+              className="details"
+            >
               <Price
                 salesPrice={product?.price}
                 regularPrice={product?.regularPrice}
               />
               <AddToCartButton product={product} />
-            </div>
+            </motion.div>
           </div>
         </div>
       ) : (

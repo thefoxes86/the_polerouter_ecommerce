@@ -6,50 +6,26 @@ import GET_POSTS from "../src/queries/get-posts";
 import TransitionPages from "../src/components/TransitionPages";
 import { motion } from "framer-motion";
 import Post from "../src/components/Post";
-
-const transition = { ease: [0.43, 0.13, 0.23, 0.96], duration: 1 };
-
-const containerJournal = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      ...transition,
-      staggerChildren: 1.5,
-    },
-  },
-};
-
-const column = {
-  initial: {
-    opacity: 0,
-    y: -100,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.5,
-      duration: 1,
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: 100,
-  },
-  transition: {
-    delayChildren: 1.5,
-    staggerChildren: 1.5,
-  },
-};
+import {
+  transition,
+  titlePost,
+  column,
+  containerJournal,
+} from "../src/constants/variablesMation";
 
 export default function Journal(props) {
   return (
     <Layout>
       <div className="container__journal">
-        <h1 class="title">JOURNAL</h1>
+        <motion.h1
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={titlePost}
+          className="title"
+        >
+          JOURNAL
+        </motion.h1>
         <motion.div className="container__posts" variants={containerJournal}>
           <motion.div
             key="column-1"
