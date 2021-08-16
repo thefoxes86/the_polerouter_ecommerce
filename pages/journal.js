@@ -7,7 +7,6 @@ import TransitionPages from "../src/components/TransitionPages";
 import { motion } from "framer-motion";
 import Post from "../src/components/Post";
 import {
-  transition,
   titlePost,
   column,
   containerJournal,
@@ -16,7 +15,7 @@ import {
 export default function Journal(props) {
   return (
     <Layout>
-      <div className="container__journal">
+      <div className="container__journal container__journal_internal">
         <motion.h1
           initial="initial"
           animate="animate"

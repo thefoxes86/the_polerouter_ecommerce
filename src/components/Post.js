@@ -2,47 +2,12 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { getMonthAndYear } from "../functions";
-
-const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
-
-const thumbnailVariants = {
-  initial: {
-    scale: 0.9,
-    opacity: 0,
-    y: 100,
-  },
-  enter: {
-    scale: 1,
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 1.5,
-      ease: [0.43, 0.13, 0.23, 0.96],
-      delayChildren: 0.5,
-    },
-  },
-  exit: {
-    scale: 0.8,
-    opacity: 0,
-    y: -100,
-    transition: {
-      duration: 0.5,
-      ease: [0.43, 0.13, 0.23, 0.96],
-    },
-  },
-};
-
-const frameVariants = {
-  hover: {
-    scale: 0.95,
-  },
-};
-
-const imageVariants = {
-  hover: {
-    scale: 1.1,
-  },
-};
+import {
+  transition,
+  thumbnailVariants,
+  frameVariants,
+  imageVariants,
+} from "../constants/variablesMation";
 
 export default function Post(props) {
   return (

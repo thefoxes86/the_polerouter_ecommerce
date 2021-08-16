@@ -52,4 +52,51 @@ const titlePost = {
   },
 };
 
-export { transition, column, containerJournal, titlePost };
+const thumbnailVariants = {
+  initial: {
+    scale: 0.9,
+    opacity: 0,
+    y: 100,
+  },
+  enter: {
+    scale: 1,
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1.5,
+      ease: ease,
+      delayChildren: 0.5,
+    },
+  },
+  exit: {
+    scale: 0.8,
+    opacity: 0,
+    y: -100,
+    transition: {
+      duration: 0.5,
+      ease: ease,
+    },
+  },
+};
+
+const frameVariants = {
+  hover: {
+    scale: 0.95,
+  },
+};
+
+const imageVariants = {
+  hover: {
+    scale: 1.1,
+  },
+};
+
+export {
+  transition,
+  column,
+  containerJournal,
+  titlePost,
+  thumbnailVariants,
+  frameVariants,
+  imageVariants,
+};

@@ -269,32 +269,44 @@
       margin: 40px 0;
     }
   }
-
+  .container__journal_internal,
+  .container__prints_internal {
+    margin-top: 10vh;
+  }
   .container__journal {
     grid-template-columns: 10% auto 10%;
     grid-template-rows: auto;
     grid-template-areas:
       ". title ."
-      ". heropost ." " . column1 ." ". column2 ."
-      ". button .";
+      ". containerPosts .";
 
-    .hero__post {
-      grid-area: heropost;
-      a::after,
-      a::before {
-        width: 25%;
+    .container__posts {
+      grid-area: containerPosts;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "heropost"
+        "column1"
+        "column2"
+        "button";
+
+      .hero__post {
+        a::after,
+        a::before {
+          width: 25%;
+        }
       }
-    }
-    .column {
-      img {
-        width: 100%;
-      }
-      div:nth-child(2) {
-        margin-top: 30%;
-      }
-      a::after,
-      a::before {
-        width: 25%;
+
+      .column {
+        div:nth-child(2) {
+          margin-top: 30%;
+        }
+        a::after,
+        a::before {
+          width: 25%;
+        }
       }
     }
   }

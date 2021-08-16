@@ -1,16 +1,11 @@
 import Layout from "../src/components/Layout";
 import Link from "next/link";
 import client from "../src/components/ApolloClient";
-import { getMonthAndYear } from "../src/functions";
 import { motion } from "framer-motion";
 import GET_HOME from "../src/queries/get-home";
 import Print from "../src/components/Print";
 import Post from "../src/components/Post";
-import {
-  transition,
-  column,
-  containerJournal,
-} from "../src/constants/variablesMation";
+import { column, containerJournal } from "../src/constants/variablesMation";
 
 export default function Home(props) {
   return (
@@ -43,7 +38,7 @@ export default function Home(props) {
           })}
       </div>
       <div className="container__journal">
-        <h1 class="title">JOURNAL</h1>
+        <h1 className="title">JOURNAL</h1>
         <motion.div className="container__posts" variants={containerJournal}>
           <motion.div
             key="column-1"
