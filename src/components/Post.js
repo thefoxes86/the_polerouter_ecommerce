@@ -26,7 +26,7 @@ export default function Post(props) {
           variants={frameVariants}
           transition={transition}
         >
-          <Link href={`/journal/${props.data.slug}`} replace>
+          <Link href={`/journal/${props.data.slug}`}>
             <a>
               <motion.img
                 whileHover="hover"
@@ -53,7 +53,7 @@ export default function Post(props) {
         exit={{ opacity: 0, ...transition }}
         dangerouslySetInnerHTML={{ __html: props.data.content }}
       ></motion.p>
-      <Link href={`/journal/${props.data.slug}`} replace>
+      <Link href={`/journal/${props.data.slug}`}>
         <a className="link">Read More</a>
       </Link>
     </motion.div>

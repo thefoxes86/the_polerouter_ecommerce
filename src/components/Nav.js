@@ -20,6 +20,10 @@ const Nav = () => {
       currentScroll > windowHeight
         ? setNavPosition({ top: 0 })
         : setNavPosition({ top: -120 });
+    } else {
+      currentScroll > 20
+        ? setNavPosition({ top: 0 })
+        : setNavPosition({ top: -120 });
     }
   };
 
@@ -32,7 +36,7 @@ const Nav = () => {
     // Unmount component
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      router.pathname === "/" && setNavPosition({ top: -120 });
+      setNavPosition({ top: -120 });
     };
   }, []);
 
@@ -40,7 +44,7 @@ const Nav = () => {
     <nav style={navPosition}>
       <div className="menu__container">
         <div className="logo__menu">
-          <Link exact href="/" replace>
+          <Link exact href="/">
             <a className="">
               <img src="/img/logo_menu.png" />
             </a>
@@ -62,16 +66,16 @@ const Nav = () => {
               isMenuMobileOpen ? "items__menu open__menu" : "items__menu"
             }
           >
-            <Link exact href="/" replace>
+            <Link exact href="/">
               <a className="item">Home</a>
             </Link>
-            <Link exact href="/prints" replace>
+            <Link exact href="/prints">
               <a className="item">Prints</a>
             </Link>
-            <Link exact href="/journal" replace>
+            <Link exact href="/journal">
               <a className="item">Journal</a>
             </Link>
-            <Link exact href="/contact-us" replace>
+            <Link exact href="/contact-us">
               <a className="item">Contact Us</a>
             </Link>
 

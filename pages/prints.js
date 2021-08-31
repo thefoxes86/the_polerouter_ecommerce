@@ -25,6 +25,7 @@ export default function Prints(props) {
                 index={index}
                 sourceUrl={product.image.sourceUrl}
                 slug={product.slug}
+                title={product.title}
               />
             );
           })}

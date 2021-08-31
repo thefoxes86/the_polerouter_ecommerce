@@ -64,7 +64,7 @@ export default function Posts(props) {
             />
           </div>
           <div className="content">
-            <Link href="/journal" replace>
+            <Link href="/journal">
               <motion.a
                 initial="initial"
                 animate="animate"

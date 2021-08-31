@@ -24,7 +24,7 @@ export default function Print(props) {
         variants={frameVariants}
         transition={transition}
       >
-        <Link href={`/product/${props.slug}`} replace>
+        <Link href={`/product/${props.slug}`}>
           <a>
             <motion.img
               whileHover="hover"
@@ -32,6 +32,7 @@ export default function Print(props) {
               variants={imageVariants}
               transition={transition}
             />
+            <h2 dangerouslySetInnerHTML={{ __html: props.title }}></h2>
           </a>
         </Link>
       </motion.div>

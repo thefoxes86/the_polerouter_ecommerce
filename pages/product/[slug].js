@@ -80,7 +80,7 @@ export default function Product(props) {
             />
           </div>
           <div className="content">
-            <Link href="/prints" replace>
+            <Link href="/prints">
               <motion.a
                 initial="initial"
                 animate="animate"

@@ -1,4 +1,3 @@
-import { Facebook, Instagram, Twitter, Youtube } from "./icons";
 import Link from "next/link";
 import FormNewsletter from "./FormNewsletter";
 

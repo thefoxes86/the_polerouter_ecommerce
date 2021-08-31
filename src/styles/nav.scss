@@ -1,5 +1,5 @@
 nav {
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   background: white;
   border-bottom: 1px solid $gold;
   position: fixed;
@@ -21,7 +21,7 @@ nav {
       justify-content: flex-start;
 
       img {
-        width: 40px;
+        width: 30px;
         height: auto;
       }
     }

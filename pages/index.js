@@ -17,15 +17,17 @@ export default function Home(props) {
         <div className="hero__image"></div>
         <div className="description">
           <p>
-            THE FIRST BOOK TO FOCUS SOLELY ON THE UNIVERSAL GENÈVE POLEROUTER. A
+            THE FIRST BOOK TO FOCUS SOLELY
             <br />
-            CELEBRATION OF ITS HISTORY, ITS DESIGN AND ITS DIVERSITY.
+            ON THE UNIVERSAL GENÈVE POLEROUTER. <br />
+            A CELEBRATION OF <br />
+            ITS HISTORY, DESIGN AND DIVERSITY.
           </p>
           <div className="scroll__down">scroll down</div>
         </div>
       </div>
       <div className="container__prints">
-        <h2 className="title">PRINTS</h2>
+        <h1 className="title">PRINTS</h1>
         {props.products &&
           props.products.slice(0, 2).map((product, index) => {
             return (
@@ -33,6 +35,7 @@ export default function Home(props) {
                 index={index}
                 sourceUrl={product.image.sourceUrl}
                 slug={product.slug}
+                title={product.title}
               />
             );
           })}
@@ -77,7 +80,7 @@ export default function Home(props) {
               })}
           </motion.div>
           <div className="button__all_posts">
-            <Link href="/journal" replace>
+            <Link href="/journal">
               <a className="button">ALL POSTS</a>
             </Link>
           </div>
