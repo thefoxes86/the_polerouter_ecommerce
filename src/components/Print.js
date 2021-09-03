@@ -32,9 +32,12 @@ export default function Print(props) {
               variants={imageVariants}
               transition={transition}
             />
-            <h2 dangerouslySetInnerHTML={{ __html: props.title }}></h2>
           </a>
         </Link>
+        <h2
+          className="title__print"
+          dangerouslySetInnerHTML={{ __html: props.title }}
+        ></h2>
       </motion.div>
     </motion.div>
   );

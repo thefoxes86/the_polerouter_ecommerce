@@ -15,6 +15,10 @@
     align-items: flex-start;
     justify-content: flex-end;
     padding: 10%;
+
+    img {
+      width: 400px;
+    }
   }
   .hero__image {
     grid-area: heroimage;
@@ -57,7 +61,7 @@
   padding-top: 5vh;
   padding-bottom: 10vh;
   grid-template-columns: 10% auto 15% auto 10%;
-  grid-template-rows: calc(20vh + 84px) auto 10%;
+  grid-template-rows: calc(10vh + 84px) auto 10%;
   grid-template-areas:
     ". title title title ."
     ". print . print2 ."
@@ -83,6 +87,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      .title__print {
+        position: absolute;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        opacity: 0;
+        transition: 1.5s ease opacity;
+        pointer-events: none;
+      }
       img {
         transition: 1.5s ease filter;
         filter: grayscale(0) opacity(1);
@@ -90,6 +106,10 @@
       img:hover {
         filter: grayscale(1) opacity(0.5);
       }
+    }
+
+    &:hover .title__print {
+      opacity: 1;
     }
   }
   .print_0 {
@@ -107,7 +127,7 @@
   background-color: white;
   display: grid;
   grid-template-columns: 10% auto 10%;
-  grid-template-rows: calc(20vh + 84px) auto;
+  grid-template-rows: calc(10vh + 84px) auto;
   grid-template-areas:
     ". title ."
     ". containerPosts .";

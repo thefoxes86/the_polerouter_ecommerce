@@ -54,7 +54,6 @@ export default function Posts(props) {
           </div>
           <div className="featuredImage">
             <motion.img
-              layoutId={post?.featuredImage?.node.link}
               transition={transition}
               src={post?.featuredImage?.node.link}
               alt="Post Image"
@@ -64,17 +63,6 @@ export default function Posts(props) {
             />
           </div>
           <div className="content">
-            <Link href="/journal">
-              <motion.a
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={titlePost}
-                className="back"
-              >
-                back
-              </motion.a>
-            </Link>
             <motion.div
               variants={titlePost}
               initial="initial"

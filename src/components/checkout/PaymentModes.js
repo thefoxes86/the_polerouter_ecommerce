@@ -6,21 +6,7 @@ const PaymentModes = ({ input, handleOnChange }) => {
   return (
     <div className="mb-3 order__payments">
       <Error errors={errors} fieldName={"paymentMethod"} />
-      {/*Direct bank transfers*/}
-      <div className="form-check woo-next-payment-input-container mt-2">
-        <label className="form-check-label">
-          <input
-            onChange={handleOnChange}
-            value="bacs"
-            className="form-check-input mr-3 img__sub"
-            name="paymentMethod"
-            type="radio"
-            checked={"bacs" === paymentMethod}
-          />
-          <img width="150" src="/img/bank_transfer.png" />
-          <span className="woo-next-payment-content"></span>
-        </label>
-      </div>
+
       {/*Pay with Paypal*/}
       <div className="form-check woo-next-payment-input-container mt-2">
         <label className="form-check-label">

@@ -3,9 +3,8 @@
   height: auto;
   background-color: white;
   display: grid;
-  padding-top: 5vh;
   grid-template-columns: 10% 5% 30% auto 10%;
-  grid-template-rows: calc(20vh + 84px) auto 10vh;
+  grid-template-rows: calc(20vh) auto 10vh;
   grid-template-areas:
     ". title title title ."
     ". gallery featuredimage contentText ."
@@ -64,7 +63,7 @@
     }
     h2 {
       text-transform: uppercase;
-      padding-top: 20px;
+      padding-top: 0px;
     }
     .description,
     .price,
@@ -75,7 +74,7 @@
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
-      padding: 60px 30%;
+      padding: 5% 20% 5% 0;
       font-size: 1.1rem;
       &::after {
         content: "";
@@ -85,15 +84,10 @@
         position: absolute;
         right: 0;
         top: 50%;
+        transition: ease 0.5s width;
       }
-      &::before {
-        content: "";
-        width: 25%;
-        height: 1px;
-        background: black;
-        position: absolute;
-        left: 0;
-        top: 50%;
+      &:hover::after {
+        width: 40%;
       }
     }
     .details {

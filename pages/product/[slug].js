@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Layout from "../../src/components/Layout";
 import { useRouter } from "next/router";
 import client from "../../src/components/ApolloClient";
@@ -9,7 +9,6 @@ import {
 } from "../../src/queries/product-by-slug";
 import { isEmpty } from "lodash";
 import Price from "../../src/components/single-product/price";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { titlePost } from "../../src/constants/variablesMation";
 
@@ -52,20 +51,16 @@ export default function Product(props) {
             className="gallery"
           >
             {!isEmpty(product?.galleryImages?.nodes) && (
-              <img
-                src={product?.image?.sourceUrl}
-                loading="lazy"
-                onMouseOver={changeImage}
-              />
+              <img src={product?.image?.sourceUrl} onMouseOver={changeImage} />
             )}
             {!isEmpty(product?.galleryImages?.nodes) &&
               product?.galleryImages?.nodes.map((item, index) => (
-                <img
+                <motion.img
                   key={index}
                   src={item.mediaItemUrl}
-                  loading="lazy"
                   alt={item.altText ? item.altText : item.title}
                   onMouseOver={changeImage}
+                  srcSet={item.mediaItemUrl}
                 />
               ))}
           </motion.div>
@@ -73,24 +68,12 @@ export default function Product(props) {
             <motion.img
               src={feauredImage}
               alt="Product Image"
-              layoutId={feauredImage}
               width="100%"
               height="auto"
               srcSet={feauredImage}
             />
           </div>
           <div className="content">
-            <Link href="/prints">
-              <motion.a
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={titlePost}
-                className="back"
-              >
-                back
-              </motion.a>
-            </Link>
             <motion.h2
               initial="initial"
               animate="animate"

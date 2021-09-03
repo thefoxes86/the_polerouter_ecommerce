@@ -117,9 +117,7 @@ const CartItemsContainer = () => {
       {cart ? (
         <>
           <h1 className="title">Cart</h1>
-          <Link href="/prints">
-            <a className="button continue__button">Continue to shop</a>
-          </Link>
+
           <div className="table__cart">
             <table className="cart-products">
               <thead className="text-left">

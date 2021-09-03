@@ -1,11 +1,10 @@
 .container__post {
   width: 100vw;
-  padding-top: 5vh;
   height: auto;
   background-color: white;
   display: grid;
   grid-template-columns: 10% 30% auto 10%;
-  grid-template-rows: calc(20vh + 84px) auto 10vh;
+  grid-template-rows: calc(20vh) auto 10vh;
   grid-template-areas:
     ". title title ."
     ". featuredimage contentText ."
@@ -78,7 +77,9 @@
       text-transform: uppercase;
       padding-top: 20px;
     }
-    .description,
+    .description {
+      padding-top: 0;
+    }
     .price,
     .addToCart {
       padding-top: 20px;
