@@ -39,23 +39,21 @@ export default function Post(props) {
           </Link>
         </motion.div>
       </motion.div>
-      <motion.h3
-        transition={transition}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0, ...transition }}
-        dangerouslySetInnerHTML={{ __html: props.data.title }}
-      ></motion.h3>
+      <Link href={`/journal/${props.data.slug}`}>
+        <motion.h3
+          transition={transition}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, ...transition }}
+          dangerouslySetInnerHTML={{ __html: props.data.title }}
+        ></motion.h3>
+      </Link>
       <span>{getMonthAndYear(props.data.date)}</span>
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0, ...transition }}
         dangerouslySetInnerHTML={{ __html: props.data.content }}
       ></motion.p>
-      <Link href={`/journal/${props.data.slug}`}>
-        <a className="link">Read More</a>
-      </Link>
     </motion.div>
   );
 }

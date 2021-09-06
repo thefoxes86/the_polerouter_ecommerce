@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import { getFormattedCart, getUpdatedItems } from "../../../functions";
 import CartItem from "./CartItem";
@@ -112,6 +112,15 @@ const CartItemsContainer = () => {
     });
   };
 
+  const totalCart = () => {
+    let totalPrice = 0;
+    cart &&
+      cart.products.forEach((product) => {
+        totalPrice += product.price * product.qty;
+      });
+    return totalPrice.toFixed(2);
+  };
+
   return (
     <div className="cart product-cart-container">
       {cart ? (
@@ -121,7 +130,7 @@ const CartItemsContainer = () => {
           <div className="table__cart">
             <table className="cart-products">
               <thead className="text-left">
-                <tr className="woo-next-cart-head-container">
+                <tr className="woo-next-cart-head-container header-desktop-only">
                   <th scope="col" />
                   <th scope="col" />
                   <th scope="col">Product</th>
@@ -154,12 +163,24 @@ const CartItemsContainer = () => {
               <tbody>
                 <tr>
                   <td className="">
+                    Total
+                    <span className="price">${totalCart()}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="">
+                    Shipping Cost
+                    <span className="price">$15.00</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="">
                     Subtotal
                     <span className="price">
                       {"string" !== typeof cart.totalProductsPrice
                         ? cart.totalProductsPrice.toFixed(2)
                         : cart.totalProductsPrice}
-                    </span>{" "}
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -183,7 +204,7 @@ const CartItemsContainer = () => {
       ) : (
         <>
           <h2 className="title">No items in the cart</h2>
-          <Link href="/">
+          <Link href="/prints">
             <a className="button__black continue__button">Add New Products</a>
           </Link>
         </>

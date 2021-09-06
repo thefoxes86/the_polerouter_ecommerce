@@ -1,15 +1,19 @@
 import Link from "next/link";
 import FormNewsletter from "./FormNewsletter";
 
+const year = new Date().getFullYear();
+
 const Footer = () => (
   <footer>
     <h3 className="title">NEWSLETTER</h3>
     <FormNewsletter />
     <div className="copyright">
       <p className="copy">
-        Copyright © 2020 Time Honoured Ltd, All rights reserved. |
+        Copyright © {year} Time Honoured Ltd, All rights reserved. |
+        <Link className="terms" href="/terms">
+          Terms
+        </Link>
       </p>
-      <Link href="/terms">Terms</Link>
     </div>
   </footer>
 );

@@ -11,7 +11,7 @@ const CartIcon = () => {
 
   return (
     <Link href="/cart">
-      <a className="cartIcon block mt-4 lg:inline-block lg:mt-0 text-black hover:text-black mr-10">
+      <a className="cartIcon block mt-1 lg:inline-block lg:mt-0 text-black hover:text-black mr-3">
         <svg
           id="Raggruppa_113"
           data-name="Raggruppa 113"
@@ -45,7 +45,6 @@ const CartIcon = () => {
         ) : (
           ""
         )}
-        {/*{ totalPrice ? <span>{ totalPrice }</span> : '' }*/}
       </a>
     </Link>
   );

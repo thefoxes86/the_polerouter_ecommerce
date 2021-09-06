@@ -1,44 +1,53 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useViewportScroll } from "framer-motion";
 import {
   transition,
   thumbnailVariants,
   frameVariants,
   imageVariants,
 } from "../constants/variablesMation";
+import useOnScreen from "../utils/useOnScreen";
 
 export default function Print(props) {
+  const { scrollY } = useViewportScroll();
+  const ref = useRef();
+  // const isVisible = useOnScreen(ref);
+
   return (
-    <motion.div
-      className={`print print_${props.index}`}
-      variants={thumbnailVariants}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-    >
+    <>
+      {/* {isVisible && `Yep, I'm on screen`} */}
       <motion.div
-        className="frame"
-        layoutId={props.sourceUrl}
-        whileHover="hover"
-        variants={frameVariants}
-        transition={transition}
+        ref={ref}
+        className={`print print_${props.index}`}
+        variants={thumbnailVariants}
+        initial="initial"
+        animate="enter"
+        exit="exit"
       >
-        <Link href={`/product/${props.slug}`}>
-          <a>
-            <motion.img
-              whileHover="hover"
-              src={props.sourceUrl}
-              variants={imageVariants}
-              transition={transition}
-            />
-          </a>
-        </Link>
-        <h2
-          className="title__print"
-          dangerouslySetInnerHTML={{ __html: props.title }}
-        ></h2>
+        <motion.div
+          className="frame"
+          layoutId={props.sourceUrl}
+          whileHover="hover"
+          variants={frameVariants}
+          transition={transition}
+        >
+          <Link href={`/product/${props.slug}`}>
+            <a>
+              <motion.img
+                whileHover="hover"
+                src={props.sourceUrl}
+                variants={imageVariants}
+                transition={transition}
+              />
+            </a>
+          </Link>
+          <h2
+            className="title__print"
+            dangerouslySetInnerHTML={{ __html: props.title }}
+          ></h2>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   );
 }
