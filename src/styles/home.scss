@@ -293,6 +293,15 @@
 
     .print {
       min-height: 100px;
+
+      .active {
+        .title__print {
+          opacity: 1;
+        }
+        img {
+          filter: grayscale(1) opacity(0.5);
+        }
+      }
     }
 
     .print_0 {
@@ -304,7 +313,7 @@
   }
   .container__journal_internal,
   .container__prints_internal {
-    margin-top: 10vh;
+    margin-top: 0;
   }
   .container__journal {
     grid-template-columns: 10% auto 10%;

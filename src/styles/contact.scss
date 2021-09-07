@@ -4,7 +4,7 @@
   width: 100vw;
   height: auto;
   grid-template-columns: 10% auto 10%;
-  grid-template-rows: calc(20vh + 84px) auto auto;
+  grid-template-rows: calc(10vh + 84px) auto auto;
   row-gap: 2rem;
   grid-template-areas:
     ". title ."

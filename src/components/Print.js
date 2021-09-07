@@ -1,22 +1,22 @@
 import React, { useRef } from "react";
 import Link from "next/link";
-import { motion, useViewportScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   transition,
   thumbnailVariants,
   frameVariants,
   imageVariants,
 } from "../constants/variablesMation";
-import useOnScreen from "../utils/useOnScreen";
-
+import { useInView } from "react-intersection-observer";
 export default function Print(props) {
-  const { scrollY } = useViewportScroll();
-  const ref = useRef();
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0.8,
+  });
   // const isVisible = useOnScreen(ref);
 
   return (
     <>
-      {/* {isVisible && `Yep, I'm on screen`} */}
       <motion.div
         ref={ref}
         className={`print print_${props.index}`}
@@ -26,7 +26,7 @@ export default function Print(props) {
         exit="exit"
       >
         <motion.div
-          className="frame"
+          className={`frame ${inView ? "active" : ""}`}
           layoutId={props.sourceUrl}
           whileHover="hover"
           variants={frameVariants}
@@ -43,6 +43,7 @@ export default function Print(props) {
             </a>
           </Link>
           <h2
+            ref={ref}
             className="title__print"
             dangerouslySetInnerHTML={{ __html: props.title }}
           ></h2>

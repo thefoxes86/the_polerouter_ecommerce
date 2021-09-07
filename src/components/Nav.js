@@ -21,7 +21,7 @@ const Nav = () => {
         ? setNavPosition({ top: 0 })
         : setNavPosition({ top: -120 });
     } else {
-      currentScroll > 20
+      currentScroll > 50
         ? setNavPosition({ top: 0 })
         : setNavPosition({ top: -120 });
     }
