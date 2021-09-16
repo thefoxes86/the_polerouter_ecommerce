@@ -48,7 +48,6 @@ export default function Post(props) {
           dangerouslySetInnerHTML={{ __html: props.data.title }}
         ></motion.h3>
       </Link>
-      <span>{getMonthAndYear(props.data.date)}</span>
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

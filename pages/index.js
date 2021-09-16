@@ -19,9 +19,8 @@ export default function Home(props) {
           <p>
             THE FIRST BOOK TO FOCUS SOLELY
             <br />
-            ON THE UNIVERSAL GENÈVE POLEROUTER. <br />
-            A CELEBRATION OF <br />
-            ITS HISTORY, DESIGN AND DIVERSITY.
+            ON THE UNIVERSAL GENÈVE POLEROUTER. <br />A CELEBRATION OF ITS
+            HISTORY, DESIGN AND DIVERSITY.
           </p>
           <div className="scroll__down">scroll down</div>
         </div>

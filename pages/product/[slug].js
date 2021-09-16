@@ -41,7 +41,7 @@ export default function Product(props) {
             variants={titlePost}
             className="title"
           >
-            {product.productCategories.nodes[0].name}
+            {product.name}
           </motion.h1>
           <motion.div
             initial="initial"
@@ -74,13 +74,13 @@ export default function Product(props) {
             />
           </div>
           <div className="content">
-            <motion.h2
+            {/* <motion.h2
               initial="initial"
               animate="animate"
               exit="exit"
               variants={titlePost}
               dangerouslySetInnerHTML={{ __html: product.name }}
-            ></motion.h2>
+            ></motion.h2> */}
             <motion.div
               initial="initial"
               animate="animate"

@@ -59,9 +59,8 @@
   background-color: $darkGrey;
   display: grid;
   padding-top: 5vh;
-  padding-bottom: 10vh;
   grid-template-columns: 10% auto 15% auto 10%;
-  grid-template-rows: calc(10vh + 84px) auto 10%;
+  grid-template-rows: 13vh auto 10%;
   grid-template-areas:
     ". title title title ."
     ". print . print2 ."
@@ -83,7 +82,7 @@
 
     .frame {
       overflow: hidden;
-      max-height: 70vh;
+      max-height: 75vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -92,6 +91,7 @@
         position: absolute;
         height: 100%;
         display: flex;
+        font-family: "Bodoni";
         align-items: center;
         justify-content: center;
         color: white;
@@ -127,7 +127,7 @@
   background-color: white;
   display: grid;
   grid-template-columns: 10% auto 10%;
-  grid-template-rows: calc(10vh + 84px) auto;
+  grid-template-rows: 13vh auto 10%;
   grid-template-areas:
     ". title ."
     ". containerPosts .";
@@ -139,6 +139,7 @@
     text-transform: uppercase;
     display: grid;
     align-items: center;
+    padding-bottom: 5vh;
   }
   a.link {
     padding: 2% 0;
@@ -184,7 +185,6 @@
     grid-area: containerPosts;
     width: 100%;
     display: grid;
-    padding-top: 5vh;
     grid-template-columns: 45% auto 20% auto 20%;
     grid-template-rows: auto 10%;
     grid-template-areas:
@@ -235,6 +235,7 @@
 
   h3 {
     padding: 4% 0;
+    font-size: 1.1rem;
     text-transform: uppercase;
     font-weight: 500;
   }
@@ -275,6 +276,10 @@
     }
     .description {
       padding-bottom: 220px;
+
+      p {
+        font-size: 10px;
+      }
       .scroll__down {
         display: none;
       }
