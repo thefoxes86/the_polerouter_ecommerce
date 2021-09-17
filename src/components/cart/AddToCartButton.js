@@ -20,6 +20,7 @@ const AddToCart = (props) => {
   const [cart, setCart] = useContext(AppContext);
   const [showViewCart, setShowViewCart] = useState(false);
   const [requestError, setRequestError] = useState(null);
+  const [disableButton, setDisableButton] = useState(false);
 
   // Get Cart Data.
   const { data, refetch } = useQuery(GET_CART, {
@@ -49,6 +50,9 @@ const AddToCart = (props) => {
 
       // 2. Show View Cart Button
       setShowViewCart(true);
+
+      // Disable button after 1 product added. Max product buyable 1
+      setDisableButton(true);
     },
     onError: (error) => {
       if (error) {

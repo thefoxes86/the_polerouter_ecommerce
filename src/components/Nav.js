@@ -29,7 +29,7 @@ const Nav = () => {
 
   useEffect(() => {
     // Mount Component
-    router.pathname === "/" && setNavPosition({ top: -120 });
+    setNavPosition({ top: -120 });
 
     window.addEventListener("scroll", handleScroll);
 

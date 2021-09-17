@@ -81,16 +81,15 @@ const CartItem = ({
       <td className="woo-next-cart-element title-mobile-only">quantity</td>
       <td className="woo-next-cart-element woo-next-cart-qty">
         {/* @TODO Need to update this with graphQL query */}
-        <input
+        {/* <input
           type="number"
           min="1"
           data-cart-key={item.cartKey}
-          className={`woo-next-cart-qty-input form-control ${
-            updateCartProcessing ? "opacity-25 cursor-not-allowed" : ""
-          } `}
+          className={`woo-next-cart-qty-input form-control cursor-not-allowed`}
           value={productCount}
           onChange={(event) => handleQtyChange(event, item.cartKey)}
-        />
+        /> */}
+        {productCount}
       </td>
       <td className="woo-next-cart-element title-mobile-only">total</td>
       <td className="woo-next-cart-element">

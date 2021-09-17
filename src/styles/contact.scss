@@ -4,8 +4,7 @@
   width: 100vw;
   height: auto;
   grid-template-columns: 10% auto 10%;
-  grid-template-rows: calc(10vh + 84px) auto auto;
-  row-gap: 2rem;
+  grid-template-rows: 13vh auto auto;
   grid-template-areas:
     ". title ."
     ". content_par ."
@@ -19,9 +18,11 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
+    padding-bottom: 5vh;
   }
   .content {
     grid-area: content_par;
+    margin-bottom: 2vh;
   }
   .form__contact {
     grid-area: form;
@@ -32,18 +33,50 @@
     row-gap: 2rem;
 
     input:not([type="submit"]),
+    input:not([type="file"]),
     textarea {
       border: 1px solid black;
       border-radius: 0;
       background-color: white;
       line-height: 2rem;
-      padding: 0.25rem 1rem;
+      padding: 0.5rem 1rem;
       width: 100%;
 
       &:focus-within,
       &:focus {
         outline: none;
         border: 1px solid $gold;
+      }
+    }
+
+    input[type="file"] {
+      border: 1px solid black;
+      border-radius: 0;
+      background-color: white;
+      line-height: 2rem;
+      padding: 0.3rem 1rem;
+      width: 100%;
+
+      &:focus-within,
+      &:focus {
+        outline: none;
+        border: 1px solid $gold;
+      }
+    }
+    input[type="submit"] {
+      font-size: 1.2rem;
+      padding: 20px 50px;
+      text-align: center;
+      border: 1px solid $gold;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      background-color: black;
+      border: 1px solid black;
+      color: white;
+      transition: 0.25s all ease;
+
+      &:hover {
+        background-color: $gold;
       }
     }
 

@@ -164,13 +164,13 @@ const CartItemsContainer = () => {
                 <tr>
                   <td className="">
                     Total
-                    <span className="price">${totalCart()}</span>
+                    <span className="price">£{totalCart()}</span>
                   </td>
                 </tr>
                 <tr>
                   <td className="">
                     Shipping Cost
-                    <span className="price">$15.00</span>
+                    <span className="price">£15.00</span>
                   </td>
                 </tr>
                 <tr>
@@ -187,7 +187,7 @@ const CartItemsContainer = () => {
             </table>
 
             <Link href="/checkout">
-              <a className="button__black n-block">Checkout</a>
+              <a className="button__black n-block">Check out</a>
             </Link>
           </div>
 

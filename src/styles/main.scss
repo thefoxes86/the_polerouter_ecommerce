@@ -53,6 +53,11 @@ h3 {
   background-color: black;
   border: 1px solid black;
   color: white;
+  transition: 0.25s all ease;
+
+  &:hover {
+    background-color: $gold;
+  }
 }
 
 // Tablet

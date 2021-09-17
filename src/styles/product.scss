@@ -78,20 +78,19 @@
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
-      padding: 5% 20% 5% 0;
+      padding: 3% 5%;
       font-size: 1.1rem;
-      &::after {
-        content: "";
-        width: 25%;
-        height: 1px;
-        background: black;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transition: ease 0.5s width;
-      }
-      &:hover::after {
-        width: 40%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40%;
+      color: white;
+      margin-top: 20px;
+      transition: 0.25s all ease;
+
+      &:hover {
+        background-color: $gold;
       }
     }
     .details {

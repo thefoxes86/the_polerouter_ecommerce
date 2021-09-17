@@ -22,7 +22,7 @@
   width: 100vw;
   display: grid;
   grid-template-columns: 10% 20% auto 10%;
-  grid-template-rows: calc(20vh + 84px) auto auto auto;
+  grid-template-rows: 13vh auto auto auto;
   grid-template-areas: ". title title ." ". continueButton . ." ". tableCart tableCart ." ". subTotal . .";
 
   .title {
@@ -33,6 +33,7 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
+    padding-bottom: 5vh;
   }
   .continue__button {
     grid-area: continueButton;
@@ -42,7 +43,8 @@
     margin-bottom: 20px;
 
     .header-desktop-only {
-      display: block;
+      display: revert;
+      width: 100%;
     }
 
     .cart-products {
@@ -56,6 +58,10 @@
       }
       th {
         padding: 20px 15px;
+      }
+
+      .title-mobile-only {
+        display: none;
       }
     }
   }
@@ -86,8 +92,9 @@
   width: 100vw;
   display: grid;
   grid-template-columns: 10% 40% 40% 10%;
-  grid-template-rows: 20vh auto;
+  grid-template-rows: 13vh auto;
   grid-template-areas: ". title title ." ". formCheckout formCheckout .";
+  padding-top: 5vh;
 
   .title {
     grid-area: title;
@@ -97,6 +104,7 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
+    padding-bottom: 5vh;
   }
 
   .form__checkout {

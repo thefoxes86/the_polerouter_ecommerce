@@ -6,7 +6,7 @@ import client from "../src/components/ApolloClient";
 const Checkout = ({ data }) => (
   <Layout>
     <div className="container__checkout">
-      <h1 className="title">Checkout Page</h1>
+      <h1 className="title">Check out</h1>
       <CheckoutForm countriesData={data?.wooCountries ?? {}} />
     </div>
   </Layout>

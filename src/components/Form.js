@@ -19,12 +19,12 @@ export default function Form() {
         <input {...register("name", { required: true })} />
       </label>
       <label htmlFor="mail" className="input__2">
-        <span>Mail</span>
+        <span>Email</span>
         <input {...register("mail", { required: true })} />
       </label>
       <label htmlFor="country" className="input__3">
-        <span>Country</span>
-        <input {...register("country", { required: true })} />
+        <span>Photo</span>
+        <input type="file" {...register("photo", { required: true })} />
       </label>
       <label htmlFor="messagge" className="textarea">
         <span>Message</span>
