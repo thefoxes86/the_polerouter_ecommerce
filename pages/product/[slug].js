@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Layout from "../../src/components/Layout";
+import { AppContext } from "../../src/components/context/AppContext";
 import { useRouter } from "next/router";
 import client from "../../src/components/ApolloClient";
 import AddToCartButton from "../../src/components/cart/AddToCartButton";
@@ -17,6 +18,7 @@ export default function Product(props) {
   const [feauredImage, setFeauturedImage] = useState(
     product && product?.image?.sourceUrl
   );
+  const [cart, setCart] = useContext(AppContext);
 
   const router = useRouter();
 

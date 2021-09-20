@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { getMonthAndYear } from "../functions";
+import { getMonthAndYear, removeTags } from "../functions";
 import {
   transition,
   thumbnailVariants,
@@ -48,11 +48,9 @@ export default function Post(props) {
           dangerouslySetInnerHTML={{ __html: props.data.title }}
         ></motion.h3>
       </Link>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        dangerouslySetInnerHTML={{ __html: props.data.content }}
-      ></motion.p>
+      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        {removeTags(props.data.content)}
+      </motion.p>
     </motion.div>
   );
 }

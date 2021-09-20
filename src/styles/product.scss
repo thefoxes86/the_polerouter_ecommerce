@@ -89,6 +89,11 @@
       margin-top: 20px;
       transition: 0.25s all ease;
 
+      &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
       &:hover {
         background-color: $gold;
       }

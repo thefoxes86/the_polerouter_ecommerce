@@ -3,7 +3,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import Link from "next/link";
 import { v4 } from "uuid";
 import cx from "classnames";
-
+import { useRouter } from "next/router";
 import { AppContext } from "../context/AppContext";
 import { getFormattedCart } from "../../functions";
 import GET_CART from "../../queries/get-cart";
@@ -28,7 +28,15 @@ const AddToCart = (props) => {
     onCompleted: () => {
       // Update cart in the localStorage.
       const updatedCart = getFormattedCart(data);
-      localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+      console.log(data);
+      data.cart.contents.nodes.forEach((element) => {
+        if (element.product.node.id === product.id) {
+          // Disable button after 1 product added. Max product buyable 1
+          setDisableButton(true);
+        } else {
+          localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+        }
+      });
 
       // Update cart data in React Context.
       setCart(updatedCart);
@@ -50,9 +58,6 @@ const AddToCart = (props) => {
 
       // 2. Show View Cart Button
       setShowViewCart(true);
-
-      // Disable button after 1 product added. Max product buyable 1
-      setDisableButton(true);
     },
     onError: (error) => {
       if (error) {
@@ -79,7 +84,7 @@ const AddToCart = (props) => {
         </a>
       ) : (
         <button
-          disabled={addToCartLoading}
+          disabled={addToCartLoading || disableButton}
           onClick={handleAddToCartClick}
           className={cx(
             "addToCart",
@@ -89,7 +94,11 @@ const AddToCart = (props) => {
             { "opacity-50 cursor-not-allowed": addToCartLoading }
           )}
         >
-          {addToCartLoading ? "Adding to cart..." : "Add to cart"}
+          {addToCartLoading
+            ? "Adding to cart..."
+            : disableButton
+            ? "Already added to cart"
+            : "Add to cart"}
         </button>
       )}
       {/* {showViewCart ? (
