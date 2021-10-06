@@ -367,3 +367,9 @@ export const removeTags = (str) => {
   // HTML tag with a null string.
   return str.replace(/(<([^>]+)>)/gi, "");
 };
+
+export const reduceText = (str, max, suffix) => {
+    const stringTruncated = str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`
+
+    return stringTruncated;
+  }

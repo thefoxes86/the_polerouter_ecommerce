@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { getMonthAndYear, removeTags } from "../functions";
+import { getMonthAndYear, removeTags, reduceText } from "../functions";
 import {
   transition,
   thumbnailVariants,
@@ -49,7 +49,7 @@ export default function Post(props) {
         ></motion.h3>
       </Link>
       <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        {removeTags(props.data.content)}
+        {reduceText(removeTags(props.data.content), 200, '...')}
       </motion.p>
     </motion.div>
   );

@@ -37,6 +37,17 @@
 
   .content {
     grid-area: contentText;
+    .description{
+      p {
+        margin-bottom: 20px;
+      }
+      .size-large {
+        margin-bottom: 20px;
+        img {
+          width: 100%;
+        }
+      }
+    }
     .back {
       text-transform: uppercase;
       text-decoration: none;
