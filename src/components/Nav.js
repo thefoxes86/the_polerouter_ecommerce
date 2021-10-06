@@ -46,7 +46,7 @@ const Nav = () => {
         <div className="logo__menu">
           <Link exact href="/">
             <a className="">
-              <img src="/img/logo_menu.png" />
+              <img src="/img/logo_menu.svg" />
             </a>
           </Link>
         </div>

@@ -78,7 +78,7 @@ footer {
       font-size: 0.8rem;
     }
 
-    .input__1 {
+    input {
       grid-area: input;
       input {
         border: 1px solid $gold;
@@ -86,7 +86,7 @@ footer {
       }
     }
 
-    .submit {
+    button {
       padding: 5px;
       text-transform: lowercase;
       font-size: 0.8rem;
@@ -95,6 +95,16 @@ footer {
       border: 1px solid $gold;
     }
   }
+
+  .msg-alert {
+    margin-top: -7vh;
+
+    p {
+      color: black;
+      font-size: 10px;
+    }
+  }
+  
 }
 
 // Tablet

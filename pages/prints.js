@@ -25,14 +25,16 @@ export default function Prints(props) {
               <>
               {index === 0 ? (
                 <Print0
-                  
+                  ey={index}
+                  index={index}
                   sourceUrl={product.image.sourceUrl}
                   slug={product.slug}
                   title={product.name}
                 />
                 ) : (
                 <Print1
-                  
+                  key={index}
+                  index={index}
                   sourceUrl={product.image.sourceUrl}
                   slug={product.slug}
                   title={product.name}

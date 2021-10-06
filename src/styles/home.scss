@@ -181,6 +181,25 @@
     }
   }
 
+  .container__terms {
+    grid-area: containerPosts;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 10%;
+    grid-template-areas:
+      "textcontent"
+      ".";
+    column-gap: 2rem;
+
+    .textContent {
+      grid-area: textcontent;
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   .container__posts {
     grid-area: containerPosts;
     width: 100%;
