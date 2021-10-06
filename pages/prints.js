@@ -1,7 +1,8 @@
 import Layout from "../src/components/Layout";
 import client from "../src/components/ApolloClient";
 import GET_PRODUCTS from "../src/queries/get-products";
-import Print from "../src/components/Print";
+import Print0 from "../src/components/Print0";
+import Print1 from "../src/components/Print1";
 import { motion } from "framer-motion";
 import { titlePost } from "../src/constants/variablesMation";
 
@@ -21,12 +22,23 @@ export default function Prints(props) {
         {props.products &&
           props.products.slice(0, 2).map((product, index) => {
             return (
-              <Print
-                index={index}
-                sourceUrl={product.image.sourceUrl}
-                slug={product.slug}
-                title={product.name}
-              />
+              <>
+              {index === 0 ? (
+                <Print0
+                  
+                  sourceUrl={product.image.sourceUrl}
+                  slug={product.slug}
+                  title={product.name}
+                />
+                ) : (
+                <Print1
+                  
+                  sourceUrl={product.image.sourceUrl}
+                  slug={product.slug}
+                  title={product.name}
+                />
+                )}
+              </>
             );
           })}
       </div>

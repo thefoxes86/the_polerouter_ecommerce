@@ -8,7 +8,7 @@ import {
   imageVariants,
 } from "../constants/variablesMation";
 import { useInView } from "react-intersection-observer";
-export default function Print(props) {
+export default function Print0(props) {
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0.8,
@@ -19,7 +19,7 @@ export default function Print(props) {
     <>
       <motion.div
         ref={ref}
-        className={`print print_${props.index}`}
+        className={`print print_0`}
         variants={thumbnailVariants}
         initial="initial"
         animate="enter"

@@ -68,15 +68,6 @@ const thumbnailVariants = {
       delayChildren: 0.5,
     },
   },
-  exit: {
-    scale: 0.8,
-    opacity: 0,
-    y: -100,
-    transition: {
-      duration: 0.5,
-      ease: ease,
-    },
-  },
 };
 
 const frameVariants = {

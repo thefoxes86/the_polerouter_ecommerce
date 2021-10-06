@@ -3,7 +3,8 @@ import Link from "next/link";
 import client from "../src/components/ApolloClient";
 import { motion } from "framer-motion";
 import GET_HOME from "../src/queries/get-home";
-import Print from "../src/components/Print";
+import Print1 from "../src/components/Print1";
+import Print0 from "../src/components/Print0";
 import Post from "../src/components/Post";
 import { column, containerJournal } from "../src/constants/variablesMation";
 
@@ -30,12 +31,23 @@ export default function Home(props) {
         {props.products &&
           props.products.slice(0, 2).map((product, index) => {
             return (
-              <Print
-                index={index}
-                sourceUrl={product.image.sourceUrl}
-                slug={product.slug}
-                title={product.name}
-              />
+              <>
+              {index === 0 ? (
+                <Print0
+                  
+                  sourceUrl={product.image.sourceUrl}
+                  slug={product.slug}
+                  title={product.name}
+                />
+                ) : (
+                <Print1
+                  
+                  sourceUrl={product.image.sourceUrl}
+                  slug={product.slug}
+                  title={product.name}
+                />
+                )}
+              </>
             );
           })}
       </div>
