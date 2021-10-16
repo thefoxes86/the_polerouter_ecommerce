@@ -1,13 +1,13 @@
-import React, { useRef } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import React, { useRef } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import {
   transition,
   thumbnailVariants,
   frameVariants,
   imageVariants,
-} from "../constants/variablesMation";
-import { useInView } from "react-intersection-observer";
+} from '../constants/variablesMation';
+import { useInView } from 'react-intersection-observer';
 export default function Print1(props) {
   const { ref, inView, entry } = useInView({
     /* Optional options */
@@ -21,22 +21,22 @@ export default function Print1(props) {
         ref={ref}
         className={`print print_1`}
         variants={thumbnailVariants}
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        initial='initial'
+        animate='enter'
+        exit='exit'
       >
         <motion.div
-          className={`frame ${inView ? "active" : ""}`}
+          className={`frame ${inView ? 'active' : ''}`}
           layoutId={props.sourceUrl}
-          whileHover="hover"
+          whileHover='hover'
           variants={frameVariants}
           transition={transition}
         >
           <Link href={`/product/${props.slug}`}>
             <a>
               <motion.img
-                whileHover="hover"
-                src={props.sourceUrl}
+                whileHover='hover'
+                src='https://thepolerouter.com/wp-content/uploads/2021/05/ThePolerouter_Poster_Home_2.jpg'
                 variants={imageVariants}
                 transition={transition}
               />
@@ -44,7 +44,7 @@ export default function Print1(props) {
           </Link>
           <h2
             ref={ref}
-            className="title__print"
+            className='title__print'
             dangerouslySetInnerHTML={{ __html: props.title }}
           ></h2>
         </motion.div>

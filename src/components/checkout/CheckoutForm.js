@@ -1,21 +1,21 @@
-import { useState, useContext, useEffect } from "react";
-import { useMutation, useQuery } from "@apollo/client";
+import { useState, useContext, useEffect } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 
-import YourOrder from "./YourOrder";
-import PaymentModes from "./PaymentModes";
-import { AppContext } from "../context/AppContext";
-import validateAndSanitizeCheckoutForm from "../../validator/checkout";
-import { getFormattedCart, createCheckoutData } from "../../functions";
-import OrderSuccess from "./OrderSuccess";
-import GET_CART from "../../queries/get-cart";
-import CHECKOUT_MUTATION from "../../mutations/checkout";
-import Address from "./Address";
+import YourOrder from './YourOrder';
+import PaymentModes from './PaymentModes';
+import { AppContext } from '../context/AppContext';
+import validateAndSanitizeCheckoutForm from '../../validator/checkout';
+import { getFormattedCart, createCheckoutData } from '../../functions';
+import OrderSuccess from './OrderSuccess';
+import GET_CART from '../../queries/get-cart';
+import CHECKOUT_MUTATION from '../../mutations/checkout';
+import Address from './Address';
 import {
   handleBillingDifferentThanShipping,
   handleCreateAccount,
   setStatesForCountry,
-} from "../../utils/checkout";
-import CheckboxField from "./form-elements/CheckboxField";
+} from '../../utils/checkout';
+import CheckboxField from './form-elements/CheckboxField';
 
 // Use this for testing purposes, so you dont have to fill the checkout form over an over again.
 // const defaultCustomerInfo = {
@@ -34,17 +34,17 @@ import CheckboxField from "./form-elements/CheckboxField";
 // }
 
 const defaultCustomerInfo = {
-  firstName: "",
-  lastName: "",
-  address1: "",
-  address2: "",
-  city: "",
-  country: "",
-  state: "",
-  postcode: "",
-  email: "",
-  phone: "",
-  company: "",
+  firstName: '',
+  lastName: '',
+  address1: '',
+  address2: '',
+  city: '',
+  country: '',
+  state: '',
+  postcode: '',
+  email: '',
+  phone: '',
+  company: '',
   errors: null,
 };
 
@@ -59,9 +59,9 @@ const CheckoutForm = ({ countriesData }) => {
       ...defaultCustomerInfo,
     },
     createAccount: false,
-    orderNotes: "",
+    orderNotes: '',
     billingDifferentThanShipping: false,
-    paymentMethod: "cod",
+    paymentMethod: 'paypal',
   };
 
   const [cart, setCart] = useContext(AppContext);
@@ -69,9 +69,8 @@ const CheckoutForm = ({ countriesData }) => {
   const [orderData, setOrderData] = useState(null);
   const [requestError, setRequestError] = useState(null);
   const [theShippingStates, setTheShippingStates] = useState([]);
-  const [isFetchingShippingStates, setIsFetchingShippingStates] = useState(
-    false
-  );
+  const [isFetchingShippingStates, setIsFetchingShippingStates] =
+    useState(false);
   const [theBillingStates, setTheBillingStates] = useState([]);
   const [isFetchingBillingStates, setIsFetchingBillingStates] = useState(false);
 
@@ -81,7 +80,7 @@ const CheckoutForm = ({ countriesData }) => {
     onCompleted: () => {
       // Update cart in the localStorage.
       const updatedCart = getFormattedCart(data);
-      localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+      localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
 
       // Update cart data in React Context.
       setCart(updatedCart);
@@ -89,19 +88,17 @@ const CheckoutForm = ({ countriesData }) => {
   });
 
   // Create New order: Checkout Mutation.
-  const [
-    checkout,
-    { data: checkoutResponse, loading: checkoutLoading },
-  ] = useMutation(CHECKOUT_MUTATION, {
-    variables: {
-      input: orderData,
-    },
-    onError: (error) => {
-      if (error) {
-        setRequestError(error?.graphQLErrors?.[0]?.message ?? "");
-      }
-    },
-  });
+  const [checkout, { data: checkoutResponse, loading: checkoutLoading }] =
+    useMutation(CHECKOUT_MUTATION, {
+      variables: {
+        input: orderData,
+      },
+      onError: (error) => {
+        if (error) {
+          setRequestError(error?.graphQLErrors?.[0]?.message ?? '');
+        }
+      },
+    });
 
   /*
    * Handle form submit.
@@ -170,9 +167,9 @@ const CheckoutForm = ({ countriesData }) => {
   ) => {
     const { target } = event || {};
 
-    if ("createAccount" === target.name) {
+    if ('createAccount' === target.name) {
       handleCreateAccount(input, setInput, target);
-    } else if ("billingDifferentThanShipping" === target.name) {
+    } else if ('billingDifferentThanShipping' === target.name) {
       handleBillingDifferentThanShipping(input, setInput, target);
     } else if (isBillingOrShipping) {
       if (isShipping) {
@@ -222,16 +219,16 @@ const CheckoutForm = ({ countriesData }) => {
   return (
     <>
       {cart ? (
-        <form onSubmit={handleFormSubmit} className="form__checkout">
-          <div className="your-orders order__resume">
+        <form onSubmit={handleFormSubmit} className='form__checkout'>
+          <div className='your-orders order__resume'>
             {/*	Order*/}
-            <h2 className="text-xl font-medium mb-4">YOUR ORDER</h2>
+            <h2 className='text-xl font-medium mb-4'>YOUR ORDER</h2>
             <YourOrder cart={cart} />
           </div>
-          <div className="form__address">
+          <div className='form__address'>
             {/*Shipping Details*/}
-            <div className="billing-details">
-              <h2 className="text-xl font-medium mb-4">SHIPPING DETAILS</h2>
+            <div className='billing-details'>
+              <h2 className='text-xl font-medium mb-4'>SHIPPING DETAILS</h2>
               <Address
                 states={theShippingStates}
                 countries={shippingCountries}
@@ -244,18 +241,18 @@ const CheckoutForm = ({ countriesData }) => {
             </div>
             <div>
               <CheckboxField
-                name="billingDifferentThanShipping"
-                type="checkbox"
+                name='billingDifferentThanShipping'
+                type='checkbox'
                 checked={input?.billingDifferentThanShipping}
                 handleOnChange={handleOnChange}
-                label="Billing different than shipping"
-                containerClassNames="mb-4 pt-4"
+                label='Billing different than shipping'
+                containerClassNames='mb-4 pt-4'
               />
             </div>
             {/*Billing Details*/}
             {input?.billingDifferentThanShipping ? (
-              <div className="billing-details">
-                <h2 className="text-xl font-medium mb-4">BILLING DETAILS</h2>
+              <div className='billing-details'>
+                <h2 className='text-xl font-medium mb-4'>BILLING DETAILS</h2>
                 <Address
                   states={theBillingStates}
                   countries={billingCountries}
@@ -269,11 +266,11 @@ const CheckoutForm = ({ countriesData }) => {
             ) : null}
           </div>
           {/* Order & Payments*/}
-          <div className="your-orders payment">
+          <div className='your-orders payment'>
             {/*Payment*/}
             <PaymentModes input={input} handleOnChange={handleOnChange} />
             <div>
-              <button className="button__black" type="submit">
+              <button className='button__black' type='submit'>
                 Place Order
               </button>
             </div>
@@ -284,7 +281,7 @@ const CheckoutForm = ({ countriesData }) => {
           </div>
         </form>
       ) : (
-        ""
+        ''
       )}
 
       {/*	Show message if Order Success*/}

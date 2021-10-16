@@ -1,25 +1,25 @@
-import Error from "./Error";
+import Error from './Error';
 
 const PaymentModes = ({ input, handleOnChange }) => {
   const { errors, paymentMethod } = input || {};
 
   return (
-    <div className="mb-3 order__payments">
-      <Error errors={errors} fieldName={"paymentMethod"} />
+    <div className='mb-3 order__payments'>
+      <Error errors={errors} fieldName={'paymentMethod'} />
 
       {/*Pay with Paypal*/}
-      <div className="form-check woo-next-payment-input-container mt-2">
-        <label className="form-check-label">
+      <div className='form-check woo-next-payment-input-container mt-2'>
+        <label className='form-check-label'>
           <input
             onChange={handleOnChange}
-            value="paypal"
-            className="form-check-input mr-3 img__sub"
-            name="paymentMethod"
-            type="radio"
-            checked={"paypal" === paymentMethod}
+            value='paypal'
+            className='form-check-input mr-3 img__sub'
+            name='paymentMethod'
+            type='radio'
+            checked='checked'
           />
-          <img width="150" src="/img/paypal.png" />
-          <span className="woo-next-payment-content"></span>
+          <img width='150' src='/img/paypal.png' />
+          <span className='woo-next-payment-content'></span>
         </label>
       </div>
       {/*Check Payments*/}

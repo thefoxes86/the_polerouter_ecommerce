@@ -1,22 +1,22 @@
-import { useState, useContext } from "react";
-import Layout from "../../src/components/Layout";
-import { AppContext } from "../../src/components/context/AppContext";
-import { useRouter } from "next/router";
-import client from "../../src/components/ApolloClient";
-import AddToCartButton from "../../src/components/cart/AddToCartButton";
+import { useState, useContext } from 'react';
+import Layout from '../../src/components/Layout';
+import { AppContext } from '../../src/components/context/AppContext';
+import { useRouter } from 'next/router';
+import client from '../../src/components/ApolloClient';
+import AddToCartButton from '../../src/components/cart/AddToCartButton';
 import {
   PRODUCT_BY_SLUG_QUERY,
   PRODUCT_SLUGS,
-} from "../../src/queries/product-by-slug";
-import { isEmpty } from "lodash";
-import Price from "../../src/components/single-product/price";
-import { motion } from "framer-motion";
-import { titlePost } from "../../src/constants/variablesMation";
+} from '../../src/queries/product-by-slug';
+import { isEmpty } from 'lodash';
+import Price from '../../src/components/single-product/price';
+import { motion } from 'framer-motion';
+import { titlePost } from '../../src/constants/variablesMation';
 
 export default function Product(props) {
   const { product } = props;
   const [feauredImage, setFeauturedImage] = useState(
-    product && product?.image?.sourceUrl
+    product && product?.galleryImages?.nodes[0].mediaItemUrl
   );
   const [cart, setCart] = useContext(AppContext);
 
@@ -35,26 +35,23 @@ export default function Product(props) {
   return (
     <Layout>
       {product ? (
-        <div className="container__product">
+        <div className='container__product'>
           <motion.h1
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial='initial'
+            animate='animate'
+            exit='exit'
             variants={titlePost}
-            className="title"
+            className='title'
           >
             {product.name}
           </motion.h1>
           <motion.div
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial='initial'
+            animate='animate'
+            exit='exit'
             variants={titlePost}
-            className="gallery"
+            className='gallery'
           >
-            {!isEmpty(product?.galleryImages?.nodes) && (
-              <img src={product?.image?.sourceUrl} onMouseOver={changeImage} />
-            )}
             {!isEmpty(product?.galleryImages?.nodes) &&
               product?.galleryImages?.nodes.map((item, index) => (
                 <motion.img
@@ -66,16 +63,16 @@ export default function Product(props) {
                 />
               ))}
           </motion.div>
-          <div className="featuredImage">
+          <div className='featuredImage'>
             <motion.img
               src={feauredImage}
-              alt="Product Image"
-              width="100%"
-              height="auto"
+              alt='Product Image'
+              width='100%'
+              height='auto'
               srcSet={feauredImage}
             />
           </div>
-          <div className="content">
+          <div className='content'>
             {/* <motion.h2
               initial="initial"
               animate="animate"
@@ -84,19 +81,19 @@ export default function Product(props) {
               dangerouslySetInnerHTML={{ __html: product.name }}
             ></motion.h2> */}
             <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
+              initial='initial'
+              animate='animate'
+              exit='exit'
               variants={titlePost}
-              className="description"
+              className='description'
               dangerouslySetInnerHTML={{ __html: product?.description }}
             ></motion.div>
             <motion.div
-              initial="initial"
-              animate="animate"
-              exit="exit"
+              initial='initial'
+              animate='animate'
+              exit='exit'
               variants={titlePost}
-              className="details"
+              className='details'
             >
               <Price
                 salesPrice={product?.price}
@@ -107,7 +104,7 @@ export default function Product(props) {
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
     </Layout>
   );
