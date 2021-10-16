@@ -66,6 +66,9 @@ h3 {
 
 // Smartphone
 @media only screen and (max-width: 568px) {
+  h1 {
+    font-size: 1.6rem;
+  }
   .button {
     display: block;
     width: 100%;

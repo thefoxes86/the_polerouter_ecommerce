@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 const SEND_EMAIL_MUTATION = gql`
   mutation SEND_EMAIL {
