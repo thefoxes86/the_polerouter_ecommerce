@@ -1,13 +1,13 @@
 import { gql } from '@apollo/client';
 
 const SEND_EMAIL_MUTATION = gql`
-  mutation SEND_EMAIL {
+  mutation SEND_EMAIL($text: String!, $mail: String!) {
     sendEmail(
       input: {
-        to: "nicola@xdesigners.it"
-        from: "enquiries@thepolerouter.com"
-        subject: "test email"
-        body: "test email"
+        to: "nicola.volpi86@gmail.com"
+        from: $mail
+        subject: "Request from site"
+        body: $text
         clientMutationId: "test"
       }
     ) {

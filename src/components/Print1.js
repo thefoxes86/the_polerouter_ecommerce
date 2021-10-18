@@ -36,7 +36,7 @@ export default function Print1(props) {
             <a>
               <motion.img
                 whileHover='hover'
-                src='https://thepolerouter.com/wp-content/uploads/2021/05/ThePolerouter_Poster_Home_2.jpg'
+                src={props.sourceUrl}
                 variants={imageVariants}
                 transition={transition}
               />
