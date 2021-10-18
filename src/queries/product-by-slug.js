@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const PRODUCT_BY_SLUG_QUERY = gql`
   query Product($slug: ID!) {
@@ -36,6 +36,7 @@ export const PRODUCT_BY_SLUG_QUERY = gql`
         price
         id
         regularPrice
+        stockQuantity
       }
       ... on VariableProduct {
         price

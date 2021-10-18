@@ -5,7 +5,7 @@ const SEND_EMAIL_MUTATION = gql`
     sendEmail(
       input: {
         to: "nicola@xdesigners.it"
-        from: "info@thepolerouter.com"
+        from: "enquiries@thepolerouter.com"
         subject: "test email"
         body: "test email"
         clientMutationId: "test"

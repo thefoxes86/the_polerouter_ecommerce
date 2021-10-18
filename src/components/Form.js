@@ -7,23 +7,14 @@ export default function Form() {
   const [name, setName] = useState();
   const [mail, setMail] = useState();
   const [photo, setPhoto] = useState();
-  const [message, setMessage] = useState();
+  const [text, setText] = useState();
   const [sendEmail, { data, loading, error }] =
     useMutation(SEND_EMAIL_MUTATION);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    sendEmail({
-      variables: {
-        input: {
-          name,
-          mail,
-          message,
-          photo,
-        },
-      },
-    });
+    sendEmail();
 
     console.log(data);
   };
@@ -48,19 +39,15 @@ export default function Form() {
             onChange={(e) => setPhoto(e.target.value)}
           />
         </label>
-        <label htmlFor='messagge' className='textarea'>
+        <label htmlFor='text' className='textarea'>
           <span>Message</span>
-          <textarea onChange={(e) => setMessage(e.target.value)} />
+          <textarea onChange={(e) => setText(e.target.value)} />
         </label>
 
         <div style={{ width: '100%', display: 'block' }}>
           {error && <span>There was an error on mail sending, retry!</span>}
           {loading && <span>Mail Sending...</span>}
-          {data !== undefined && data.sendEmail.sent ? (
-            <span>Mail sended</span>
-          ) : (
-            <span>Mail not sended</span>
-          )}
+          {data && <span>{data.sendEmail.message}</span>}
         </div>
         <input type='submit' className='button__black submit' />
       </form>
