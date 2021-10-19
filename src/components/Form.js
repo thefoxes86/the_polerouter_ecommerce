@@ -9,6 +9,14 @@ export default function Form() {
   const [photo, setPhoto] = useState();
   const [text, setText] = useState();
 
+  const msg = {
+    to: 'nicola.volpi86@gmail.com',
+    from: mail, // Use the email address or domain you verified above
+    subject: 'Sending with Twilio SendGrid is Fun',
+    text: text,
+    html: '<strong>' + text + '</strong>',
+  };
+
   const [sendEmail, { data, loading, error }] = useMutation(
     SEND_EMAIL_MUTATION,
     {
@@ -29,21 +37,26 @@ export default function Form() {
     }
   );
 
-  const handleSubmit = (e) => {
+  const handleResponse = (status, msg) => {
+    if (status === 200) {
+      console.log(status + ' - ' + msg);
+    } else {
+      console.log(status + ' - ' + msg);
+    }
+  };
+
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post('https://thepolerouter.com/wp-json/wp/v2/wpcf7_contact_form/10/', {
-        nome: name,
-        email: mail,
-        photo,
-        'your-message': text,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+    const res = await fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: mail, message: text, file: photo }),
+    });
+    const textRes = await res.text();
+    handleResponse(res.status, textRes);
   };
 
   return (
@@ -78,7 +91,7 @@ export default function Form() {
         </div>
         <input
           type='submit'
-          onClick={handleSubmit}
+          onClick={handleOnSubmit}
           className='button__black submit'
         />
       </form>
