@@ -8,14 +8,8 @@ export default function Form() {
   const [mail, setMail] = useState();
   const [photo, setPhoto] = useState();
   const [text, setText] = useState();
-
-  const msg = {
-    to: 'nicola.volpi86@gmail.com',
-    from: mail, // Use the email address or domain you verified above
-    subject: 'Sending with Twilio SendGrid is Fun',
-    text: text,
-    html: '<strong>' + text + '</strong>',
-  };
+  const [sending, setSending] = useState(false);
+  const [sendedResponse, setSendedResponse] = useState();
 
   const [sendEmail, { data, loading, error }] = useMutation(
     SEND_EMAIL_MUTATION,
@@ -40,20 +34,29 @@ export default function Form() {
   const handleResponse = (status, msg) => {
     if (status === 200) {
       console.log(status + ' - ' + msg);
+      setSendedResponse(msg);
     } else {
       console.log(status + ' - ' + msg);
+      setSendedResponse(msg);
     }
+    setSending(false);
   };
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    setSending(true);
 
     const res = await fetch('/api/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: mail, message: text, file: photo }),
+      body: JSON.stringify({
+        email: mail,
+        message: text,
+        file: photo,
+        name: name,
+      }),
     });
     const textRes = await res.text();
     handleResponse(res.status, textRes);
@@ -61,7 +64,7 @@ export default function Form() {
 
   return (
     <React.Fragment>
-      <form className='form__contact'>
+      <form className='form__contact' enctype='multipart/form-data'>
         {/* register your input into the hook by invoking the "register" function */}
         <label htmlFor='name' className='input__1'>
           <span>Name</span>
@@ -94,6 +97,8 @@ export default function Form() {
           onClick={handleOnSubmit}
           className='button__black submit'
         />
+        {sending && <span>Mail is sending</span>}
+        {sendedResponse && <span>{sendedResponse}</span>}
       </form>
     </React.Fragment>
   );
