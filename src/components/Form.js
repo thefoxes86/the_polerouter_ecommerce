@@ -6,30 +6,10 @@ import SEND_EMAIL_MUTATION from '../mutations/sendmail';
 export default function Form() {
   const [name, setName] = useState();
   const [mail, setMail] = useState();
-  const [photo, setPhoto] = useState();
+  const [subject, setSubject] = useState();
   const [text, setText] = useState();
   const [sending, setSending] = useState(false);
   const [sendedResponse, setSendedResponse] = useState();
-
-  const [sendEmail, { data, loading, error }] = useMutation(
-    SEND_EMAIL_MUTATION,
-    {
-      variables: {
-        name,
-        mail,
-        photo,
-        text,
-      },
-      onCompleted: (event) => {
-        console.log(event);
-        // On Success:
-        // 1. Make the GET_CART query to update the cart with new values in React context.
-      },
-      onError: (error) => {
-        console.log(error);
-      },
-    }
-  );
 
   const handleResponse = (status, msg) => {
     if (status === 200) {
@@ -54,7 +34,7 @@ export default function Form() {
       body: JSON.stringify({
         email: mail,
         message: text,
-        file: photo,
+        subject: subject,
         name: name,
       }),
     });
@@ -75,23 +55,14 @@ export default function Form() {
           <input onChange={(e) => setMail(e.target.value)} />
         </label>
         <label htmlFor='photo' className='input__3'>
-          <span>Photo</span>
-          <input
-            type='file'
-            placeholder='no file chosen'
-            onChange={(e) => setPhoto(e.target.value)}
-          />
+          <span>Subject</span>
+          <input type='input' onChange={(e) => setSubject(e.target.value)} />
         </label>
         <label htmlFor='text' className='textarea'>
           <span>Message</span>
           <textarea onChange={(e) => setText(e.target.value)} />
         </label>
 
-        <div style={{ width: '100%', display: 'block' }}>
-          {error && <span>There was an error on mail sending, retry!</span>}
-          {loading && <span>Mail Sending...</span>}
-          {data && <span>{data.sendEmail.message}</span>}
-        </div>
         <input
           type='submit'
           onClick={handleOnSubmit}

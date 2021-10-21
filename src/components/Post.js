@@ -1,35 +1,35 @@
-import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { getMonthAndYear, removeTags, reduceText } from "../functions";
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { getMonthAndYear, removeTags, reduceText } from '../functions';
 import {
   transition,
   thumbnailVariants,
   frameVariants,
   imageVariants,
-} from "../constants/variablesMation";
+} from '../constants/variablesMation';
 
 export default function Post(props) {
   return (
     <motion.div
       key={props.data.slug}
       variants={thumbnailVariants}
-      initial="initial"
-      animate="enter"
-      exit="exit"
+      initial='initial'
+      animate='enter'
+      exit='exit'
     >
-      <motion.div className="thumbnail">
+      <motion.div className='thumbnail'>
         <motion.div
-          className="frame"
+          className='frame'
           layoutId={props.data.featuredImage.node.link}
-          whileHover="hover"
+          whileHover='hover'
           variants={frameVariants}
           transition={transition}
         >
           <Link href={`/journal/${props.data.slug}`}>
             <a>
               <motion.img
-                whileHover="hover"
+                whileHover='hover'
                 variants={imageVariants}
                 transition={transition}
                 src={props.data.featuredImage.node.link}
@@ -48,9 +48,13 @@ export default function Post(props) {
           dangerouslySetInnerHTML={{ __html: props.data.title }}
         ></motion.h3>
       </Link>
-      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        {reduceText(removeTags(props.data.content), 200, '...')}
-      </motion.p>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        dangerouslySetInnerHTML={{
+          __html: reduceText(removeTags(props.data.content), 200, '...'),
+        }}
+      ></motion.p>
     </motion.div>
   );
 }

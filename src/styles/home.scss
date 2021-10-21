@@ -359,6 +359,7 @@
         "column2"
         "button";
 
+
       .hero__post {
         a::after,
         a::before {
@@ -366,8 +367,13 @@
         }
       }
 
+
       .column {
         margin-top: 30px;
+
+        div:nth-child(2) {
+          margin-top: 30px;
+        }
 
         a::after,
         a::before {

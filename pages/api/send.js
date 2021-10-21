@@ -1,26 +1,17 @@
 import sgMail from '@sendgrid/mail';
-const fs = require('file-system');
 
 export default async function (req, res) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-  const { email, name, message, file } = req.body;
+  const { email, name, message, subject } = req.body;
   // var bitmap = fs.readFileSync(file);
-  const imageBuffer64 = new Buffer(file).toString('base64');
 
   const content = {
-    to: 'nicola.volpi86@gmail.com',
+    to: 'enquiries@thepolerouter.com',
     from: 'enquiries@thepolerouter.com',
-    subject: `New Message From - ${name}`,
+    subject: `New Message: ${subject}`,
     text: message,
-    html: `<p><strong>${name} - ${email}</strong></p><p>${message}</p><img src="cid:myimagecid" />`,
-    attachments: [
-      {
-        filename: 'image.jpeg',
-        content: imageBuffer64,
-        content_id: 'myimagecid',
-      },
-    ],
+    html: `<html><body><p><strong>${name} - ${email} - ${subject}</strong></p><p>${message}</p></body></html>`,
   };
 
   try {
