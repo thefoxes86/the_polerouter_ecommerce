@@ -191,6 +191,10 @@
       grid-area: featuredimage;
     }
 
+    .wp-block-column {
+      width: 100% !important;
+    }
+
     .content {
       .wp-block-column:first-child:nth-last-child(1), .wp-block-column:first-child:nth-last-child(1) ~ .wp-block-column {
         width: 100%;
