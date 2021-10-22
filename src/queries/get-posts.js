@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 /**
  * GraphQL countries query.
@@ -22,6 +22,8 @@ const GET_POSTS = gql`
           node {
             altText
             link
+            sourceUrl
+            srcSet
           }
         }
         excerpt(format: RENDERED)

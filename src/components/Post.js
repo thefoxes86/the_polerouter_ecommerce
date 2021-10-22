@@ -33,6 +33,7 @@ export default function Post(props) {
                 variants={imageVariants}
                 transition={transition}
                 src={props.data.featuredImage.node.link}
+                srcSet={props.data.featuredImage.node.srcSet}
                 alt={props.data.featuredImage.node.altText}
               />
             </a>
