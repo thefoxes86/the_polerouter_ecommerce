@@ -118,10 +118,12 @@
   .print_1 {
     grid-area: print2;
   }
+
 }
 
 .container__journal {
   padding-top: 5vh;
+  padding-bottom: 5vh;
   width: 100vw;
   height: auto;
   background-color: white;

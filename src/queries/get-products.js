@@ -14,6 +14,11 @@ const GET_PRODUCTS = gql`
           title(format: RENDERED)
           link
         }
+        productCategories {
+          nodes {
+            name
+          }
+        }
         link
         slug
         sku

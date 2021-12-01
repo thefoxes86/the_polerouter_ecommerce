@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 /**
  * GraphQL countries query.
@@ -49,6 +49,11 @@ const GET_HOME = gql`
           link
           sourceUrl(size: LARGE)
           title(format: RENDERED)
+        }
+        productCategories {
+          nodes {
+            name
+          }
         }
         link
         slug
