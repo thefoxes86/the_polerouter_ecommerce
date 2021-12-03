@@ -1,13 +1,13 @@
-import { useState, useContext } from "react";
-import { useQuery, useMutation } from "@apollo/client";
-import Link from "next/link";
-import { v4 } from "uuid";
-import cx from "classnames";
-import { useRouter } from "next/router";
-import { AppContext } from "../context/AppContext";
-import { getFormattedCart } from "../../functions";
-import GET_CART from "../../queries/get-cart";
-import ADD_TO_CART from "../../mutations/add-to-cart";
+import { useState, useContext } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
+import Link from 'next/link';
+import { v4 } from 'uuid';
+import cx from 'classnames';
+import { useRouter } from 'next/router';
+import { AppContext } from '../context/AppContext';
+import { getFormattedCart } from '../../functions';
+import GET_CART from '../../queries/get-cart';
+import ADD_TO_CART from '../../mutations/add-to-cart';
 
 const AddToCart = (props) => {
   const { product } = props;
@@ -28,13 +28,12 @@ const AddToCart = (props) => {
     onCompleted: () => {
       // Update cart in the localStorage.
       const updatedCart = getFormattedCart(data);
-      console.log(data);
       data.cart.contents.nodes.forEach((element) => {
         if (element.product.node.id === product.id) {
           // Disable button after 1 product added. Max product buyable 1
           setDisableButton(true);
         } else {
-          localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+          localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
         }
       });
 
@@ -61,7 +60,7 @@ const AddToCart = (props) => {
     },
     onError: (error) => {
       if (error) {
-        setRequestError(error?.graphQLErrors?.[0]?.message ?? "");
+        setRequestError(error?.graphQLErrors?.[0]?.message ?? '');
       }
     },
   });
@@ -74,11 +73,11 @@ const AddToCart = (props) => {
   return (
     <div>
       {/*	Check if its an external product then put its external buy link */}
-      {"ExternalProduct" === product.__typename ? (
+      {'ExternalProduct' === product.__typename ? (
         <a
-          href={product?.externalUrl ?? "/"}
-          target="_blank"
-          className="addToCart"
+          href={product?.externalUrl ?? '/'}
+          target='_blank'
+          className='addToCart'
         >
           Buy now
         </a>
@@ -87,18 +86,18 @@ const AddToCart = (props) => {
           disabled={addToCartLoading || disableButton}
           onClick={handleAddToCartClick}
           className={cx(
-            "addToCart",
+            'addToCart',
             {
-              "": !addToCartLoading,
+              '': !addToCartLoading,
             },
-            { "opacity-50 cursor-not-allowed": addToCartLoading }
+            { 'opacity-50 cursor-not-allowed': addToCartLoading }
           )}
         >
           {addToCartLoading
-            ? "Adding to cart..."
+            ? 'Adding to cart...'
             : disableButton
-            ? "Already added to cart"
-            : "Add to cart"}
+            ? 'Already added to cart'
+            : 'Add to cart'}
         </button>
       )}
       {/* {showViewCart ? (

@@ -72,12 +72,13 @@ const Nav = () => {
             <Link exact href='/prints'>
               <a className='item'>Prints</a>
             </Link>
-            <Link exact href='/rarities'>
-              <a className='item'>Rarities</a>
-            </Link>
             <Link exact href='/journal'>
               <a className='item'>Journal</a>
             </Link>
+            <Link exact href='/rarities'>
+              <a className='item'>Rarities</a>
+            </Link>
+
             <Link exact href='/contact-us'>
               <a className='item'>Contact Us</a>
             </Link>

@@ -102,7 +102,12 @@ export default function Product(props) {
               {product.stockQuantity > 0 ? (
                 <AddToCartButton product={product} />
               ) : (
-                <p>The product is out of stock</p>
+                <button
+                  disabled='disabled'
+                  className='addToCart opacity-50 cursor-not-allowed'
+                >
+                  SOLD
+                </button>
               )}
             </motion.div>
           </div>
