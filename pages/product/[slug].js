@@ -111,8 +111,8 @@ export default function Product(props) {
               )}
               {product.productId === 74 || product.productId === 73 ? (
                 <p style={{ marginTop: 20, fontStyle: 'italic' }}>
-                  Free poster with every set of Postcards purchased whilst
-                  stocks last. Just add the Postcards to your cart and we’ll
+                  Free poster with every set of postcards purchased whilst
+                  stocks last. Just add the postcards to your cart and we’ll
                   include a free poster with your order.
                 </p>
               ) : (
