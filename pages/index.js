@@ -7,6 +7,7 @@ import Print1 from '../src/components/Print1';
 import Print0 from '../src/components/Print0';
 import Post from '../src/components/Post';
 import { column, containerJournal } from '../src/constants/variablesMation';
+import ComingSoon from '../src/components/ComingSoon';
 
 export default function Home(props) {
   return (
@@ -26,9 +27,10 @@ export default function Home(props) {
           <div className='scroll__down'>scroll down</div>
         </div>
       </div>
-      <div className='container__prints'>
-        <h1 className='title'>PRINTS</h1>
-        {props.products &&
+      <div className='container__coming_autumn'>
+        {/* <h1 className='title'>PRINTS</h1> */}
+        <ComingSoon />
+        {/* {props.products &&
           props.products.map((product, index) => {
             return (
               <>
@@ -59,8 +61,9 @@ export default function Home(props) {
                 ))}
               </>
             );
-          })}
+          })} */}
       </div>
+      {/*       
       <div className='container__journal'>
         <h1 className='title'>JOURNAL</h1>
         <motion.div className='container__posts' variants={containerJournal}>
@@ -147,7 +150,7 @@ export default function Home(props) {
               </>
             );
           })}
-      </div>
+      </div> */}
     </Layout>
   );
 }

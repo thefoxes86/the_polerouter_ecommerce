@@ -69,7 +69,7 @@ const Nav = () => {
             <Link exact href='/'>
               <a className='item'>Home</a>
             </Link>
-            <Link exact href='/prints'>
+            {/* <Link exact href='/prints'>
               <a className='item'>Prints</a>
             </Link>
             <Link exact href='/journal'>
@@ -77,7 +77,7 @@ const Nav = () => {
             </Link>
             <Link exact href='/rarities'>
               <a className='item'>Rarities</a>
-            </Link>
+            </Link> */}
 
             <Link exact href='/contact-us'>
               <a className='item'>Contact Us</a>

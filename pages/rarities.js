@@ -54,6 +54,7 @@ export async function getStaticProps() {
   });
 
   return {
+    notFound: true,
     props: {
       products: data?.products?.nodes ? data.products.nodes : [],
     },

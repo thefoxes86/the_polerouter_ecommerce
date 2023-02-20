@@ -22,7 +22,7 @@
   }
   .hero__image {
     grid-area: heroimage;
-    background-image: url("/img/img_home.png");
+    background-image: url("/img/venezuela.jpg");
     background-size: cover;
   }
   .description {
@@ -50,6 +50,23 @@
         bottom: 3px;
       }
     }
+  }
+}
+
+.container__coming_autumn {
+  width: 100vw;
+  min-height: 85vh;
+  background-color: $darkGrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    color: white;
+    text-transform: uppercase;
+    display: grid;
+    align-items: center;
+    font-size: 3rem;
   }
 }
 
