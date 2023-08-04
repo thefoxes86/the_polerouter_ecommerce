@@ -3,7 +3,7 @@
   height: 100vh;
   background-color: $lightGrey;
   display: grid;
-  grid-template-columns: 45% auto 35%;
+  grid-template-columns: 40% auto 40%;
   grid-template-rows: 35% auto;
   grid-template-areas:
     "logo . heroimage"
@@ -22,8 +22,9 @@
   }
   .hero__image {
     grid-area: heroimage;
-    background-image: url("/img/venezuela.jpg");
+    background-image: url("/img/book.jpg");
     background-size: cover;
+    background-position: center;
   }
   .description {
     grid-area: description;
@@ -401,7 +402,7 @@
       }
     }
     .hero__image {
-      background-image: url("/img/venezuela.jpg");
+      background-image: url("/img/book.jpg");
       height: 500px;
       margin: -200px 20px 80px 20px;
       background-color: $lightGrey;

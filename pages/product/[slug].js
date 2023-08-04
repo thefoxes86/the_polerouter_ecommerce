@@ -120,6 +120,16 @@ export default function Product(props) {
               )}
             </motion.div>
           </div>
+          <div className='product__issue'>
+            <div className='container_iframe'>
+              <iframe
+                allow='clipboard-write'
+                sandbox='allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups allow-modals allow-popups-to-escape-sandbox allow-forms'
+                allowfullscreen='true'
+                src='https://e.issuu.com/embed.html?d=issuu-single-pages&hideIssuuLogo=true&hideShareButton=true&showOtherPublicationsAsSuggestions=true&u=thepolerouter'
+              ></iframe>
+            </div>
+          </div>
         </div>
       ) : (
         ''

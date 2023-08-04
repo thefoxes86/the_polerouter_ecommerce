@@ -37,38 +37,27 @@ export default function Home(props) {
       </div>
       <div className='container__book'>
         {/* <ComingSoon /> */}
-        {props.products &&
-          props.products.map((product, index) => {
-            return (
-              <>
-                {product.productCategories.nodes.map(({ name }, i) => (
-                  <>
-                    {name === 'Book' && (
-                      <>
-                        {index === 1 ? (
-                          <Print0
-                            key={index}
-                            index={index}
-                            sourceUrl={product.image.sourceUrl}
-                            slug={product.slug}
-                            title={product.name}
-                          />
-                        ) : (
-                          <Print1
-                            key={index}
-                            index={index}
-                            sourceUrl={product.image.sourceUrl}
-                            slug={product.slug}
-                            title={product.name}
-                          />
-                        )}
-                      </>
-                    )}
-                  </>
-                ))}
-              </>
-            );
-          })}
+        {props?.products?.map((product, index) => (
+          <>
+            {index === 1 ? (
+              <Print0
+                key={index}
+                index={index}
+                sourceUrl={product.image.sourceUrl}
+                slug={product.slug}
+                title={product.name}
+              />
+            ) : (
+              <Print1
+                key={index}
+                index={index}
+                sourceUrl={product.image.sourceUrl}
+                slug={product.slug}
+                title={product.name}
+              />
+            )}
+          </>
+        ))}
       </div>
       {/*       
       <div className='container__journal'>

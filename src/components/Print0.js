@@ -27,7 +27,6 @@ export default function Print0(props) {
       >
         <motion.div
           className={`frame ${inView ? 'active' : ''}`}
-          layoutId={props.sourceUrl}
           whileHover='hover'
           variants={frameVariants}
           transition={transition}

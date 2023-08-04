@@ -20,12 +20,12 @@ export default function PreOrder(props) {
           PRE ORDER
         </motion.h1>
         {props.products &&
-          props.products.slice(0, 2).map((product, index) => {
+          props?.products.map((product, index) => {
             return (
               <>
-                {index === 0 ? (
+                {index === 1 ? (
                   <Print0
-                    ey={index}
+                    key={index}
                     index={index}
                     sourceUrl={product.image.sourceUrl}
                     slug={product.slug}
