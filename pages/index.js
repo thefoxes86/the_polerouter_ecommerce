@@ -8,6 +8,7 @@ import Print0 from '../src/components/Print0';
 import Post from '../src/components/Post';
 import { column, containerJournal } from '../src/constants/variablesMation';
 import ComingSoon from '../src/components/ComingSoon';
+import Testimonsials from '../src/components/Testimonals';
 
 export default function Home(props) {
   return (
@@ -15,6 +16,9 @@ export default function Home(props) {
       <div className='container__hero'>
         <div className='logo'>
           <img src='/img/logo.png' alt='' />
+          <Link href='/pre-order'>
+            <button className='button'>Pre Order</button>
+          </Link>
         </div>
         <div className='hero__image'></div>
         <div className='description'>
@@ -24,19 +28,22 @@ export default function Home(props) {
             ON THE UNIVERSAL GENÈVE POLEROUTER. <br />A CELEBRATION OF ITS
             HISTORY, DESIGN AND DIVERSITY.
           </p>
+
           <div className='scroll__down'>scroll down</div>
         </div>
       </div>
-      <div className='container__coming_autumn'>
-        {/* <h1 className='title'>PRINTS</h1> */}
-        <ComingSoon />
-        {/* {props.products &&
+      <div className='container__testimonials'>
+        <Testimonsials />
+      </div>
+      <div className='container__book'>
+        {/* <ComingSoon /> */}
+        {props.products &&
           props.products.map((product, index) => {
             return (
               <>
                 {product.productCategories.nodes.map(({ name }, i) => (
                   <>
-                    {name === 'Poster' && (
+                    {name === 'Book' && (
                       <>
                         {index === 1 ? (
                           <Print0
@@ -61,7 +68,7 @@ export default function Home(props) {
                 ))}
               </>
             );
-          })} */}
+          })}
       </div>
       {/*       
       <div className='container__journal'>

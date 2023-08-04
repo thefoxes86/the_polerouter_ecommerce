@@ -21,7 +21,7 @@ const Nav = () => {
         ? setNavPosition({ top: 0 })
         : setNavPosition({ top: -120 });
     } else {
-      currentScroll > 50
+      currentScroll > 20
         ? setNavPosition({ top: 0 })
         : setNavPosition({ top: -120 });
     }
@@ -41,7 +41,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav style={navPosition}>
+    <nav id='navbar_polerouter' style={navPosition}>
       <div className='menu__container'>
         <div className='logo__menu'>
           <Link exact href='/'>
@@ -69,15 +69,14 @@ const Nav = () => {
             <Link exact href='/'>
               <a className='item'>Home</a>
             </Link>
-            {/* <Link exact href='/prints'>
-              <a className='item'>Prints</a>
+
+            <Link exact href='/book'>
+              <a className='item'>The Book</a>
             </Link>
-            <Link exact href='/journal'>
-              <a className='item'>Journal</a>
+
+            <Link exact href='/pre-order'>
+              <a className='item'>Pre Order</a>
             </Link>
-            <Link exact href='/rarities'>
-              <a className='item'>Rarities</a>
-            </Link> */}
 
             <Link exact href='/contact-us'>
               <a className='item'>Contact Us</a>

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import Link from 'next/link';
 import { v4 } from 'uuid';
@@ -25,19 +25,23 @@ const AddToCart = (props) => {
   // Get Cart Data.
   const { data, refetch } = useQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
-    onCompleted: () => {
+    onCompleted: (res) => {
       // Update cart in the localStorage.
       const updatedCart = getFormattedCart(data);
-      data.cart.contents.nodes.forEach((element) => {
-        if (element.product.node.id === product.id) {
-          // Disable button after 1 product added. Max product buyable 1
+
+      // Update cart data in React Context.
+      res?.cart?.contens?.nodes?.forEach((element) => {
+        if (
+          element?.product?.node?.productId ===
+            parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART) &&
+          props.product.productId ==
+            parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
+        ) {
           setDisableButton(true);
         } else {
           localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
         }
       });
-
-      // Update cart data in React Context.
       setCart(updatedCart);
     },
   });
@@ -51,6 +55,17 @@ const AddToCart = (props) => {
       input: productQryInput,
     },
     onCompleted: () => {
+      const currentScroll = window.scrollY;
+      const navbar = document.getElementById('navbar_polerouter');
+
+      if (navbar && currentScroll < 20) {
+        navbar.classList.add('animate_navbar');
+
+        setTimeout(() => {
+          navbar.classList.remove('animate_navbar');
+        }, 4000);
+      }
+
       // On Success:
       // 1. Make the GET_CART query to update the cart with new values in React context.
       refetch();
@@ -64,6 +79,20 @@ const AddToCart = (props) => {
       }
     },
   });
+
+  useEffect(() => {
+    cart?.products?.forEach((element) => {
+      if (
+        element?.productId ===
+          parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART) &&
+        props.product.productId ===
+          parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
+      ) {
+        console.log('disable 1');
+        setDisableButton(true);
+      }
+    });
+  }, [cart]);
 
   const handleAddToCartClick = async () => {
     setRequestError(null);
@@ -83,20 +112,14 @@ const AddToCart = (props) => {
         </a>
       ) : (
         <button
-          disabled={addToCartLoading || disableButton}
+          disabled={disableButton}
           onClick={handleAddToCartClick}
-          className={cx(
-            'addToCart',
-            {
-              '': !addToCartLoading,
-            },
-            { 'opacity-50 cursor-not-allowed': addToCartLoading }
-          )}
+          className={cx('addToCart')}
         >
           {addToCartLoading
             ? 'Adding to cart...'
             : disableButton
-            ? 'Already added to cart'
+            ? 'Product already added'
             : 'Add to cart'}
         </button>
       )}

@@ -20,10 +20,10 @@ const Layout = (props) => {
         <div>
           <Helmet>
             <Head>
-              <title>Woocommerce React Theme</title>
+              <title>The Polerouter Book</title>
             </Head>
           </Helmet>
-          {/* <Header /> */}
+          <Header />
           {props.children}
           <Footer />
         </div>

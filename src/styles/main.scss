@@ -47,6 +47,11 @@ h3 {
   border: 1px solid $gold;
   text-transform: uppercase;
   margin-bottom: 20px;
+  transition: 0.25s all ease;
+  &:hover {
+    background-color: $gold;
+    color: white;
+  }
 }
 .button__black {
   @extend .button;

@@ -13,7 +13,7 @@
     "@svgr/cli": "^5.5.0",
     "axios": "^0.23.0",
     "classnames": "^2.3.1",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "4.1.17",
     "graphql": "^15.4.0",
     "lodash": "^4.17.20",
     "next": "^10.1.3",

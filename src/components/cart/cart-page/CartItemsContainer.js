@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../context/AppContext";
-import { getFormattedCart, getUpdatedItems } from "../../../functions";
-import CartItem from "./CartItem";
-import { v4 } from "uuid";
-import { useMutation, useQuery } from "@apollo/client";
-import UPDATE_CART from "../../../mutations/update-cart";
-import GET_CART from "../../../queries/get-cart";
-import CLEAR_CART_MUTATION from "../../../mutations/clear-cart";
-import { isEmpty } from "lodash";
+import Link from 'next/link';
+import { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../../context/AppContext';
+import { getFormattedCart, getUpdatedItems } from '../../../functions';
+import CartItem from './CartItem';
+import { v4 } from 'uuid';
+import { useMutation, useQuery } from '@apollo/client';
+import UPDATE_CART from '../../../mutations/update-cart';
+import GET_CART from '../../../queries/get-cart';
+import CLEAR_CART_MUTATION from '../../../mutations/clear-cart';
+import { isEmpty } from 'lodash';
 
 const CartItemsContainer = () => {
   // @TODO wil use it in future variations of the project.
@@ -21,7 +21,7 @@ const CartItemsContainer = () => {
     onCompleted: () => {
       // Update cart in the localStorage.
       const updatedCart = getFormattedCart(data);
-      localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+      localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
 
       // Update cart data in React Context.
       setCart(updatedCart);
@@ -44,7 +44,7 @@ const CartItemsContainer = () => {
       if (error) {
         const errorMessage = error?.graphQLErrors?.[0]?.message
           ? error.graphQLErrors[0].message
-          : "";
+          : '';
         setRequestError(errorMessage);
       }
     },
@@ -62,7 +62,7 @@ const CartItemsContainer = () => {
       if (error) {
         const errorMessage = !isEmpty(error?.graphQLErrors?.[0])
           ? error.graphQLErrors[0]?.message
-          : "";
+          : '';
         setRequestError(errorMessage);
       }
     },
@@ -122,21 +122,21 @@ const CartItemsContainer = () => {
   };
 
   return (
-    <div className="cart product-cart-container">
+    <div className='cart product-cart-container'>
       {cart ? (
         <>
-          <h1 className="title">Cart</h1>
+          <h1 className='title'>Cart</h1>
 
-          <div className="table__cart">
-            <table className="cart-products">
-              <thead className="text-left">
-                <tr className="woo-next-cart-head-container header-desktop-only">
-                  <th scope="col" />
-                  <th scope="col" />
-                  <th scope="col">Product</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Total</th>
+          <div className='table__cart'>
+            <table className='cart-products'>
+              <thead className='text-left'>
+                <tr className='woo-next-cart-head-container header-desktop-only'>
+                  <th scope='col' />
+                  <th scope='col' />
+                  <th scope='col'>Product</th>
+                  <th scope='col'>Price</th>
+                  <th scope='col'>Quantity</th>
+                  <th scope='col'>Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -157,27 +157,27 @@ const CartItemsContainer = () => {
 
           {/*Cart Total*/}
 
-          <div className="sub__total">
+          <div className='sub__total'>
             {/* <h2 className="text-2xl">Cart Total</h2> */}
             <table>
               <tbody>
                 <tr>
-                  <td className="">
+                  <td className=''>
                     Total
-                    <span className="price">£{totalCart()}</span>
+                    <span className='price'>£{totalCart()}</span>
                   </td>
                 </tr>
                 <tr>
-                  <td className="">
+                  <td className=''>
                     Shipping Cost
-                    <span className="price">£15.00</span>
+                    <span className='price'>£15.00</span>
                   </td>
                 </tr>
                 <tr>
-                  <td className="">
+                  <td className=''>
                     Subtotal
-                    <span className="price">
-                      {"string" !== typeof cart.totalProductsPrice
+                    <span className='price'>
+                      {'string' !== typeof cart.totalProductsPrice
                         ? cart.totalProductsPrice.toFixed(2)
                         : cart.totalProductsPrice}
                     </span>
@@ -186,26 +186,26 @@ const CartItemsContainer = () => {
               </tbody>
             </table>
 
-            <Link href="/checkout">
-              <a className="button__black n-block">Check out</a>
+            <Link href='/checkout'>
+              <a className='button__black n-block'>Check out</a>
             </Link>
           </div>
 
           {/* Display Errors if any */}
           {requestError ? (
-            <div className="row woo-next-cart-total-container mt-5">
-              {" "}
-              {requestError}{" "}
+            <div className='row woo-next-cart-total-container mt-5'>
+              {' '}
+              {requestError}{' '}
             </div>
           ) : (
-            ""
+            ''
           )}
         </>
       ) : (
         <>
-          <h2 className="title">No items in the cart</h2>
-          <Link href="/prints">
-            <a className="button__black continue__button">Add New Products</a>
+          <h2 className='title'>No items in the cart</h2>
+          <Link href='/pre-order'>
+            <a className='button__black continue__button'>Add New Products</a>
           </Link>
         </>
       )}

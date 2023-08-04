@@ -106,7 +106,7 @@ export default function Product(props) {
                   disabled='disabled'
                   className='addToCart opacity-50 cursor-not-allowed'
                 >
-                  SOLD
+                  SOLD OUT
                 </button>
               )}
               {product.productId === 74 || product.productId === 73 ? (

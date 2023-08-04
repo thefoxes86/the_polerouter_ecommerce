@@ -70,11 +70,103 @@
     font-size: 3.9rem;
   }
 }
+.container__book {
+  background-color: white;
+
+  .title {
+    color: $darkGrey;
+  }
+}
 
 .container__prints {
+  background-color: $darkGrey;
+
+  .title {
+    color: white;
+  }
+}
+
+.container__testimonials {
   width: 100vw;
   min-height: 100vh;
   background-color: $darkGrey;
+  display: grid;
+  grid-template-columns: auto 35% 35% auto;
+  grid-template-rows: 1vh auto 1vh;
+  grid-template-areas:
+    ". . . ."
+    ". firstcol secondcol ."
+    ". . . .";
+  column-gap: 2rem;
+  font-family: "Bodoni";
+}
+
+.firstCol {
+  grid-area: firstcol;
+  padding-top: 10vh;
+}
+
+.secondCol {
+  grid-area: secondcol;
+  padding-bottom: 5vh;
+}
+
+.firstCol, .secondCol {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container__testimonials .testimonial {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.container__testimonials .testimonial .bigText {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  line-height: 32px;
+}
+.container__testimonials .testimonial .mediumText {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+.container__testimonials .testimonial .smallText {
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-weight: 300;
+  
+}
+
+.container__testimonials .testimonial .author_name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 0;
+  
+}
+.container__testimonials .testimonial .author_role {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  margin-top: -5px;
+}
+
+.full-width {
+  width: 100%;
+}
+.container__prints, .container__book {
+  width: 100vw;
+  min-height: 100vh;
+  
   display: grid;
   padding-top: 5vh;
   grid-template-columns: 10% auto 15% auto 10%;
@@ -87,7 +179,7 @@
 
   .title {
     grid-area: title;
-    color: white;
+    
     text-transform: uppercase;
     display: grid;
     align-items: center;
@@ -109,6 +201,7 @@
         position: absolute;
         height: 100%;
         display: flex;
+        text-align: center;
         font-family: "Bodoni";
         align-items: center;
         justify-content: center;
@@ -261,7 +354,7 @@
       justify-content: center;
 
       .frame {
-        overflow: hidden;
+        
         width: 100%;
         display: flex;
         align-items: center;
