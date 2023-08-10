@@ -86,11 +86,11 @@
   min-height: 100vh;
   background-color: $darkGrey;
   display: grid;
-  grid-template-columns: auto 35% 35% auto;
+  grid-template-columns: 3% 40% 3% auto;
   grid-template-rows: 1vh auto 1vh;
   grid-template-areas:
     ". . . ."
-    ". firstcol secondcol ."
+    ". firstcol . secondcol"
     ". . . .";
   column-gap: 2rem;
   font-family: "Bodoni";
@@ -98,12 +98,13 @@
 
 .firstCol {
   grid-area: firstcol;
-  padding-top: 10vh;
+  justify-content: center;
 }
 
 .secondCol {
   grid-area: secondcol;
-  padding-bottom: 5vh;
+  padding-right: 10%;
+  justify-content: space-around;
 }
 
 .firstCol, .secondCol {
@@ -111,15 +112,22 @@
   height: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 }
-
+.container__testimonials .book__image {
+  width: 100%;
+  display: block;
+  height: 60vh;
+  object-fit: cover;
+  
+}
 .container__testimonials .testimonial {
   color: white;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
+  text-align: left;
+  width: 100%;
 }
 
 .container__testimonials .testimonial .bigText {
@@ -129,14 +137,14 @@
   line-height: 32px;
 }
 .container__testimonials .testimonial .mediumText {
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 24px;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 22px;
   margin-bottom: 20px;
 }
 .container__testimonials .testimonial .smallText {
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 18px;
   margin-bottom: 20px;
   font-weight: 300;
   
@@ -408,6 +416,34 @@
     .title {
       color: $darkGrey;
     }
+  }
+
+  .container__testimonials {
+    grid-template-columns: 5% auto 5%;
+    grid-template-rows: 2% auto auto 2%;
+    grid-template-areas:
+      ". . ."
+      ". firstcol ."
+      ". secondcol ."
+      ". . .";
+    column-gap: 2rem;
+    row-gap: 5rem;
+    font-family: "Bodoni";
+  }
+
+  .firstCol {
+    
+    padding-top: 0;
+  }
+  
+  .secondCol {
+    grid-area: secondcol;
+    padding-bottom: 20px;
+    padding-right: 20px;
+  }
+
+  .container__testimonials .testimonial {
+    margin-top: 25%;
   }
 }
 

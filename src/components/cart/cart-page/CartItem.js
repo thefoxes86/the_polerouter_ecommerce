@@ -12,6 +12,7 @@ const CartItem = ({
 }) => {
   const [productCount, setProductCount] = useState(item.qty);
 
+  console.log('ITEM', item);
   /*
    * When user changes the qty from product input update the cart in localStorage
    * Also update the cart in global context
@@ -50,8 +51,6 @@ const CartItem = ({
     }
   };
 
-  console.log('item', item);
-
   return (
     <tr className='woo-next-cart-item' key={item.productId}>
       <th className='woo-next-cart-element woo-next-cart-el-close'>
@@ -81,15 +80,24 @@ const CartItem = ({
       <td className='woo-next-cart-element title-mobile-only'>quantity</td>
       <td className='woo-next-cart-element woo-next-cart-qty'>
         {/* @TODO Need to update this with graphQL query */}
-        {/* <input
-          type="number"
-          min="1"
+        <input
+          type='number'
+          min='1'
+          max={
+            item.productId ===
+            parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
+              ? 5
+              : item.productId ===
+                parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART)
+              ? 10
+              : 100
+          }
           data-cart-key={item.cartKey}
-          className={`woo-next-cart-qty-input form-control cursor-not-allowed`}
+          className={`woo-next-cart-qty-input form-control`}
           value={productCount}
           onChange={(event) => handleQtyChange(event, item.cartKey)}
-        /> */}
-        {productCount}
+        />
+        {/* {productCount} */}
       </td>
       <td className='woo-next-cart-element title-mobile-only'>total</td>
       <td className='woo-next-cart-element'>

@@ -82,6 +82,7 @@ const Nav = () => {
                     hash: '#section__book',
                   });
                 }
+                isMenuMobileOpen ? setMenuMobileOpen(false) : null;
               }}
               className='item'
               style={{ cursor: 'pointer' }}
