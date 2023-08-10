@@ -45,6 +45,10 @@ export default function Product(props) {
           >
             {product.name}
           </motion.h1>
+          <Price
+            salesPrice={product?.price}
+            regularPrice={product?.regularPrice}
+          />
           <motion.div
             initial='initial'
             animate='animate'
@@ -95,10 +99,6 @@ export default function Product(props) {
               variants={titlePost}
               className='details'
             >
-              <Price
-                salesPrice={product?.price}
-                regularPrice={product?.regularPrice}
-              />
               {product.stockQuantity > 0 ? (
                 <AddToCartButton product={product} />
               ) : (
@@ -109,15 +109,11 @@ export default function Product(props) {
                   SOLD OUT
                 </button>
               )}
-              {product.productId === 74 || product.productId === 73 ? (
-                <p style={{ marginTop: 20, fontStyle: 'italic' }}>
-                  Free poster with every set of postcards purchased whilst
-                  stocks last. Just add the postcards to your cart and we’ll
-                  include a free poster with your order.
-                </p>
-              ) : (
-                ''
-              )}
+
+              <p style={{ marginTop: 20, fontStyle: 'italic' }}>
+                Please see the cart for further details regarding this pre-order
+                phase
+              </p>
             </motion.div>
           </div>
           <div className='product__issue'>

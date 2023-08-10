@@ -44,7 +44,7 @@
   display: grid;
   grid-template-columns: 10% 20% auto 10%;
   grid-template-rows: 13vh auto auto auto;
-  grid-template-areas: ". title title ." ". continueButton . ." ". tableCart tableCart ." ". subTotal . .";
+  grid-template-areas: ". title title ." ". continueButton . ." ". tableCart tableCart ." ". subTotal generic_text .";
 
   .title {
     grid-area: title;
@@ -106,6 +106,18 @@
         display: none;
       }
     }
+  }
+
+  .generic_text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: black;
+    grid-area: generic_text;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -194,8 +206,8 @@
 @media only screen and (max-width: 568px) {
   .product-cart-container {
     grid-template-columns: 10% auto 10%;
-    grid-template-rows: 20vh auto auto auto;
-    grid-template-areas: ". title ." ". continueButton ." ". tableCart ." ". subTotal .";
+    grid-template-rows: 20vh auto auto auto auto;
+    grid-template-areas: ". title ." ". continueButton ." ". tableCart ." ". generic_text ." ". subTotal .";
 
     .table__cart {
       grid-area: tableCart;

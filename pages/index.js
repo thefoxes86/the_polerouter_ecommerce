@@ -9,16 +9,25 @@ import Post from '../src/components/Post';
 import { column, containerJournal } from '../src/constants/variablesMation';
 import ComingSoon from '../src/components/ComingSoon';
 import Testimonsials from '../src/components/Testimonals';
+import { useRef } from 'react';
 
 export default function Home(props) {
+  const refProduct = useRef();
   return (
     <Layout>
       <div className='container__hero'>
         <div className='logo'>
           <img src='/img/logo.png' alt='' />
-          <Link href='/pre-order'>
-            <button className='button'>Pre Order</button>
-          </Link>
+
+          <button
+            onClick={() =>
+              refProduct.current &&
+              refProduct.current.scrollIntoView({ behavior: 'smooth' })
+            }
+            className='button__gold'
+          >
+            Pre Order
+          </button>
         </div>
         <div className='hero__image'></div>
         <div className='description'>
@@ -35,11 +44,14 @@ export default function Home(props) {
       <div className='container__testimonials'>
         <Testimonsials />
       </div>
-      <div className='container__book'>
+      <div ref={refProduct} id='section__book' className='container__book'>
         {/* <ComingSoon /> */}
+        <p className='free_shipping__text'>
+          FREE SHIPPING <br></br>for pre orders
+        </p>
         {props?.products?.map((product, index) => (
           <>
-            {index === 1 ? (
+            {index === 0 ? (
               <Print0
                 key={index}
                 index={index}

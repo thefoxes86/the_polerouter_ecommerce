@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import Link from 'next/link';
 import { v4 } from 'uuid';
@@ -36,6 +36,13 @@ const AddToCart = (props) => {
             parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART) &&
           props.product.productId ==
             parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
+        ) {
+          setDisableButton(true);
+        } else if (
+          element?.productId ===
+            parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART) &&
+          props.product.productId ===
+            parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART)
         ) {
           setDisableButton(true);
         } else {
@@ -80,7 +87,14 @@ const AddToCart = (props) => {
     },
   });
 
+  // Maximum 5 pcs
+  const countLimitedEdition = useRef(0);
+
+  // Maximum 10 pcs
+  const countNormaldEdition = useRef(0);
   useEffect(() => {
+    let cartMounted = localStorage.getItem('woo-next-cart');
+    console.log('cartMounted', cartMounted);
     cart?.products?.forEach((element) => {
       if (
         element?.productId ===
@@ -88,11 +102,22 @@ const AddToCart = (props) => {
         props.product.productId ===
           parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
       ) {
-        console.log('disable 1');
-        setDisableButton(true);
+        console.log('product 1', element.qty);
+        countLimitedEdition.current = element.qty;
+        countLimitedEdition.current >= 5 && setDisableButton(true);
+      }
+      if (
+        element?.productId ===
+          parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART) &&
+        props.product.productId ===
+          parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART)
+      ) {
+        console.log('product 2', element.qty);
+        countNormaldEdition.current = element.qty;
+        countNormaldEdition.current >= 10 && setDisableButton(true);
       }
     });
-  }, [cart]);
+  }, [, cart]);
 
   const handleAddToCartClick = async () => {
     setRequestError(null);
@@ -119,8 +144,8 @@ const AddToCart = (props) => {
           {addToCartLoading
             ? 'Adding to cart...'
             : disableButton
-            ? 'Product already added'
-            : 'Add to cart'}
+            ? 'MAXIMUM ORDER REACHED'
+            : 'PRE ORDER'}
         </button>
       )}
       {/* {showViewCart ? (

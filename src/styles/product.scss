@@ -4,9 +4,10 @@
   background-color: white;
   display: grid;
   grid-template-columns: 10% 5% 30% auto 10%;
-  grid-template-rows: calc(20vh) auto 2vh auto 2vh;
+  grid-template-rows: 10vh 5vh auto 2vh auto 2vh;
   grid-template-areas:
     ". title title title ."
+    ". price price price ."
     ". gallery featuredimage contentText ."
     ". . . . ."
     ". issue issue issue ."
@@ -18,7 +19,7 @@
     color: black;
     text-transform: uppercase;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-start;
     position: relative;
     font-size: 1.6rem;
@@ -36,6 +37,12 @@
 
   .featuredImage {
     grid-area: featuredimage;
+  }
+  .price {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    grid-area: price;
   }
 
   .content {
@@ -86,7 +93,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 40%;
+      width: 80%;
       color: white;
       margin-top: 20px;
       transition: 0.25s all ease;
@@ -127,9 +134,10 @@
 @media only screen and (max-width: 568px) {
   .container__product {
     grid-template-columns: 10% auto 10%;
-    grid-template-rows: 20vh auto;
+    grid-template-rows: 5vh 5vh auto;
     grid-template-areas:
       ". title ."
+      ". price ."
       ". featuredimage ."
       ". gallery ."
       ". contentText ."
@@ -145,6 +153,7 @@
         margin-top: 1rem;
       }
     }
+    
 
     .content {
       .back {

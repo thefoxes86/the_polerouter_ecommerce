@@ -65,6 +65,14 @@ h3 {
   }
 }
 
+.button__gold {
+  @extend .button;
+  background-color: $gold;
+  border: 1px solid $gold;
+  color: white;
+  transition: 0.25s all ease;
+}
+
 // Tablet
 @media only screen and (max-width: 992px) {
 }

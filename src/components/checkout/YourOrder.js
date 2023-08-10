@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import CheckoutCartItem from "./CheckoutCartItem";
+import { Fragment } from 'react';
+import CheckoutCartItem from './CheckoutCartItem';
 
 const YourOrder = ({ cart }) => {
   return (
@@ -7,14 +7,14 @@ const YourOrder = ({ cart }) => {
       {cart ? (
         <Fragment>
           {/*Product Listing*/}
-          <table className="checkout-cart table table-hover w-full mb-10">
+          <table className='checkout-cart table table-hover w-full mb-10'>
             <thead>
-              <tr className="woo-next-cart-head-container text-left">
-                <th className="woo-next-cart-heading-el" scope="col" />
-                <th className="woo-next-cart-heading-el" scope="col">
+              <tr className='woo-next-cart-head-container text-left'>
+                <th className='woo-next-cart-heading-el' scope='col' />
+                <th className='woo-next-cart-heading-el' scope='col'>
                   Product
                 </th>
-                <th className="woo-next-cart-heading-el" scope="col">
+                <th className='woo-next-cart-heading-el' scope='col'>
                   Total
                 </th>
               </tr>
@@ -25,10 +25,10 @@ const YourOrder = ({ cart }) => {
                   <CheckoutCartItem key={item.productId} item={item} />
                 ))}
               {/*Total*/}
-              <tr className="">
-                <td className="" />
-                <td className="">Subtotal</td>
-                <td className="">{cart.totalProductsPrice}</td>
+              <tr className=''>
+                <td className='' />
+                <td className=''>Total</td>
+                <td className=''>{cart.totalProductsPrice}</td>
               </tr>
               {/* <tr className="">
 							<td className=""/>
@@ -39,7 +39,7 @@ const YourOrder = ({ cart }) => {
           </table>
         </Fragment>
       ) : (
-        ""
+        ''
       )}
     </Fragment>
   );

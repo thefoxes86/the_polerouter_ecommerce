@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { v4 } from "uuid";
-import { getUpdatedItems } from "../../../functions";
-import { Cross, Loading } from "../../icons";
+import { useState } from 'react';
+import { v4 } from 'uuid';
+import { getUpdatedItems } from '../../../functions';
+import { Cross, Loading } from '../../icons';
 
 const CartItem = ({
   item,
@@ -50,12 +50,14 @@ const CartItem = ({
     }
   };
 
+  console.log('item', item);
+
   return (
-    <tr className="woo-next-cart-item" key={item.productId}>
-      <th className="woo-next-cart-element woo-next-cart-el-close">
+    <tr className='woo-next-cart-item' key={item.productId}>
+      <th className='woo-next-cart-element woo-next-cart-el-close'>
         {/* Remove item */}
         <span
-          className="woo-next-cart-close-icon cursor-pointer"
+          className='woo-next-cart-close-icon cursor-pointer'
           onClick={(event) =>
             handleRemoveProductClick(event, item.cartKey, products)
           }
@@ -63,23 +65,21 @@ const CartItem = ({
           <Cross />
         </span>
       </th>
-      <td className="woo-next-cart-element">
+      <td className='woo-next-cart-element'>
         <img
-          width="64"
+          width='64'
           src={item.image.sourceUrl}
           srcSet={item.image.srcSet}
           alt={item.image.title}
         />
       </td>
-      <td className="woo-next-cart-element">{item.name}</td>
-      <td className="woo-next-cart-element title-mobile-only">price</td>
-      <td className="woo-next-cart-element">
-        {"string" !== typeof item.price ? item.price.toFixed(2) : item.price}
-      </td>
+      <td className='woo-next-cart-element'>{item.name}</td>
+      <td className='woo-next-cart-element title-mobile-only'>price</td>
+      <td className='woo-next-cart-element'>£225.00</td>
 
       {/* Qty Input */}
-      <td className="woo-next-cart-element title-mobile-only">quantity</td>
-      <td className="woo-next-cart-element woo-next-cart-qty">
+      <td className='woo-next-cart-element title-mobile-only'>quantity</td>
+      <td className='woo-next-cart-element woo-next-cart-qty'>
         {/* @TODO Need to update this with graphQL query */}
         {/* <input
           type="number"
@@ -91,9 +91,9 @@ const CartItem = ({
         /> */}
         {productCount}
       </td>
-      <td className="woo-next-cart-element title-mobile-only">total</td>
-      <td className="woo-next-cart-element">
-        {"string" !== typeof item.totalPrice
+      <td className='woo-next-cart-element title-mobile-only'>total</td>
+      <td className='woo-next-cart-element'>
+        {'string' !== typeof item.totalPrice
           ? item.totalPrice.toFixed(2)
           : item.totalPrice}
       </td>

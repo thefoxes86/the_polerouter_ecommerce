@@ -9,11 +9,13 @@ import UPDATE_CART from '../../../mutations/update-cart';
 import GET_CART from '../../../queries/get-cart';
 import CLEAR_CART_MUTATION from '../../../mutations/clear-cart';
 import { isEmpty } from 'lodash';
+import { useRouter } from 'next/router';
 
 const CartItemsContainer = () => {
   // @TODO wil use it in future variations of the project.
   const [cart, setCart] = useContext(AppContext);
   const [requestError, setRequestError] = useState(null);
+  const router = useRouter();
 
   // Get Cart Data.
   const { loading, error, data, refetch } = useQuery(GET_CART, {
@@ -118,8 +120,10 @@ const CartItemsContainer = () => {
       cart.products.forEach((product) => {
         totalPrice += product.price * product.qty;
       });
-    return totalPrice.toFixed(2);
+    return totalPrice;
   };
+
+  console.log('CART', cart);
 
   return (
     <div className='cart product-cart-container'>
@@ -164,16 +168,26 @@ const CartItemsContainer = () => {
                 <tr>
                   <td className=''>
                     Total
-                    <span className='price'>£{totalCart()}</span>
+                    <span className='price'>
+                      {'string' !== typeof cart.totalProductsPrice
+                        ? cart.totalProductsPrice.toFixed(2)
+                        : cart.totalProductsPrice}
+                    </span>
                   </td>
                 </tr>
                 <tr>
                   <td className=''>
                     Shipping Cost
-                    <span className='price'>£15.00</span>
+                    <span className='price'>£25.00</span>
                   </td>
                 </tr>
                 <tr>
+                  <td className=''>
+                    Pre-order Discount
+                    <span className='price'>-£25.00</span>
+                  </td>
+                </tr>
+                {/* <tr>
                   <td className=''>
                     Subtotal
                     <span className='price'>
@@ -182,13 +196,16 @@ const CartItemsContainer = () => {
                         : cart.totalProductsPrice}
                     </span>
                   </td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
 
             <Link href='/checkout'>
               <a className='button__black n-block'>Check out</a>
             </Link>
+          </div>
+          <div className='generic_text'>
+            Pre-ordered books expected to be shipped in November
           </div>
 
           {/* Display Errors if any */}
@@ -204,9 +221,18 @@ const CartItemsContainer = () => {
       ) : (
         <>
           <h2 className='title'>No items in the cart</h2>
-          <Link href='/pre-order'>
-            <a className='button__black continue__button'>Add New Products</a>
-          </Link>
+
+          <a
+            onClick={() => {
+              router.push({
+                pathname: '/',
+                hash: '#section__book',
+              });
+            }}
+            className='button__black continue__button'
+          >
+            Add new products
+          </a>
         </>
       )}
     </div>

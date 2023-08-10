@@ -2,6 +2,7 @@ import Link from 'next/link';
 import CartIcon from './cart/CartIcon';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { route } from 'next/dist/next-server/server/router';
 
 const Nav = () => {
   const [isMenuMobileOpen, setMenuMobileOpen] = useState(false);
@@ -70,13 +71,23 @@ const Nav = () => {
               <a className='item'>Home</a>
             </Link>
 
-            <Link exact href='/book'>
-              <a className='item'>The Book</a>
-            </Link>
-
-            <Link exact href='/pre-order'>
-              <a className='item'>Pre Order</a>
-            </Link>
+            <a
+              onClick={() => {
+                if (router.pathname === '/') {
+                  const sectionBook = document.getElementById('section__book');
+                  sectionBook?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  router.push({
+                    pathname: '/',
+                    hash: '#section__book',
+                  });
+                }
+              }}
+              className='item'
+              style={{ cursor: 'pointer' }}
+            >
+              The Book
+            </a>
 
             <Link exact href='/contact-us'>
               <a className='item'>Contact Us</a>

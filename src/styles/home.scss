@@ -22,7 +22,7 @@
   }
   .hero__image {
     grid-area: heroimage;
-    background-image: url("/img/book.jpg");
+    background-image: url("/img/ThePolerouter_FrontCover_3d_HOMEPAGE_VERSION.jpg");
     background-size: cover;
     background-position: center;
   }
@@ -71,13 +71,7 @@
     font-size: 3.9rem;
   }
 }
-.container__book {
-  background-color: white;
 
-  .title {
-    color: $darkGrey;
-  }
-}
 
 .container__prints {
   background-color: $darkGrey;
@@ -167,16 +161,27 @@
 .container__prints, .container__book {
   width: 100vw;
   min-height: 100vh;
-  
   display: grid;
   padding-top: 5vh;
-  grid-template-columns: 10% auto 15% auto 10%;
+  grid-template-columns: 5% auto 10% auto 5%;
   grid-template-rows: 13vh auto 10%;
   grid-template-areas:
     ". title title title ."
-    ". print . print2 ."
+    ". print freeshipping print2 ."
     ". . . . .";
   column-gap: 2rem;
+
+  .free_shipping__text {
+    grid-area: freeshipping;
+    color: $darkGrey;
+    font-size: 0.9rem;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
 
   .title {
     grid-area: title;
@@ -386,6 +391,24 @@
 
 // Tablet
 @media only screen and (max-width: 992px) {
+
+  .container__book {
+    background-color: white;
+    grid-template-columns: 5% auto 5%;
+    grid-template-rows: 10% auto 10%;
+    grid-template-areas:
+      ". title ."
+      ". print ."
+      ". freeshipping ."
+      ". print2 ."
+      ". . .";
+    column-gap: 2rem;
+    
+  
+    .title {
+      color: $darkGrey;
+    }
+  }
 }
 
 // Smartphone
@@ -402,7 +425,7 @@
       }
     }
     .hero__image {
-      background-image: url("/img/book.jpg");
+      background-image: url("/img/ThePolerouter_FrontCover_3d_HOMEPAGE_VERSION.jpg");
       height: 500px;
       margin: -200px 20px 80px 20px;
       background-color: $lightGrey;
