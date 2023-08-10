@@ -48,8 +48,8 @@ const CartItem = ({
             },
           },
         })
-          .then((res) => setLoadingUpdate(false))
-          .catch((err) => setLoadingUpdate(false));
+          .then((res) => setTimeout(setLoadingUpdate(false), 2000))
+          .catch((err) => setTimeout(setLoadingUpdate(false), 2000));
       }
     }
   };
