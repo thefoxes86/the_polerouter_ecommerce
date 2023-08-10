@@ -21,6 +21,7 @@ const AddToCart = (props) => {
   const [showViewCart, setShowViewCart] = useState(false);
   const [requestError, setRequestError] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
+  const [updatingCart, setUpdatingCart] = useState(false);
 
   // Get Cart Data.
   const { data, refetch } = useQuery(GET_CART, {
@@ -62,6 +63,7 @@ const AddToCart = (props) => {
       input: productQryInput,
     },
     onCompleted: () => {
+      setDisableButton(false);
       const currentScroll = window.scrollY;
       const navbar = document.getElementById('navbar_polerouter');
 
@@ -81,6 +83,7 @@ const AddToCart = (props) => {
       setShowViewCart(true);
     },
     onError: (error) => {
+      setDisableButton(false);
       if (error) {
         setRequestError(error?.graphQLErrors?.[0]?.message ?? '');
       }
@@ -93,8 +96,6 @@ const AddToCart = (props) => {
   // Maximum 10 pcs
   const countNormaldEdition = useRef(0);
   useEffect(() => {
-    let cartMounted = localStorage.getItem('woo-next-cart');
-    console.log('cartMounted', cartMounted);
     cart?.products?.forEach((element) => {
       if (
         element?.productId ===
@@ -120,6 +121,7 @@ const AddToCart = (props) => {
   }, [, cart]);
 
   const handleAddToCartClick = async () => {
+    setDisableButton(true);
     setRequestError(null);
     await addToCart();
   };

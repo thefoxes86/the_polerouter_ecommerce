@@ -12,7 +12,7 @@ const CartItem = ({
 }) => {
   const [productCount, setProductCount] = useState(item.qty);
 
-  console.log('ITEM', item);
+  const [loadingUpdate, setLoadingUpdate] = useState(false);
   /*
    * When user changes the qty from product input update the cart in localStorage
    * Also update the cart in global context
@@ -24,6 +24,7 @@ const CartItem = ({
   const handleQtyChange = (event, cartKey) => {
     if (process.browser) {
       event.stopPropagation();
+      setLoadingUpdate(true);
 
       // If the previous update cart mutation request is still processing, then return.
       if (updateCartProcessing) {
@@ -46,7 +47,9 @@ const CartItem = ({
               items: updatedItems,
             },
           },
-        });
+        })
+          .then((res) => setLoadingUpdate(false))
+          .catch((err) => setLoadingUpdate(false));
       }
     }
   };
@@ -92,6 +95,7 @@ const CartItem = ({
               ? 10
               : 100
           }
+          disabled={loadingUpdate}
           data-cart-key={item.cartKey}
           className={`woo-next-cart-qty-input form-control`}
           value={productCount}
@@ -101,7 +105,9 @@ const CartItem = ({
       </td>
       <td className='woo-next-cart-element title-mobile-only'>total</td>
       <td className='woo-next-cart-element'>
-        {'string' !== typeof item.totalPrice
+        {loadingUpdate
+          ? 'updating'
+          : 'string' !== typeof item.totalPrice
           ? item.totalPrice.toFixed(2)
           : item.totalPrice}
       </td>
