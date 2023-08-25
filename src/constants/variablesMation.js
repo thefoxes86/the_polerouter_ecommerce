@@ -72,13 +72,13 @@ const thumbnailVariants = {
 
 const frameVariants = {
   hover: {
-    scale: 0.95,
+    scale: 0.97,
   },
 };
 
 const imageVariants = {
   hover: {
-    scale: 1.1,
+    scale: 1.03,
   },
 };
 

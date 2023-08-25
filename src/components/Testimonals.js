@@ -16,7 +16,7 @@ const Testimonsials = () => {
           }}
           className='testimonial'
         >
-          <img className='book__image' src='/img/Goldberger-Macro_B&W.jpeg' />
+          <img className='book__image' src='/img/HomePage_Square_B&W.jpg' />
         </motion.div>
       </div>
 
@@ -29,11 +29,11 @@ const Testimonsials = () => {
             Universal watch collectors.”
           </p>
           <p className='author_name'>Nicholas Vernier</p>
-          <p className='author_role'>CEO, Universal Geneve SA</p>
+          <p className='author_role'>CEO, Universal Genève SA</p>
         </motion.div>
         <motion.div className='testimonial'>
           <p className='bigText'>
-            “Watch colectors love a goodstory.<br></br>This is one of the very
+            “Watch collectors love a good story.<br></br>This is one of the very
             best."
           </p>
           <p className='author_name'>James Lamdin</p>
@@ -47,12 +47,11 @@ const Testimonsials = () => {
             sought-afer piece in the vintage market.”
           </p>
           <p className='author_name'>John Goldberger</p>
-          <p className='author_role'>Collector & author</p>
         </motion.div>
 
         <motion.div className='testimonial'>
           <p className='bigText'>
-            “Designed by the man that many great colectors qualify as the
+            “Designed by the man that many great collectors qualify as the
             greatest watch designer of the 20th century.”
           </p>
           <p className='author_name'>Virginie Liatard Roesli</p>

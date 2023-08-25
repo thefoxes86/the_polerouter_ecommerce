@@ -18,7 +18,7 @@ const Nav = () => {
     const windowHeight = window.innerHeight;
     const currentScroll = window.scrollY;
     if (router.pathname === '/') {
-      currentScroll > windowHeight
+      currentScroll > windowHeight * 2
         ? setNavPosition({ top: 0 })
         : setNavPosition({ top: -120 });
     } else {

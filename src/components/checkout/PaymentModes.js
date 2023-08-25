@@ -1,6 +1,6 @@
 import Error from './Error';
 
-const PaymentModes = ({ input, handleOnChange }) => {
+const PaymentModes = ({ input, handleOnChange, submit }) => {
   const { errors, paymentMethod } = input || {};
 
   return (
@@ -10,14 +10,15 @@ const PaymentModes = ({ input, handleOnChange }) => {
       {/*Pay with Paypal*/}
       <div className='form-check woo-next-payment-input-container mt-2'>
         <label className='form-check-label'>
-          <input
+          {/* <input
             onChange={handleOnChange}
             value='paypal'
             className='form-check-input mr-3 img__sub'
             name='paymentMethod'
             type='radio'
             checked='checked'
-          />
+            onClick={submit}
+          /> */}
           <img width='150' src='/img/paypal.png' />
           <span className='woo-next-payment-content'></span>
         </label>

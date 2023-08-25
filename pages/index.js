@@ -26,7 +26,7 @@ export default function Home(props) {
             }
             className='button__gold'
           >
-            Pre Order
+            Pre-Order
           </button>
         </div>
         <div className='hero__image'></div>

@@ -25,6 +25,7 @@ const CartItem = ({
     if (process.browser) {
       event.stopPropagation();
       setLoadingUpdate(true);
+      let updateCartCheck = true;
 
       // If the previous update cart mutation request is still processing, then return.
       if (updateCartProcessing) {
@@ -32,7 +33,32 @@ const CartItem = ({
       }
 
       // If the user tries to delete the count of product, set that to 1 by default ( This will not allow him to reduce it less than zero )
-      const newQty = event.target.value ? parseInt(event.target.value) : 1;
+      let newQty = event.target.value ? parseInt(event.target.value) : 1;
+
+      products?.forEach((item) => {
+        if (
+          item.productId ===
+          parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
+        ) {
+          if (newQty > 5) {
+            updateCartCheck = false;
+            setProductCount(5);
+            setLoadingUpdate(false);
+            newQty = 5;
+          }
+        }
+        if (
+          item.productId ===
+          parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART)
+        ) {
+          if (newQty > 10) {
+            updateCartCheck = false;
+            setProductCount(10);
+            setLoadingUpdate(false);
+            newQty = 10;
+          }
+        }
+      });
 
       // Set the new qty in state.
       setProductCount(newQty);
@@ -67,14 +93,14 @@ const CartItem = ({
           <Cross />
         </span>
       </th>
-      <td className='woo-next-cart-element'>
+      {/* <td className='woo-next-cart-element'>
         <img
           width='64'
           src={item.image.sourceUrl}
           srcSet={item.image.srcSet}
           alt={item.image.title}
         />
-      </td>
+      </td> */}
       <td className='woo-next-cart-element'>{item.name}</td>
       <td className='woo-next-cart-element title-mobile-only'>price</td>
       <td className='woo-next-cart-element'>£225.00</td>

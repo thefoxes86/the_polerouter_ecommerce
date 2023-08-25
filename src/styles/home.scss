@@ -86,7 +86,7 @@
   min-height: 100vh;
   background-color: $darkGrey;
   display: grid;
-  grid-template-columns: 3% 40% 3% auto;
+  grid-template-columns: 2% 40% 2% auto;
   grid-template-rows: 1vh auto 1vh;
   grid-template-areas:
     ". . . ."
@@ -114,9 +114,10 @@
   align-items: center;
 }
 .container__testimonials .book__image {
-  width: 100%;
+  width: 70vh;
   display: block;
-  height: 60vh;
+  height: 70vh;
+  text-align: center;
   object-fit: cover;
   
 }
@@ -403,7 +404,7 @@
   .container__book {
     background-color: white;
     grid-template-columns: 5% auto 5%;
-    grid-template-rows: 10% auto 10%;
+    grid-template-rows: 0% auto 5%;
     grid-template-areas:
       ". title ."
       ". print ."

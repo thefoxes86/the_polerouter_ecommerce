@@ -141,8 +141,9 @@
       ". featuredimage ."
       ". gallery ."
       ". contentText ."
-      ". . .";
+      ". issue .";
     column-gap: 0;
+    row-gap: 20px;
 
     .gallery {
       display: grid;

@@ -147,7 +147,7 @@ const AddToCart = (props) => {
             ? 'Adding to cart...'
             : disableButton
             ? 'MAXIMUM ORDER REACHED'
-            : 'PRE ORDER'}
+            : 'PRE-ORDER'}
         </button>
       )}
       {/* {showViewCart ? (
