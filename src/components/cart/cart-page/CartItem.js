@@ -25,7 +25,6 @@ const CartItem = ({
     if (process.browser) {
       event.stopPropagation();
       setLoadingUpdate(true);
-      let updateCartCheck = true;
 
       // If the previous update cart mutation request is still processing, then return.
       if (updateCartProcessing) {
@@ -41,7 +40,6 @@ const CartItem = ({
           parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
         ) {
           if (newQty > 5) {
-            updateCartCheck = false;
             setProductCount(5);
             setLoadingUpdate(false);
             newQty = 5;
@@ -52,7 +50,6 @@ const CartItem = ({
           parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART)
         ) {
           if (newQty > 10) {
-            updateCartCheck = false;
             setProductCount(10);
             setLoadingUpdate(false);
             newQty = 10;
