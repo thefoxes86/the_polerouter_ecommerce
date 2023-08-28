@@ -35,24 +35,26 @@ const CartItem = ({
       let newQty = event.target.value ? parseInt(event.target.value) : 1;
 
       products?.forEach((item) => {
-        if (
-          item.productId ===
-          parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
-        ) {
-          if (newQty > 5) {
-            setProductCount(5);
-            setLoadingUpdate(false);
-            newQty = 5;
+        if (item.cartKey === cartKey) {
+          if (
+            item.productId ===
+            parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_LIMITED_CART)
+          ) {
+            if (newQty > 5) {
+              setProductCount(5);
+              setLoadingUpdate(false);
+              newQty = 5;
+            }
           }
-        }
-        if (
-          item.productId ===
-          parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART)
-        ) {
-          if (newQty > 10) {
-            setProductCount(10);
-            setLoadingUpdate(false);
-            newQty = 10;
+          if (
+            item.productId ===
+            parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART)
+          ) {
+            if (newQty > 10) {
+              setProductCount(10);
+              setLoadingUpdate(false);
+              newQty = 10;
+            }
           }
         }
       });

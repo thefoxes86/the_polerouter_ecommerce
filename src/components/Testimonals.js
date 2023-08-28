@@ -54,8 +54,8 @@ const Testimonsials = () => {
             “Designed by the man that many great collectors qualify as the
             greatest watch designer of the 20th century.”
           </p>
-          <p className='author_name'>Virginie Liatard Roesli</p>
-          <p className='author_role'>Watch Specialist, Philips</p>
+          <p className='author_name'>Virginie Liatard-Roessli</p>
+          <p className='author_role'>Watch Specialist, Phillips</p>
         </motion.div>
       </div>
     </>

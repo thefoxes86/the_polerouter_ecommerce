@@ -136,7 +136,7 @@ const CartItemsContainer = () => {
               <thead className='text-left'>
                 <tr className='woo-next-cart-head-container header-desktop-only'>
                   <th scope='col' />
-                  <th scope='col' />
+
                   <th scope='col'>Product</th>
                   <th scope='col'>Price</th>
                   <th scope='col'>Quantity</th>
