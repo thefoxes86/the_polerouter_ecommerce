@@ -122,7 +122,12 @@ export default function Product(props) {
                 allow='clipboard-write'
                 sandbox='allow-top-navigation allow-top-navigation-by-user-activation allow-downloads allow-scripts allow-same-origin allow-popups allow-modals allow-popups-to-escape-sandbox allow-forms'
                 allowfullscreen='true'
-                src='https://e.issuu.com/embed.html?d=issuu-single-pages&hideIssuuLogo=true&hideShareButton=true&showOtherPublicationsAsSuggestions=true&u=thepolerouter'
+                src={`${
+                  product?.productId ===
+                  parseInt(process.env.NEXT_PUBLIC_PRODUCT_ID_NORMAL_CART)
+                    ? 'https://e.issuu.com/embed.html?d=the_polerouter_issue_standard_edition_combined&hideIssuuLogo=true&hideShareButton=true&showOtherPublicationsAsSuggestions=true&u=thepolerouter'
+                    : 'https://e.issuu.com/embed.html?d=the_polerouter_issue_limited_edition_combined&hideIssuuLogo=true&hideShareButton=true&showOtherPublicationsAsSuggestions=true&u=thepolerouter'
+                }`}
               ></iframe>
             </div>
           </div>
