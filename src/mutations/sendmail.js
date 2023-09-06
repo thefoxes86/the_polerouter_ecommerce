@@ -4,7 +4,7 @@ const SEND_EMAIL_MUTATION = gql`
   mutation SEND_EMAIL($text: String!, $mail: String!) {
     sendEmail(
       input: {
-        to: "nicola.volpi86@gmail.com"
+        to: "enquiries@thepolerouter.com"
         from: $mail
         subject: "Request from site"
         body: $text

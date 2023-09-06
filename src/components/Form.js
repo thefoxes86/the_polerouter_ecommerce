@@ -10,6 +10,7 @@ export default function Form() {
   const [text, setText] = useState();
   const [sending, setSending] = useState(false);
   const [sendedResponse, setSendedResponse] = useState();
+  const [sendEmail] = useMutation(SEND_EMAIL_MUTATION);
 
   const handleResponse = (status, msg) => {
     if (status === 200) {
@@ -26,20 +27,30 @@ export default function Form() {
     e.preventDefault();
     setSending(true);
 
-    const res = await fetch('/api/send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: mail,
-        message: text,
-        subject: subject,
-        name: name,
-      }),
+    sendEmail({ variables: { text: text, mail: mail } }).then((res) => {
+      res?.data?.sendEmail?.sent
+        ? setSendedResponse(res?.data?.sendEmail?.message)
+        : setSendedResponse(
+            'Error try to send an email to enquiries@thepolerouter.com'
+          );
+
+      setSending(false);
     });
-    const textRes = await res.text();
-    handleResponse(res.status, textRes);
+
+    // const res = await fetch('https://backend.thepolerouter.com/api/send', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     email: mail,
+    //     message: text,
+    //     subject: subject,
+    //     name: name,
+    //   }),
+    // });
+    // const textRes = await res.text();
+    // handleResponse(res.status, textRes);
   };
 
   return (
