@@ -1,7 +1,19 @@
-import { Fragment } from 'react';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import CheckoutCartItem from './CheckoutCartItem';
+import { states } from '../../utils/state';
+import ShippingCost from './ShippingCost';
 
-const YourOrder = ({ cart }) => {
+const YourOrder = ({ cart, updateShippingCost }) => {
+  const [addLineShippingCost, setAddLineShippingCost] = useState(false);
+  const [shippingCost, setShippingCost] = useState(0);
+
+  const handleShippiningCost = useCallback(
+    (event) => {
+      setShippingCost(event.target.value);
+    },
+    [shippingCost]
+  );
+
   return (
     <Fragment>
       {cart ? (
@@ -24,17 +36,35 @@ const YourOrder = ({ cart }) => {
                 cart.products.map((item) => (
                   <CheckoutCartItem key={item.productId} item={item} />
                 ))}
+              {/*SHipping Cost*/}
+              <tr className=''>
+                <td className='' />
+                <td className=''>Shipping Cost</td>
+                <td className=''>
+                  <button
+                    onClick={() => setAddLineShippingCost(!addLineShippingCost)}
+                  >
+                    Calculate
+                  </button>
+                </td>
+              </tr>
+              {addLineShippingCost && (
+                <ShippingCost
+                  handleShippiningCost={handleShippiningCost}
+                  shippingCost={shippingCost}
+                />
+              )}
               {/*Total*/}
               <tr className=''>
                 <td className='' />
                 <td className=''>Total</td>
-                <td className=''>{cart.totalProductsPrice}</td>
+                <td className=''>
+                  {`£${
+                    parseInt(cart.subtotal.replace('£', '')) +
+                    parseInt(shippingCost)
+                  }.00`}
+                </td>
               </tr>
-              {/* <tr className="">
-							<td className=""/>
-							<td className="woo-next-checkout-total">Total</td>
-							<td className="woo-next-checkout-total">{ cart.totalProductsPrice }</td>
-						</tr> */}
             </tbody>
           </table>
         </Fragment>

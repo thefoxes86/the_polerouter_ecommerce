@@ -23,6 +23,7 @@ const CartItemsContainer = () => {
     onCompleted: () => {
       // Update cart in the localStorage.
       const updatedCart = getFormattedCart(data);
+
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
 
       // Update cart data in React Context.
@@ -169,24 +170,13 @@ const CartItemsContainer = () => {
                   <td className=''>
                     Total
                     <span className='price'>
-                      {'string' !== typeof cart.totalProductsPrice
-                        ? cart.totalProductsPrice.toFixed(2)
-                        : cart.totalProductsPrice}
+                      {'string' !== typeof cart.subtotal
+                        ? cart.subtotal?.toFixed(2)
+                        : cart.subtotal}
                     </span>
                   </td>
                 </tr>
-                <tr>
-                  <td className=''>
-                    Shipping Cost
-                    <span className='price'>£25.00</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className=''>
-                    Pre-order Discount
-                    <span className='price'>-£25.00</span>
-                  </td>
-                </tr>
+
                 {/* <tr>
                   <td className=''>
                     Subtotal
@@ -203,9 +193,6 @@ const CartItemsContainer = () => {
             <Link href='/checkout'>
               <a className='button__black n-block'>Check out</a>
             </Link>
-          </div>
-          <div className='generic_text'>
-            Pre-ordered books expected to be shipped in November
           </div>
 
           {/* Display Errors if any */}

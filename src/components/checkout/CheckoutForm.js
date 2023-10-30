@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 
 import YourOrder from './YourOrder';
 import PaymentModes from './PaymentModes';
@@ -16,6 +16,8 @@ import {
   setStatesForCountry,
 } from '../../utils/checkout';
 import CheckboxField from './form-elements/CheckboxField';
+import UPDATE_SHIPPING_METHOD from '../../mutations/update-shipping-method';
+import GET_SHIPPING_METHODS from '../../queries/get-shipping-methods';
 
 // Use this for testing purposes, so you dont have to fill the checkout form over an over again.
 // const defaultCustomerInfo = {
@@ -74,11 +76,19 @@ const CheckoutForm = ({ countriesData }) => {
   const [theBillingStates, setTheBillingStates] = useState([]);
   const [isFetchingBillingStates, setIsFetchingBillingStates] = useState(false);
 
+  // Update Shipping Method
+  const [updateShippingMethod, { data: updateShippingMethodResponse }] =
+    useMutation(UPDATE_SHIPPING_METHOD);
+
+  const [shippingMethods, { data: shippingMethodData }] =
+    useLazyQuery(GET_SHIPPING_METHODS);
+
   // Get Cart Data.
-  const { data } = useQuery(GET_CART, {
+  const [fetchCart, { data }] = useLazyQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
+      console.log('CART UPDATE', data);
       const updatedCart = getFormattedCart(data);
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
 
@@ -90,9 +100,6 @@ const CheckoutForm = ({ countriesData }) => {
   // Create New order: Checkout Mutation.
   const [checkout, { data: checkoutResponse, loading: checkoutLoading }] =
     useMutation(CHECKOUT_MUTATION, {
-      variables: {
-        input: orderData,
-      },
       onError: (error) => {
         if (error) {
           setRequestError(error?.graphQLErrors?.[0]?.message ?? '');
@@ -160,6 +167,7 @@ const CheckoutForm = ({ countriesData }) => {
    *
    * @return {void}
    */
+  const [updateShippingCost, setUpdateShippingCost] = useState(false);
   const handleOnChange = async (
     event,
     isShipping = false,
@@ -179,6 +187,7 @@ const CheckoutForm = ({ countriesData }) => {
       }
     } else {
       const newState = { ...input, [target.name]: target.value };
+
       setInput(newState);
     }
   };
@@ -189,6 +198,7 @@ const CheckoutForm = ({ countriesData }) => {
       shipping: { ...input?.shipping, [target.name]: target.value },
     };
     setInput(newState);
+    fetchCart();
     await setStatesForCountry(
       target,
       setTheShippingStates,
@@ -202,6 +212,7 @@ const CheckoutForm = ({ countriesData }) => {
       billing: { ...input?.billing, [target.name]: target.value },
     };
     setInput(newState);
+    fetchCart();
     await setStatesForCountry(
       target,
       setTheBillingStates,
@@ -210,9 +221,10 @@ const CheckoutForm = ({ countriesData }) => {
   };
 
   useEffect(async () => {
+    fetchCart();
     if (null !== orderData) {
       // Call the checkout mutation when the value for orderData changes/updates.
-      await checkout();
+      await checkout({ variables: { input: orderData } });
     }
   }, [orderData]);
 
@@ -223,7 +235,7 @@ const CheckoutForm = ({ countriesData }) => {
           <div className='your-orders order__resume'>
             {/*	Order*/}
             <h2 className='text-xl font-medium mb-4'>YOUR ORDER</h2>
-            <YourOrder cart={cart} />
+            <YourOrder cart={cart} updateShippingCost={updateShippingCost} />
           </div>
           <div className='form__address'>
             {/*Shipping Details*/}
@@ -237,6 +249,7 @@ const CheckoutForm = ({ countriesData }) => {
                 isFetchingStates={isFetchingShippingStates}
                 isShipping
                 isBillingOrShipping
+                fetchCart={fetchCart}
               />
             </div>
             <div>

@@ -1,4 +1,4 @@
-import { v4 } from "uuid";
+import { v4 } from 'uuid';
 
 /**
  * Extracts and returns float value from a string.
@@ -10,7 +10,7 @@ export const getFloatVal = (string) => {
   let floatValue = string.match(/[+-]?\d+(\.\d+)?/g)[0];
   return null !== floatValue
     ? parseFloat(parseFloat(floatValue).toFixed(2))
-    : "";
+    : '';
 };
 
 /**
@@ -31,7 +31,7 @@ export const addFirstProduct = (product) => {
   const newProduct = createNewProduct(product, productPrice, 1);
   newCart.products.push(newProduct);
 
-  localStorage.setItem("woo-next-cart", JSON.stringify(newCart));
+  localStorage.setItem('woo-next-cart', JSON.stringify(newCart));
 
   return newCart;
 };
@@ -93,7 +93,7 @@ export const updateCart = (
     totalProductsPrice: parseFloat(total.totalPrice),
   };
 
-  localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+  localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
 
   return updatedCart;
 };
@@ -172,12 +172,12 @@ const isProductInCart = (existingProductsInCart, productId) => {
  * @return {any | string} Updated cart
  */
 export const removeItemFromCart = (productId) => {
-  let existingCart = localStorage.getItem("woo-next-cart");
+  let existingCart = localStorage.getItem('woo-next-cart');
   existingCart = JSON.parse(existingCart);
 
   // If there is only one item in the cart, delete the cart.
   if (1 === existingCart.products.length) {
-    localStorage.removeItem("woo-next-cart");
+    localStorage.removeItem('woo-next-cart');
     return null;
   }
 
@@ -198,7 +198,7 @@ export const removeItemFromCart = (productId) => {
     updatedCart.totalProductsPrice =
       updatedCart.totalProductsPrice - priceToBeDeductedFromTotal;
 
-    localStorage.setItem("woo-next-cart", JSON.stringify(updatedCart));
+    localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
     return updatedCart;
   } else {
     return existingCart;
@@ -228,17 +228,17 @@ export const getFormattedCart = (data) => {
     const product = {};
     const total = getFloatVal(givenProducts[i].total);
 
-    product.productId = givenProduct?.productId ?? "";
-    product.cartKey = givenProducts?.[i]?.key ?? "";
-    product.name = givenProduct?.name ?? "";
+    product.productId = givenProduct?.productId ?? '';
+    product.cartKey = givenProducts?.[i]?.key ?? '';
+    product.name = givenProduct?.name ?? '';
     product.qty = givenProducts?.[i]?.quantity;
     product.price = total / product?.qty;
-    product.totalPrice = givenProducts?.[i]?.total ?? "";
+    product.totalPrice = givenProducts?.[i]?.total ?? '';
     product.image = {
-      sourceUrl: givenProduct?.image?.sourceUrl ?? "",
-      srcSet: givenProduct?.image?.srcSet ?? "",
-      title: givenProduct?.image?.title ?? "",
-      altText: givenProduct?.image?.altText ?? "",
+      sourceUrl: givenProduct?.image?.sourceUrl ?? '',
+      srcSet: givenProduct?.image?.srcSet ?? '',
+      title: givenProduct?.image?.title ?? '',
+      altText: givenProduct?.image?.altText ?? '',
     };
 
     totalProductsCount += givenProducts?.[i]?.quantity;
@@ -248,7 +248,9 @@ export const getFormattedCart = (data) => {
   }
 
   formattedCart.totalProductsCount = totalProductsCount;
-  formattedCart.totalProductsPrice = data?.cart?.total ?? "";
+  formattedCart.subtotal = data?.cart?.subtotal;
+  formattedCart.shippingTotal = data?.cart?.shippingTotal;
+  formattedCart.totalProductsPrice = data?.cart?.total ?? '';
 
   return formattedCart;
 };
@@ -342,34 +344,40 @@ export const getUpdatedItems = (products, newQty, cartKey) => {
 export const getMonthAndYear = (date) => {
   let data = new Date(date);
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
-  return months[data.getMonth()] + " " + data.getFullYear();
+  return months[data.getMonth()] + ' ' + data.getFullYear();
 };
 
 export const removeTags = (str) => {
-  if (str === null || str === "") return false;
+  if (str === null || str === '') return false;
   else str = str.toString();
 
   // Regular expression to identify HTML tags in
   // the input string. Replacing the identified
   // HTML tag with a null string.
-  return str.replace(/(<([^>]+)>)/gi, "");
+  return str.replace(/(<([^>]+)>)/gi, '');
 };
 
 export const reduceText = (str, max, suffix) => {
-    const stringTruncated = str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`
+  const stringTruncated =
+    str.length < max
+      ? str
+      : `${str.substr(
+          0,
+          str.substr(0, max - suffix.length).lastIndexOf(' ')
+        )}${suffix}`;
 
-    return stringTruncated;
-  }
+  return stringTruncated;
+};

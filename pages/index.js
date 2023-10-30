@@ -26,7 +26,7 @@ export default function Home(props) {
             }
             className='button__gold'
           >
-            Pre-Order
+            Purchase
           </button>
         </div>
         <div className='hero__image'></div>
@@ -46,9 +46,7 @@ export default function Home(props) {
       </div>
       <div ref={refProduct} id='section__book' className='container__book'>
         {/* <ComingSoon /> */}
-        <p className='free_shipping__text'>
-          FREE SHIPPING <br></br>for pre orders
-        </p>
+
         {props?.products?.map((product, index) => (
           <>
             {index === 0 ? (
@@ -59,15 +57,7 @@ export default function Home(props) {
                 slug={product.slug}
                 title={product.name}
               />
-            ) : (
-              <Print1
-                key={index}
-                index={index}
-                sourceUrl={product.image.sourceUrl}
-                slug={product.slug}
-                title={product.name}
-              />
-            )}
+            ) : null}
           </>
         ))}
       </div>

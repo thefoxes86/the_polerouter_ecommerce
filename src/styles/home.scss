@@ -176,7 +176,7 @@
   grid-template-rows: 13vh auto 10%;
   grid-template-areas:
     ". title title title ."
-    ". print freeshipping print2 ."
+    ". print print print ."
     ". . . . .";
   column-gap: 2rem;
 
@@ -408,8 +408,6 @@
     grid-template-areas:
       ". title ."
       ". print ."
-      ". freeshipping ."
-      ". print2 ."
       ". . .";
     column-gap: 2rem;
     

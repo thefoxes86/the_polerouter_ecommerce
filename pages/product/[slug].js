@@ -109,11 +109,6 @@ export default function Product(props) {
                   SOLD OUT
                 </button>
               )}
-
-              <p style={{ marginTop: 20, fontStyle: 'italic' }}>
-                Please see the cart for further details regarding this pre-order
-                phase
-              </p>
             </motion.div>
           </div>
           <div className='product__issue'>
