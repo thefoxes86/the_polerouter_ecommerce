@@ -127,7 +127,7 @@
   }
 
   .generic_text {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 500;
     color: black;
     grid-area: generic_text;
@@ -225,7 +225,7 @@
   .product-cart-container {
     grid-template-columns: 10% auto 10%;
     grid-template-rows: 20vh auto auto auto auto;
-    grid-template-areas: ". title ." ". continueButton ." ". tableCart ." ". generic_text ." ". subTotal .";
+    grid-template-areas: ". title ." ". continueButton ." ". tableCart ." "generic_text generic_text generic_text" ". subTotal .";
 
     .table__cart {
       grid-area: tableCart;

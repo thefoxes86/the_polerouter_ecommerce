@@ -194,6 +194,9 @@ const CartItemsContainer = () => {
               <a className='button__black n-block'>Check out</a>
             </Link>
           </div>
+          <div className='generic_text'>
+            Shipping cost to be calculated at check out
+          </div>
 
           {/* Display Errors if any */}
           {requestError ? (

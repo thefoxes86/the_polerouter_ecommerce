@@ -28,7 +28,7 @@ const CountrySelection = ({
           className='bg-gray-100 bg-opacity-50 border border-gray-500 text-gray-500 appearance-none inline-block py-3 pl-3 pr-8 rounded leading-tight w-full'
           id={inputId}
         >
-          <option value=''>Select a country...</option>
+          <option value=''>Select country</option>
           {!isEmpty(countries) &&
             map(countries, (country) => (
               <option
