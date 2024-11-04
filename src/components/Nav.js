@@ -2,7 +2,6 @@ import Link from 'next/link';
 import CartIcon from './cart/CartIcon';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { route } from 'next/dist/next-server/server/router';
 
 const Nav = () => {
   const [isMenuMobileOpen, setMenuMobileOpen] = useState(false);
@@ -46,9 +45,7 @@ const Nav = () => {
       <div className='menu__container'>
         <div className='logo__menu'>
           <Link exact href='/'>
-            <a className=''>
-              <img src='/img/logo_menu.svg' />
-            </a>
+            <img src='/img/logo_menu.svg' />
           </Link>
         </div>
         <div className='hamburger__menu'>
@@ -68,10 +65,10 @@ const Nav = () => {
             }
           >
             <Link exact href='/'>
-              <a className='item'>Home</a>
+              Home
             </Link>
 
-            <a
+            <span
               onClick={() => {
                 if (router.pathname === '/') {
                   const sectionBook = document.getElementById('section__book');
@@ -88,13 +85,13 @@ const Nav = () => {
               style={{ cursor: 'pointer' }}
             >
               The Book
-            </a>
+            </span>
 
             <Link exact href='/contact-us'>
-              <a className='item'>Contact Us</a>
+              Contact Us
             </Link>
 
-            <a
+            <Link
               href='https://www.instagram.com/thepolerouter/'
               className='item instagram_mobile'
             >
@@ -128,14 +125,14 @@ const Nav = () => {
                   fill='#b1946e'
                 />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
 
         <div className='account__menu'>
           <CartIcon />
 
-          <a
+          <Link
             href='https://www.instagram.com/thepolerouter/'
             className='item instagram_desktop'
           >
@@ -169,7 +166,7 @@ const Nav = () => {
                 fill='#b1946e'
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

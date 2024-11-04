@@ -32,14 +32,12 @@ export default function Print0(props) {
           transition={transition}
         >
           <Link href={`/product/${props.slug}`}>
-            <a>
-              <motion.img
-                whileHover='hover'
-                src={props.sourceUrl}
-                variants={imageVariants}
-                transition={transition}
-              />
-            </a>
+            <motion.img
+              whileHover='hover'
+              src={props.sourceUrl}
+              variants={imageVariants}
+              transition={transition}
+            />
           </Link>
           <h2
             ref={ref}

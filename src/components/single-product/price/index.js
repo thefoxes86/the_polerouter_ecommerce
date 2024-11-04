@@ -1,4 +1,4 @@
-import { isEmpty } from "lodash";
+import { isEmpty } from 'lodash';
 
 const Price = ({ regularPrice = 0, salesPrice }) => {
   if (isEmpty(salesPrice)) {
@@ -30,28 +30,33 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
           : null,
       strikeThroughClass:
         formattedSalesPrice < formattedRegularPrice
-          ? "product-regular-price mr-2 line-through text-sm text-gray-600 font-normal"
-          : "",
+          ? 'product-regular-price mr-2 line-through text-sm text-gray-600 font-normal'
+          : '',
     };
   };
 
   const productMeta = discountPercent(regularPrice, salesPrice);
 
   return (
-    <h6 className="price">
-      {/* Regular price */}
-      {productMeta?.discountPercent ? (
-        <span className="product-price mr-2">{salesPrice}</span>
-      ) : null}
+    <>
+      <h6 className='price'>
+        {/* Regular price */}
+        {productMeta?.discountPercent ? (
+          <span className='product-price mr-2'>{salesPrice}</span>
+        ) : null}
 
-      {/* Discounted price */}
-      <span className={productMeta?.strikeThroughClass}>{regularPrice}</span>
+        {/* Discounted price */}
+        <span className={productMeta?.strikeThroughClass}>{regularPrice}</span>
 
-      {/* Discount percent */}
-      <span className="product-discount text-green-600 font-bold text-sm font-normal">
-        {productMeta?.discountPercent}
-      </span>
-    </h6>
+        {/* Discount percent */}
+        <span className='product-discount text-green-600 font-bold text-sm font-normal'>
+          {productMeta?.discountPercent}
+        </span>
+        <p className='text-sm'>
+          (RRP £225.00) REDUCED PRICE AVAILABLE FOR THE REMAINDER OF 2024
+        </p>
+      </h6>
+    </>
   );
 };
 

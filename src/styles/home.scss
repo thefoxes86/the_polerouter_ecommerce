@@ -6,8 +6,8 @@
   grid-template-columns: 40% auto 40%;
   grid-template-rows: 35% auto;
   grid-template-areas:
-    "logo . heroimage"
-    "description . heroimage";
+    'logo . heroimage'
+    'description . heroimage';
   .logo {
     grid-area: logo;
     display: flex;
@@ -22,7 +22,7 @@
   }
   .hero__image {
     grid-area: heroimage;
-    background-image: url("/img/ThePolerouter_FrontCover_3d_HOMEPAGE_VERSION.jpg");
+    background-image: url('/img/13.jpg');
     background-size: cover;
     background-position: center;
   }
@@ -41,7 +41,7 @@
       position: relative;
       padding-left: 15px;
       &::before {
-        content: "";
+        content: '';
         display: block;
         width: 1px;
         height: 40px;
@@ -72,7 +72,6 @@
   }
 }
 
-
 .container__prints {
   background-color: $darkGrey;
 
@@ -89,11 +88,11 @@
   grid-template-columns: 2% 40% 2% auto;
   grid-template-rows: 1vh auto 1vh;
   grid-template-areas:
-    ". . . ."
-    ". firstcol . secondcol"
-    ". . . .";
+    '. . . .'
+    '. firstcol . secondcol'
+    '. . . .';
   column-gap: 2rem;
-  font-family: "Bodoni";
+  font-family: 'Bodoni';
 }
 
 .firstCol {
@@ -107,7 +106,8 @@
   justify-content: space-around;
 }
 
-.firstCol, .secondCol {
+.firstCol,
+.secondCol {
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -119,7 +119,6 @@
   height: 70vh;
   text-align: center;
   object-fit: cover;
-  
 }
 .container__testimonials .testimonial {
   color: white;
@@ -132,13 +131,13 @@
 }
 
 .container__testimonials .testimonial .bigText {
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 300;
   margin-bottom: 20px;
-  line-height: 32px;
+  line-height: 42px;
 }
 .container__testimonials .testimonial .mediumText {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 100;
   line-height: 22px;
   margin-bottom: 20px;
@@ -148,14 +147,12 @@
   line-height: 18px;
   margin-bottom: 20px;
   font-weight: 300;
-  
 }
 
 .container__testimonials .testimonial .author_name {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 0;
-  
 }
 .container__testimonials .testimonial .author_role {
   font-size: 14px;
@@ -167,7 +164,8 @@
 .full-width {
   width: 100%;
 }
-.container__prints, .container__book {
+.container__prints,
+.container__book {
   width: 100vw;
   min-height: 100vh;
   display: grid;
@@ -175,9 +173,9 @@
   grid-template-columns: 5% auto 10% auto 5%;
   grid-template-rows: 13vh auto 10%;
   grid-template-areas:
-    ". title title title ."
-    ". print print print ."
-    ". . . . .";
+    '. title title title .'
+    '. print print print .'
+    '. . . . .';
   column-gap: 2rem;
 
   .free_shipping__text {
@@ -189,12 +187,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
   }
 
   .title {
     grid-area: title;
-    
+
     text-transform: uppercase;
     display: grid;
     align-items: center;
@@ -217,7 +214,7 @@
         height: 100%;
         display: flex;
         text-align: center;
-        font-family: "Bodoni";
+        font-family: 'Bodoni';
         align-items: center;
         justify-content: center;
         color: white;
@@ -244,7 +241,6 @@
   .print_1 {
     grid-area: print2;
   }
-
 }
 
 .container__journal {
@@ -257,8 +253,8 @@
   grid-template-columns: 10% auto 10%;
   grid-template-rows: 13vh auto 10%;
   grid-template-areas:
-    ". title ."
-    ". containerPosts .";
+    '. title .'
+    '. containerPosts .';
   column-gap: 2rem;
 
   .title {
@@ -280,7 +276,7 @@
     transition: all 0.25s $animationPrimary;
     transition-delay: 0.1s;
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       height: 1px;
@@ -291,7 +287,7 @@
       transition-delay: 0.1s;
     }
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       height: 1px;
@@ -316,8 +312,8 @@
     grid-template-columns: 100%;
     grid-template-rows: auto 10%;
     grid-template-areas:
-      "textcontent"
-      ".";
+      'textcontent'
+      '.';
     column-gap: 2rem;
 
     .textContent {
@@ -335,8 +331,8 @@
     grid-template-columns: 45% auto 20% auto 20%;
     grid-template-rows: auto 10%;
     grid-template-areas:
-      "heropost . column1 . column2"
-      "button . . . . ";
+      'heropost . column1 . column2'
+      'button . . . . ';
     column-gap: 2rem;
 
     .hero__post {
@@ -369,7 +365,6 @@
       justify-content: center;
 
       .frame {
-        
         width: 100%;
         display: flex;
         align-items: center;
@@ -400,18 +395,16 @@
 
 // Tablet
 @media only screen and (max-width: 992px) {
-
   .container__book {
     background-color: white;
     grid-template-columns: 5% auto 5%;
     grid-template-rows: 0% auto 5%;
     grid-template-areas:
-      ". title ."
-      ". print ."
-      ". . .";
+      '. title .'
+      '. print .'
+      '. . .';
     column-gap: 2rem;
-    
-  
+
     .title {
       color: $darkGrey;
     }
@@ -421,20 +414,19 @@
     grid-template-columns: 5% auto 5%;
     grid-template-rows: 2% auto auto 2%;
     grid-template-areas:
-      ". . ."
-      ". firstcol ."
-      ". secondcol ."
-      ". . .";
+      '. . .'
+      '. firstcol .'
+      '. secondcol .'
+      '. . .';
     column-gap: 2rem;
     row-gap: 5rem;
-    font-family: "Bodoni";
+    font-family: 'Bodoni';
   }
 
   .firstCol {
-    
     padding-top: 0;
   }
-  
+
   .secondCol {
     grid-area: secondcol;
     padding-bottom: 20px;
@@ -452,7 +444,7 @@
     height: auto;
     grid-template-columns: 100%;
     grid-template-rows: auto;
-    grid-template-areas: "logo" "description" "heroimage";
+    grid-template-areas: 'logo' 'description' 'heroimage';
     .logo {
       padding: 10%;
       img {
@@ -460,7 +452,7 @@
       }
     }
     .hero__image {
-      background-image: url("/img/ThePolerouter_FrontCover_3d_HOMEPAGE_VERSION.jpg");
+      background-image: url('/img/ThePolerouter_FrontCover_3d_HOMEPAGE_VERSION.jpg');
       height: 500px;
       margin: -200px 20px 80px 20px;
       background-color: $lightGrey;
@@ -483,10 +475,10 @@
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
-      ". title ."
-      ". print ."
-      ". print2 ."
-      ". . .";
+      '. title .'
+      '. print .'
+      '. print2 .'
+      '. . .';
 
     .print {
       min-height: 100px;
@@ -516,8 +508,8 @@
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
-      ". title ."
-      ". containerPosts .";
+      '. title .'
+      '. containerPosts .';
 
     .container__posts {
       grid-area: containerPosts;
@@ -526,11 +518,10 @@
       grid-template-columns: 100%;
       grid-template-rows: auto;
       grid-template-areas:
-        "heropost"
-        "column1"
-        "column2"
-        "button";
-
+        'heropost'
+        'column1'
+        'column2'
+        'button';
 
       .hero__post {
         a::after,
@@ -538,7 +529,6 @@
           width: 25%;
         }
       }
-
 
       .column {
         margin-top: 30px;

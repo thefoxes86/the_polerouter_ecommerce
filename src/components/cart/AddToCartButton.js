@@ -130,13 +130,13 @@ const AddToCart = (props) => {
     <div>
       {/*	Check if its an external product then put its external buy link */}
       {'ExternalProduct' === product.__typename ? (
-        <a
+        <Link
           href={product?.externalUrl ?? '/'}
           target='_blank'
           className='addToCart'
         >
           Buy now
-        </a>
+        </Link>
       ) : (
         <button
           disabled={disableButton}
@@ -150,13 +150,6 @@ const AddToCart = (props) => {
             : 'ADD TO CART'}
         </button>
       )}
-      {/* {showViewCart ? (
-        <Link href="/cart">
-          <button className="viewCart">View Cart</button>
-        </Link>
-      ) : (
-        ""
-      )} */}
     </div>
   );
 };

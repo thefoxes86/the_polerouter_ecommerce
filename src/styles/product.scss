@@ -4,14 +4,14 @@
   background-color: white;
   display: grid;
   grid-template-columns: 10% 5% 30% auto 10%;
-  grid-template-rows: 10vh 5vh auto 2vh auto 2vh;
+  grid-template-rows: 10vh 7vh auto 2vh auto 2vh;
   grid-template-areas:
-    ". title title title ."
-    ". price price price ."
-    ". gallery featuredimage contentText ."
-    ". . . . ."
-    ". issue issue issue ."
-    ". . . . .";
+    '. title title title .'
+    '. price price price .'
+    '. gallery featuredimage contentText .'
+    '. . . . .'
+    '. issue issue issue .'
+    '. . . . .';
   column-gap: 2rem;
 
   .title {
@@ -23,7 +23,7 @@
     justify-content: flex-start;
     position: relative;
     font-size: 1.6rem;
-    font-family: "Bodoni";
+    font-family: 'Bodoni';
   }
 
   .gallery {
@@ -39,9 +39,6 @@
     grid-area: featuredimage;
   }
   .price {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
     grid-area: price;
   }
 
@@ -54,7 +51,7 @@
       padding: 0 25%;
       font-size: 0.8rem;
       &::after {
-        content: "";
+        content: '';
         width: 30%;
         height: 1px;
         background: black;
@@ -63,7 +60,7 @@
         top: 50%;
       }
       &::before {
-        content: "";
+        content: '';
         width: 30%;
         height: 1px;
         background: black;
@@ -75,7 +72,7 @@
     h2 {
       text-transform: uppercase;
       padding-top: 0px;
-      font-family: "Bodoni";
+      font-family: 'Bodoni';
       font-size: 1.4rem;
     }
     .description,
@@ -114,13 +111,20 @@
   .product__issue {
     grid-area: issue;
     .container_iframe {
-      position:relative;
-      padding-top:max(60%,326px);
-      height:0;
-      width:100%;
-      
+      position: relative;
+      padding-top: max(60%, 326px);
+      height: 0;
+      width: 100%;
+
       iframe {
-        position:absolute;border:none;width:100%;height:100%;left:0;right:0;top:0;bottom:0;
+        position: absolute;
+        border: none;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
       }
     }
   }
@@ -134,14 +138,14 @@
 @media only screen and (max-width: 568px) {
   .container__product {
     grid-template-columns: 10% auto 10%;
-    grid-template-rows: 5vh 5vh auto;
+    grid-template-rows: 5vh 8vh auto;
     grid-template-areas:
-      ". title ."
-      ". price ."
-      ". featuredimage ."
-      ". gallery ."
-      ". contentText ."
-      ". issue .";
+      '. title .'
+      '. price .'
+      '. featuredimage .'
+      '. gallery .'
+      '. contentText .'
+      '. issue .';
     column-gap: 0;
     row-gap: 20px;
 
@@ -154,7 +158,6 @@
         margin-top: 1rem;
       }
     }
-    
 
     .content {
       .back {

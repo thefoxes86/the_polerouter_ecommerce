@@ -190,8 +190,8 @@ const CartItemsContainer = () => {
               </tbody>
             </table>
 
-            <Link href='/checkout'>
-              <a className='button__black n-block'>Check out</a>
+            <Link className='button__black n-block' href='/checkout'>
+              Check out
             </Link>
           </div>
           <div className='generic_text'>
@@ -212,7 +212,7 @@ const CartItemsContainer = () => {
         <>
           <h2 className='title'>No items in the cart</h2>
 
-          <a
+          <span
             onClick={() => {
               router.push({
                 pathname: '/',
@@ -222,7 +222,7 @@ const CartItemsContainer = () => {
             className='button__black continue__button'
           >
             Add new products
-          </a>
+          </span>
         </>
       )}
     </div>
