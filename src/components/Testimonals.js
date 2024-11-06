@@ -24,7 +24,7 @@ const Testimonsials = () => {
       <div className='secondCol'>
         <motion.div className='testimonial'>
           <p className='bigText w-full text-center'>
-            To celebrate the 70th Anniversary of the<br></br>
+            To celebrate the 70th anniversary of the<br></br>
             inaugural trans-polar SAS flights,<br></br>
             The Polerouter book is available at<br></br>a reduced price for the
             remainder of 2024
