@@ -1,13 +1,7 @@
 import Layout from '../src/components/Layout';
-import Link from 'next/link';
 import client from '../src/components/ApolloClient';
-import { motion } from 'framer-motion';
 import GET_HOME from '../src/queries/get-home';
-import Print1 from '../src/components/Print1';
 import Print0 from '../src/components/Print0';
-import Post from '../src/components/Post';
-import { column, containerJournal } from '../src/constants/variablesMation';
-import ComingSoon from '../src/components/ComingSoon';
 import Testimonsials from '../src/components/Testimonals';
 import { useRef } from 'react';
 

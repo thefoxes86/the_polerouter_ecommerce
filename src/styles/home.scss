@@ -119,6 +119,7 @@
   height: 70vh;
   text-align: center;
   object-fit: cover;
+  object-position: 75% 0;
 }
 .container__testimonials .testimonial {
   color: white;
@@ -131,13 +132,13 @@
 }
 
 .container__testimonials .testimonial .bigText {
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 300;
   margin-bottom: 20px;
-  line-height: 42px;
+  line-height: 40px;
 }
 .container__testimonials .testimonial .mediumText {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 100;
   line-height: 22px;
   margin-bottom: 20px;
@@ -452,7 +453,7 @@
       }
     }
     .hero__image {
-      background-image: url('/img/ThePolerouter_FrontCover_3d_HOMEPAGE_VERSION.jpg');
+      background-image: url('/img/13.jpg');
       height: 500px;
       margin: -200px 20px 80px 20px;
       background-color: $lightGrey;
@@ -468,6 +469,10 @@
         display: none;
       }
     }
+  }
+
+  .container__testimonials .book__image {
+    object-position: 50% 0;
   }
 
   .container__prints {

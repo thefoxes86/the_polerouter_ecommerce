@@ -24,10 +24,10 @@ const Testimonsials = () => {
       <div className='secondCol'>
         <motion.div className='testimonial'>
           <p className='bigText w-full text-center'>
-            “To celebrate the 70th Anniversary of the<br></br>
+            To celebrate the 70th Anniversary of the<br></br>
             inaugural trans-polar SAS flights,<br></br>
             The Polerouter book is available at<br></br>a reduced price for the
-            remainder of 2024"
+            remainder of 2024
           </p>
           {/* <p className='author_name'>James Lamdin</p> */}
           {/* <p className='author_role'>Founder, Analog:Shift</p> */}
@@ -41,39 +41,47 @@ const Testimonsials = () => {
                 'https://www.fratellowatches.com/book-review-the-polerouter/'
               }
             >
-              <Image src={'/img/Fratello.png'} width={130} height={130} />
+              <Image
+                src={'/img/Fratello_logo_White.png'}
+                width={110}
+                height={130}
+              />
             </Link>
             <Link
               href={
                 'https://www.hodinkee.com/articles/the-polerouter-a-new-book-adds-to-our-age-old-appreciation-for-a-vintage-icon'
               }
             >
-              <Image src={'/img/Hodinkee_logo.png'} width={130} height={130} />
+              <Image
+                src={'/img/Hodinkee_logo_white.png'}
+                width={210}
+                height={130}
+              />
             </Link>
             <Link
               href={
                 'https://monochrome-watches.com/book-review-the-polerouter-book-celebrating-iconic-universal-geneve-watch/'
               }
             >
-              <Image src={'/img/Monochrome.jpg'} width={130} height={130} />
+              <Image
+                src={'/img/Monochrome_logo_White.png'}
+                width={130}
+                height={130}
+              />
             </Link>
             <Link
               href={
                 'https://watchesbysjx.com/2023/12/universal-geneve-polerouter-book-review.html'
               }
             >
-              <Image src={'/img/SJX.png'} width={130} height={130} />
+              <Image src={'/img/SJX_white.png'} width={130} height={130} />
             </Link>
             <Link
               href={
                 'https://wornandwound.com/the-universal-geneve-polerouter-gets-the-reference-treatment-in-a-gorgeous-new-book-covering-the-enormous-breadth-of-the-collection/'
               }
             >
-              <Image
-                src={'/img/ww_diamond_1500x1500-600x504.jpg'}
-                width={130}
-                height={130}
-              />
+              <Image src={'/img/W&W_Logo_White.png'} width={130} height={130} />
             </Link>
           </div>
           {/* <p className='author_name'>James Lamdin</p> */}
