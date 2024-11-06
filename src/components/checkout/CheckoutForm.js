@@ -151,11 +151,12 @@ const CheckoutForm = ({ countriesData }) => {
 
     const checkOutData = createCheckoutData(input);
     setRequestError(null);
+
+    setOrderData(checkOutData);
     /**
      *  When order data is set, checkout mutation will automatically be called,
      *  because 'orderData' is added in useEffect as a dependency.
      */
-    setOrderData(checkOutData);
   };
 
   /*
@@ -220,11 +221,11 @@ const CheckoutForm = ({ countriesData }) => {
     );
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     fetchCart();
     if (null !== orderData) {
       // Call the checkout mutation when the value for orderData changes/updates.
-      await checkout({ variables: { input: orderData } });
+      checkout({ variables: { input: orderData } });
     }
   }, [orderData]);
 
