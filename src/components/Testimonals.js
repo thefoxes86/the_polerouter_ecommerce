@@ -27,7 +27,7 @@ const Testimonsials = () => {
             To celebrate the 70th anniversary of the<br></br>
             inaugural trans-polar SAS flights,<br></br>
             The Polerouter book is currently available
-            <br></br>a reduced price
+            <br></br>at a reduced price
           </p>
           {/* <p className='author_name'>James Lamdin</p> */}
           {/* <p className='author_role'>Founder, Analog:Shift</p> */}
