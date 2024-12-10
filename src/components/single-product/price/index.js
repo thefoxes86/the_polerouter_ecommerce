@@ -52,9 +52,7 @@ const Price = ({ regularPrice = 0, salesPrice }) => {
         <span className='product-discount text-green-600 font-bold text-sm font-normal'>
           {productMeta?.discountPercent}
         </span>
-        <p className='text-sm'>
-          (RRP £225.00) REDUCED PRICE AVAILABLE FOR THE REMAINDER OF 2024
-        </p>
+        <p className='text-sm'>(RRP £225.00)</p>
       </h6>
     </>
   );

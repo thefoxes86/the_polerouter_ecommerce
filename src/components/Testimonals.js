@@ -26,8 +26,8 @@ const Testimonsials = () => {
           <p className='bigText w-full text-center'>
             To celebrate the 70th anniversary of the<br></br>
             inaugural trans-polar SAS flights,<br></br>
-            The Polerouter book is available at<br></br>a reduced price for the
-            remainder of 2024
+            The Polerouter book is currently available
+            <br></br>a reduced price
           </p>
           {/* <p className='author_name'>James Lamdin</p> */}
           {/* <p className='author_role'>Founder, Analog:Shift</p> */}
