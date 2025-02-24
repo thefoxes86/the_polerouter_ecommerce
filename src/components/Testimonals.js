@@ -23,7 +23,7 @@ const Testimonsials = () => {
 
       <div className='secondCol'>
         <motion.div className='testimonial'>
-          <p className='mediumText w-full text-left'>
+          <p className='bigText w-full text-left'>
             Watch collectors love a good story.<br></br>
             This is one of the very best.<br></br>
           </p>
