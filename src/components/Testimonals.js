@@ -23,14 +23,20 @@ const Testimonsials = () => {
 
       <div className='secondCol'>
         <motion.div className='testimonial'>
-          <p className='bigText w-full text-center'>
-            To celebrate the 70th anniversary of the<br></br>
-            inaugural trans-polar SAS flights,<br></br>
-            The Polerouter book is currently available
-            <br></br>at a reduced price
+          <p className='mediumText w-full text-left'>
+            Watch collectors love a good story.<br></br>
+            This is one of the very best.<br></br>
           </p>
-          {/* <p className='author_name'>James Lamdin</p> */}
-          {/* <p className='author_role'>Founder, Analog:Shift</p> */}
+          <p className='author_name'>James Lamdin</p>
+          <p className='author_role'>Founder, Analog:Shift</p>
+        </motion.div>
+        <motion.div className='testimonial'>
+          <p className='mediumText w-full text-left'>
+            A labor of love to a model that many wathc collectors<br></br>
+            are passionate about.<br></br>
+          </p>
+          <p className='author_name'>Eric Wind</p>
+          <p className='author_role'>Founder, Wind Village</p>
         </motion.div>
         <motion.div className='testimonial text-center'>
           <p className='mediumText w-full text-center'>BOOK REVIEWS</p>
