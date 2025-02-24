@@ -23,7 +23,7 @@ const Testimonsials = () => {
 
       <div className='secondCol'>
         <motion.div className='testimonial'>
-          <p className='bigText w-full text-left'>
+          <p className='mediumText w-full text-left'>
             Watch collectors love a good story.<br></br>
             This is one of the very best.<br></br>
           </p>
@@ -32,7 +32,7 @@ const Testimonsials = () => {
         </motion.div>
         <motion.div className='testimonial'>
           <p className='mediumText w-full text-left'>
-            A labor of love to a model that many wathc collectors<br></br>
+            A labor of love to a model that many watch collectors<br></br>
             are passionate about.<br></br>
           </p>
           <p className='author_name'>Eric Wind</p>
