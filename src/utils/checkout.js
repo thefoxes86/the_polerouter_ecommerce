@@ -1,5 +1,5 @@
-import client from "../components/ApolloClient";
-import GET_STATES from "../queries/get-states";
+import client from '../components/ApolloClient';
+import GET_STATES from '../queries/get-states';
 
 /**
  * Get states
@@ -8,14 +8,14 @@ import GET_STATES from "../queries/get-states";
  *
  * @returns {Promise<void>}
  */
-export const getStates = async ( countryCode ) => {
-    const { data } = await client.query( {
-        query: GET_STATES,
-        variables: { countryCode: countryCode || '' }
-    } )
+export const getStates = async (countryCode) => {
+  const { data } = await client.query({
+    query: GET_STATES,
+    variables: { countryCode: countryCode || '' },
+  });
 
-    return data?.wooStates?.states ?? [];
-}
+  return data?.wooStates?.states ?? [];
+};
 
 /**
  * Set states for the country.
@@ -26,22 +26,30 @@ export const getStates = async ( countryCode ) => {
  *
  * @return {Promise<void>}
  */
-export const setStatesForCountry = async ( target, setTheStates, setIsFetchingStates ) => {
-    if ( 'country' === target.name ) {
-        setIsFetchingStates(true);
-        const countryCode = target[target.selectedIndex].getAttribute('data-countrycode')
-        const states = await getStates( countryCode );
-        setTheStates( states || [] );
-        setIsFetchingStates(false);
-    }
-}
+export const setStatesForCountry = async (
+  target,
+  setTheStates,
+  setIsFetchingStates
+) => {
+  if ('country' === target.name) {
+    setIsFetchingStates(true);
+    const countryCode =
+      target[target.selectedIndex].getAttribute('data-countrycode');
+    const states = await getStates(countryCode);
+    setTheStates(states || []);
+    setIsFetchingStates(false);
+  }
+};
 
-export const handleBillingDifferentThanShipping = ( input, setInput, target ) => {
-    const newState = { ...input, [target.name]: ! input.billingDifferentThanShipping };
-    setInput( newState );
-}
+export const handleBillingDifferentThanShipping = (input, setInput, target) => {
+  const newState = {
+    ...input,
+    [target.name]: !input.billingDifferentThanShipping,
+  };
+  setInput(newState);
+};
 
-export const handleCreateAccount = ( input, setInput, target ) => {
-    const newState = { ...input, [target.name]: ! input.createAccount };
-    setInput( newState );
-}
+export const handleCreateAccount = (input, setInput, target) => {
+  const newState = { ...input, [target.name]: !input.createAccount };
+  setInput(newState);
+};

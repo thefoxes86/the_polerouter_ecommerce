@@ -1170,7 +1170,7 @@ export const states = [
   {
     id: 158,
     cost: 35,
-    name: 'Taiwan, Province of China',
+    name: 'Taiwan',
   },
   {
     id: 762,

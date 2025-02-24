@@ -8,7 +8,10 @@ const YourOrder = ({ cart, updateShippingCost }) => {
   const [shippingCost, setShippingCost] = useState({ cost: 0, id: '' });
 
   const handleShippiningCost = (event) => {
-    console.log('COST', event.target[event.target.selectedIndex]?.id);
+    console.log(
+      'Handle shipping cost',
+      event.target[event.target.selectedIndex]?.cost
+    );
     setShippingCost({
       cost: event.target[event.target.selectedIndex]?.id,
       id: event.target[event.target.selectedIndex]?.cost,

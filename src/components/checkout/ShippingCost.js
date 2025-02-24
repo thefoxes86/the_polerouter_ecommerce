@@ -3,7 +3,6 @@ import cx from 'classnames';
 import { states } from '../../utils/state';
 
 const ShippingCost = ({ handleShippiningCost, shippingCost }) => {
-  console.log('RENDER');
   return (
     <tr className=''>
       <td className='' />

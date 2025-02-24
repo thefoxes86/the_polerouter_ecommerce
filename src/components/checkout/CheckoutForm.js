@@ -198,6 +198,8 @@ const CheckoutForm = ({ countriesData }) => {
       ...input,
       shipping: { ...input?.shipping, [target.name]: target.value },
     };
+
+    console.log('Shipping state', target.name, target.value);
     setInput(newState);
     fetchCart();
     await setStatesForCountry(
