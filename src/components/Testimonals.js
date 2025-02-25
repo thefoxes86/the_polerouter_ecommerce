@@ -36,7 +36,7 @@ const Testimonsials = () => {
             are passionate about.<br></br>
           </p>
           <p className='author_name'>Eric Wind</p>
-          <p className='author_role'>Founder, Wind Village</p>
+          <p className='author_role'>Founder, Wind Vintage</p>
         </motion.div>
         <motion.div className='testimonial text-center'>
           <p className='mediumText w-full text-center'>BOOK REVIEWS</p>
