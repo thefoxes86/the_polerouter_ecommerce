@@ -102,7 +102,7 @@ const CartItem = ({
       </td> */}
       <td className='woo-next-cart-element'>{item.name}</td>
       <td className='woo-next-cart-element title-mobile-only'>price</td>
-      <td className='woo-next-cart-element'>150.00</td>
+      <td className='woo-next-cart-element'>200.00</td>
 
       {/* Qty Input */}
       <td className='woo-next-cart-element title-mobile-only'>quantity</td>
