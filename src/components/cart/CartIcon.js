@@ -7,16 +7,14 @@ const CartIcon = () => {
   const ref = useRef();
   const productsCount =
     null !== cart && Object.keys(cart).length ? cart.totalProductsCount : '';
-  const totalPrice =
-    null !== cart && Object.keys(cart).length ? cart.totalProductsPrice : '';
 
   useEffect(() => {
-    if (ref?.current) {
-      ref?.current?.classList.add('shake');
-      setTimeout(() => {
-        ref?.current?.classList.remove('shake');
-      }, 500);
-    }
+    // if (ref?.current) {
+    //   ref?.current?.classList.add('shake');
+    //   setTimeout(() => {
+    //     ref?.current?.classList.remove('shake');
+    //   }, 500);
+    // }
   }, [productsCount]);
 
   return (

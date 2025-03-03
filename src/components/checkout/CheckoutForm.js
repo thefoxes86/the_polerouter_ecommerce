@@ -76,13 +76,6 @@ const CheckoutForm = ({ countriesData }) => {
   const [theBillingStates, setTheBillingStates] = useState([]);
   const [isFetchingBillingStates, setIsFetchingBillingStates] = useState(false);
 
-  // Update Shipping Method
-  const [updateShippingMethod, { data: updateShippingMethodResponse }] =
-    useMutation(UPDATE_SHIPPING_METHOD);
-
-  const [shippingMethods, { data: shippingMethodData }] =
-    useLazyQuery(GET_SHIPPING_METHODS);
-
   // Get Cart Data.
   const [fetchCart, { data }] = useLazyQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
@@ -168,7 +161,7 @@ const CheckoutForm = ({ countriesData }) => {
    *
    * @return {void}
    */
-  const [updateShippingCost, setUpdateShippingCost] = useState(false);
+
   const handleOnChange = async (
     event,
     isShipping = false,
@@ -223,7 +216,9 @@ const CheckoutForm = ({ countriesData }) => {
   };
 
   useEffect(() => {
-    fetchCart();
+    if (cart === undefined) {
+      fetchCart();
+    }
     if (null !== orderData) {
       // Call the checkout mutation when the value for orderData changes/updates.
       checkout({ variables: { input: orderData } });
@@ -237,7 +232,7 @@ const CheckoutForm = ({ countriesData }) => {
           <div className='your-orders order__resume'>
             {/*	Order*/}
             <h2 className='text-xl font-medium mb-4'>YOUR ORDER</h2>
-            <YourOrder cart={cart} updateShippingCost={updateShippingCost} />
+            <YourOrder cart={cart} />
           </div>
           <div className='form__address'>
             {/*Shipping Details*/}

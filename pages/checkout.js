@@ -1,16 +1,18 @@
-import Layout from "../src/components/Layout";
-import CheckoutForm from "../src/components/checkout/CheckoutForm";
-import GET_COUNTRIES from "../src/queries/get-countries";
-import client from "../src/components/ApolloClient";
+import Layout from '../src/components/Layout';
+import CheckoutForm from '../src/components/checkout/CheckoutForm';
+import GET_COUNTRIES from '../src/queries/get-countries';
+import client from '../src/components/ApolloClient';
 
-const Checkout = ({ data }) => (
-  <Layout>
-    <div className="container__checkout">
-      <h1 className="title">Check out</h1>
-      <CheckoutForm countriesData={data?.wooCountries ?? {}} />
-    </div>
-  </Layout>
-);
+const Checkout = ({ data }) => {
+  return (
+    <Layout>
+      <div className='container__checkout'>
+        <h1 className='title'>Check out</h1>
+        <CheckoutForm countriesData={data?.wooCountries ?? {}} />
+      </div>
+    </Layout>
+  );
+};
 
 export default Checkout;
 
