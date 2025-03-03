@@ -11,10 +11,10 @@ const CartIcon = () => {
     null !== cart && Object.keys(cart).length ? cart.totalProductsPrice : '';
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.classList.add('shake');
+    if (ref?.current) {
+      ref?.current?.classList.add('shake');
       setTimeout(() => {
-        ref.current.classList.remove('shake');
+        ref?.current?.classList.remove('shake');
       }, 500);
     }
   }, [productsCount]);

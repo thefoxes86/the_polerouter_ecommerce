@@ -88,7 +88,7 @@ const CheckoutForm = ({ countriesData }) => {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
-      console.log('CART UPDATE', data);
+
       const updatedCart = getFormattedCart(data);
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
 
@@ -199,7 +199,6 @@ const CheckoutForm = ({ countriesData }) => {
       shipping: { ...input?.shipping, [target.name]: target.value },
     };
 
-    console.log('Shipping state', target.name, target.value);
     setInput(newState);
     fetchCart();
     await setStatesForCountry(
