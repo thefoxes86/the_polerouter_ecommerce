@@ -227,72 +227,68 @@ const CheckoutForm = ({ countriesData }) => {
 
   return (
     <>
-      {cart ? (
-        <form onSubmit={handleFormSubmit} className='form__checkout'>
-          <div className='your-orders order__resume'>
-            {/*	Order*/}
-            <h2 className='text-xl font-medium mb-4'>YOUR ORDER</h2>
-            <YourOrder cart={cart} />
+      <form onSubmit={handleFormSubmit} className='form__checkout'>
+        <div className='your-orders order__resume'>
+          {/*	Order*/}
+          <h2 className='text-xl font-medium mb-4'>YOUR ORDER</h2>
+          <YourOrder cart={cart} />
+        </div>
+        <div className='form__address'>
+          {/*Shipping Details*/}
+          <div className='billing-details'>
+            <h2 className='text-xl font-medium mb-4'>SHIPPING DETAILS</h2>
+            <Address
+              states={theShippingStates}
+              countries={shippingCountries}
+              input={input?.shipping}
+              handleOnChange={(event) => handleOnChange(event, true, true)}
+              isFetchingStates={isFetchingShippingStates}
+              isShipping
+              isBillingOrShipping
+              fetchCart={fetchCart}
+            />
           </div>
-          <div className='form__address'>
-            {/*Shipping Details*/}
+          <div>
+            <CheckboxField
+              name='billingDifferentThanShipping'
+              type='checkbox'
+              checked={input?.billingDifferentThanShipping}
+              handleOnChange={handleOnChange}
+              label='Billing different than shipping'
+              containerClassNames='mb-4 pt-4'
+            />
+          </div>
+          {/*Billing Details*/}
+          {input?.billingDifferentThanShipping ? (
             <div className='billing-details'>
-              <h2 className='text-xl font-medium mb-4'>SHIPPING DETAILS</h2>
+              <h2 className='text-xl font-medium mb-4'>BILLING DETAILS</h2>
               <Address
-                states={theShippingStates}
-                countries={shippingCountries}
-                input={input?.shipping}
-                handleOnChange={(event) => handleOnChange(event, true, true)}
-                isFetchingStates={isFetchingShippingStates}
-                isShipping
+                states={theBillingStates}
+                countries={billingCountries}
+                input={input?.billing}
+                handleOnChange={(event) => handleOnChange(event, false, true)}
+                isFetchingStates={isFetchingBillingStates}
+                isShipping={false}
                 isBillingOrShipping
-                fetchCart={fetchCart}
               />
             </div>
-            <div>
-              <CheckboxField
-                name='billingDifferentThanShipping'
-                type='checkbox'
-                checked={input?.billingDifferentThanShipping}
-                handleOnChange={handleOnChange}
-                label='Billing different than shipping'
-                containerClassNames='mb-4 pt-4'
-              />
-            </div>
-            {/*Billing Details*/}
-            {input?.billingDifferentThanShipping ? (
-              <div className='billing-details'>
-                <h2 className='text-xl font-medium mb-4'>BILLING DETAILS</h2>
-                <Address
-                  states={theBillingStates}
-                  countries={billingCountries}
-                  input={input?.billing}
-                  handleOnChange={(event) => handleOnChange(event, false, true)}
-                  isFetchingStates={isFetchingBillingStates}
-                  isShipping={false}
-                  isBillingOrShipping
-                />
-              </div>
-            ) : null}
+          ) : null}
+        </div>
+        {/* Order & Payments*/}
+        <div className='your-orders payment'>
+          {/*Payment*/}
+          <PaymentModes input={input} handleOnChange={handleOnChange} />
+          <div>
+            <button className='button__black' type='submit'>
+              Place Order
+            </button>
           </div>
-          {/* Order & Payments*/}
-          <div className='your-orders payment'>
-            {/*Payment*/}
-            <PaymentModes input={input} handleOnChange={handleOnChange} />
-            <div>
-              <button className='button__black' type='submit'>
-                Place Order
-              </button>
-            </div>
 
-            {/* Checkout Loading*/}
-            {checkoutLoading && <p>Processing Order...</p>}
-            {requestError && <p>Error : {requestError} :( Please try again</p>}
-          </div>
-        </form>
-      ) : (
-        ''
-      )}
+          {/* Checkout Loading*/}
+          {checkoutLoading && <p>Processing Order...</p>}
+          {requestError && <p>Error : {requestError} :( Please try again</p>}
+        </div>
+      </form>
 
       {/*	Show message if Order Success*/}
       <OrderSuccess response={checkoutResponse} />
